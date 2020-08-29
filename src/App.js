@@ -11,6 +11,8 @@ import NotFoundPage from "./Pages/404";
 import fact from "./Pages/fact";
 import intro from "./Pages/Intro";
 import cause from "./Pages/Cause";
+import dataVis_1 from "./Pages/dataVis_1";
+import dataVis_2 from "./Pages/dataVis_2";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/fact" component={fact} />
         <Route path="/Intro" component={intro} />
         <Route path="/Cause" component={cause} />
+        <Route path="/dataVis_1" component={dataVis_1} />
+        <Route path="/dataVis_2" component={dataVis_2} />
         <Route exact path="/404" component={NotFoundPage} />
         <Redirect to="/404" />
       </Switch>

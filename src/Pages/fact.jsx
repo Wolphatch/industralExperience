@@ -69,11 +69,18 @@ const cards = [
     linkTo: "/Cause",
   },
   {
-    title: "Under consturct",
-    desciption: "Check this out later",
+    title: "Data Analysis 1",
+    desciption: "Learn more through graph of Drought Analysis",
     image: card_img_3,
-    linkText: "Not avaliable",
-    linkTo: "/404",
+    linkText: "check it out",
+    linkTo: "/dataVis_1",
+  },
+  {
+    title: "Data Analysis 2",
+    desciption: "Learn more through graph of Drought Analysis",
+    image: card_img_3,
+    linkText: "check it out",
+    linkTo: "/dataVis_2",
   },
 ];
 
@@ -149,7 +156,7 @@ function fact() {
         {/* End hero unit */}
 
         {/* card container */}
-        <Container className={classes.cardGrid} maxWidth="md">
+        <Container className={classes.cardGrid} maxWidth="xl">
           {/* grid container */}
           <Grid container spacing={4}>
             {mapCard()}

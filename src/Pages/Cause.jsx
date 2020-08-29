@@ -28,6 +28,10 @@ import Footer from "../components/Footer";
 import climateChange from "../asset/pic_userstory_2/picture1.png";
 import Air from "../asset/pic_userstory_2/picture2.png";
 import greenhouse from "../asset/pic_userstory_2/picture3.png";
+import soilTemp from "../asset/pic_userstory_2/PictureI1.png";
+import soilMoisture from "../asset/pic_userstory_2/pictureI2.png";
+import timeDifferent from "../asset/pic_userstory_2/PictureI3.png";
+import saveWater from "../asset/pic_userstory_2/pictureI4.png";
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -89,8 +93,6 @@ const cards = [
     desciption:
       "Fronts from the Southern Ocean have shifted southwards as a warming climate, it originally brings rainfall in southern Australia in winter and spring so the southwest and southeast Australia may have a decline in rainfall and become warmer, so it faces a high risk of drought.",
     image: climateChange,
-    linkText: "check it out",
-    linkTo: "/Intro",
   },
   {
     headerText: "Air circulation and weather patterns",
@@ -99,8 +101,6 @@ const cards = [
     desciption:
       "Air circulation and weather patterns also cause drought. All the water we ever had we have today and it is stored in the air or on land. Weather patterns move the water in the air around. This is constantly changing.",
     image: Air,
-    linkText: "check it out",
-    linkTo: "/Cause",
   },
   {
     headerText: "Gresshouse gas emmissions",
@@ -109,8 +109,38 @@ const cards = [
     desciption:
       "Global air temperatures have risen with the increasing greenhouse gas concentrations (Timbal and Drosdowsky 2012; CSIRO 2012). For Australia, warmer temperatures caused by greenhouse gas emissions lead to less rainfall, which is a part the people have the capacity of controlling it to prevent drought.",
     image: greenhouse,
-    linkText: "Not avaliable",
-    linkTo: "/404",
+  },
+  {
+    headerText: "Increasing temperatures of Land",
+    headerAvatar: "I",
+    title: "Increasing temperatures of Land",
+    desciption:
+      "The increasing temperatures of Land and water lead to more demand for water, so people or groups may use more water according to weather conditions, which may lead to drought.",
+    image: soilTemp,
+  },
+  {
+    headerText: "Soil moisture levels",
+    headerAvatar: "S",
+    title: "Soil moisture levels",
+    desciption:
+      "Soil moisture levels may lead to severe drought. water can be used for clouds if soil moisture is depleted, which may contribute to less rainfall while needing more water to repair these drought soil.",
+    image: soilMoisture,
+  },
+  {
+    headerText: "Way of supplying water",
+    headerAvatar: "W",
+    title: "Way of supplying water",
+    desciption:
+      "Wrong ways of supplying water also lead to drought. When using too much water in the period with sufficient rainfall, people may lack water in the period with insufficient rainfall. When a region has growing numbers of people, it means this region may also have a growing demand for water. When people adopt incorrect actions facing the water and hot period. A most simple example, over-irrigation may lead to drought.",
+    image: timeDifferent,
+  },
+  {
+    headerText: "Water distribution",
+    headerAvatar: "W",
+    title: "Water distribution",
+    desciption:
+      "People who have sufficient water waste may lead to drought even in one city. They do not know the horror that people lack water and may use water too much for unnecessary things. For example, in the southeast of Victoria may face drought while urban citizens use water causally. ",
+    image: saveWater,
   },
 ];
 
@@ -217,7 +247,7 @@ function Cause() {
         {/* End hero unit */}
 
         {/* card container */}
-        <Container className={classes.cardGrid} maxWidth="md">
+        <Container className={classes.cardGrid} maxWidth="xl">
           {/* grid container */}
           <Grid container spacing={4}>
             {mapCard()};

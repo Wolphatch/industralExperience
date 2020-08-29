@@ -63,7 +63,7 @@ const menuItems = [
   },
 ];
 
-const Navbar = () => {
+const Navbar = ({ sticky }) => {
   const [state, setState] = useState({
     right: false,
   });
