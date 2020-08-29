@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import temp from "../asset/3.gif";
 import Typed from "react-typed";
-import { Typography, Avatar, Grid, Box } from "@material-ui/core";
+import { Typography, Avatar, Grid } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
@@ -96,9 +96,9 @@ const Header = () => {
                 variant="outlined"
                 color="primary"
                 component={Link}
-                to="/"
+                to="/fact"
               >
-                Bring me back
+                Get Started
               </Button>
             </Grid>
           </Grid>
@@ -109,27 +109,3 @@ const Header = () => {
 };
 
 export default Header;
-
-{
-  /* <Box className={classes.typedContainer}>
-<Grid container justify="center">
-  <Avatar className={classes.avater} src={temp} alt="..." />
-</Grid>
-<Typography className={classes.title} variant="h4">
-  <Typed strings={["Do you know:"]} typespeed={40} />
-</Typography>
-<br />
-<Typography className={classes.subtitle} variant="h5">
-  <Typed
-    strings={[
-      "Why is drought?",
-      "What are the effects?",
-      "What can we do?",
-    ]}
-    typespeed={40}
-    backSpeed={60}
-    loop
-  />
-</Typography>
-</Box> */
-}

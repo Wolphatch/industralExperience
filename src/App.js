@@ -8,6 +8,9 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./Pages/index";
 import aboutUs from "./Pages/aboutUs";
 import NotFoundPage from "./Pages/404";
+import fact from "./Pages/fact";
+import intro from "./Pages/Intro";
+import cause from "./Pages/Cause";
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/aboutUs" component={aboutUs} />
+        <Route path="/fact" component={fact} />
+        <Route path="/Intro" component={intro} />
+        <Route path="/Cause" component={cause} />
         <Route exact path="/404" component={NotFoundPage} />
         <Redirect to="/404" />
       </Switch>

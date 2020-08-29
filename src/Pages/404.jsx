@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import error from "../asset/error.jpg";
 import Navbar from "../components/Navbar";
 // import { Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";

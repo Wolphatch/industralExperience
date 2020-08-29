@@ -20,9 +20,9 @@ import {
   Assignment,
   Home,
   Apps,
-  ContactMail,
+  InfoOutlined,
 } from "@material-ui/icons";
-import temp from "../asset/1.jpg";
+import waterDrop from "../asset/waterDrop.jpg";
 
 const useStyles = makeStyles((theme) => ({
   menuSlider: {
@@ -49,14 +49,15 @@ const menuItems = [
   },
   {
     listIcon: <Assignment />,
-    listText: "HistoryOfDrought",
+    listText: "Drought in Australia",
+    listPath: "/fact",
   },
   {
     listIcon: <Apps />,
-    listText: "CounterMesure",
+    listText: "Counter Mesure",
   },
   {
-    listIcon: <ContactMail />,
+    listIcon: <InfoOutlined />,
     listText: "aboutUs",
     listPath: "/aboutUs",
   },
@@ -79,7 +80,7 @@ const Navbar = () => {
       component="div"
       onClick={toggleSlider(slider, false)}
     >
-      <Avatar className={classes.avater} src={temp} alt="..." />
+      <Avatar className={classes.avater} src={waterDrop} alt="..." />
       <Divider />
       <List>
         {menuItems.map((listItem, key) => (

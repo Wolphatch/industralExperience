@@ -17,7 +17,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 //assest
-import davidPreview from "../asset/David_Preview.jpg";
+import card_img_1 from "../asset/card_img_1.jpg";
+import card_img_2 from "../asset/card_img_2.jpg";
+import card_img_3 from "../asset/card_img_3.png";
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -51,15 +53,76 @@ const whatever = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1];
+const cards = [
+  {
+    title: "Introduction to drought",
+    desciption: "Understand drought in one picture",
+    image: card_img_1,
+    linkText: "check it out",
+    linkTo: "/Intro",
+  },
+  {
+    title: "Casue of drought",
+    desciption: "Learn the diifferent factor that cause drought",
+    image: card_img_2,
+    linkText: "check it out",
+    linkTo: "/Cause",
+  },
+  {
+    title: "Under consturct",
+    desciption: "Check this out later",
+    image: card_img_3,
+    linkText: "Not avaliable",
+    linkTo: "/404",
+  },
+];
 
-const aboutUs = () => {
+const mapCard = () => {
+  const classes = whatever();
+
+  let cardUI = [];
+
+  cards.map((card, key) => {
+    cardUI.push(
+      <Grid item id={key} xs={12} sm={6} md={4}>
+        <Card className={classes.card}>
+          <CardMedia
+            className={classes.cardMedia}
+            image={card.image}
+            title={card.title}
+            component={Link}
+            to={card.linkTo}
+          />
+          <CardContent className={classes.cardContent}>
+            <Typography gutterBottom variant="h5" component="h2">
+              {card.title}
+            </Typography>
+            <Typography>{card.desciption}</Typography>
+          </CardContent>
+          <CardActions>
+            <Button
+              size="small"
+              color="primary"
+              component={Link}
+              to={card.linkTo}
+            >
+              {card.linkText}
+            </Button>
+          </CardActions>
+        </Card>
+      </Grid>
+    );
+    return null;
+  });
+  return cardUI;
+};
+
+function fact() {
   const classes = whatever();
 
   return (
     <>
       <Navbar />
-
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -71,7 +134,7 @@ const aboutUs = () => {
               color="textPrimary"
               gutterBottom
             >
-              Team Cool
+              Drought in Australia
             </Typography>
             <Typography
               variant="h5"
@@ -79,68 +142,23 @@ const aboutUs = () => {
               color="textSecondary"
               paragraph
             >
-              Keep cool in your life, keep cool in the world.
+              A quick walkthrough
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    More about us
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    component={Link}
-                    to="/"
-                  >
-                    Enough for this
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
           </Container>
         </div>
+        {/* End hero unit */}
+
+        {/* card container */}
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
+          {/* grid container */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={davidPreview}
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      David
-                    </Typography>
-                    <Typography>This is the developer of the page.</Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      color="primary"
-                      component={Link}
-                      to="/404"
-                    >
-                      Kick his ass
-                    </Button>
-                    {/* <Button size="small" color="primary">
-                      Edit
-                    </Button> */}
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
+            {mapCard()}
           </Grid>
         </Container>
       </main>
       <Footer />
     </>
   );
-};
+}
 
-export default aboutUs;
+export default fact;
