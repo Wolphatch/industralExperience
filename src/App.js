@@ -13,11 +13,12 @@ import intro from "./Pages/Intro";
 import cause from "./Pages/Cause";
 import dataVis_1 from "./Pages/dataVis_1";
 import dataVis_2 from "./Pages/dataVis_2";
-
+import ScrollToTop from './components/ScrollToTop'
 function App() {
   return (
     <>
       <CssBaseLine />
+      <ScrollToTop> 
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/aboutUs" component={aboutUs} />
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/404" component={NotFoundPage} />
         <Redirect to="/404" />
       </Switch>
+      </ScrollToTop>
     </>
   );
 }

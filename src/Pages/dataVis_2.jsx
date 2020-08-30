@@ -13,6 +13,8 @@ import Footer from "../components/Footer";
 //assest
 import Temp_Vis from "../asset/WaterEvaporation_Visulization.png";
 
+import TagTool from '../components/TagTool';
+
 const whatever = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -94,6 +96,7 @@ function Intro() {
           <Grid container spacing={4}></Grid>
         </Container>
       </main>
+      <TagTool></TagTool> 
       <Footer />
     </>
   );
