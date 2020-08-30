@@ -34,6 +34,9 @@ import p6 from "../asset/pic_userstory_1/picture6.png";
 import p7 from "../asset/pic_userstory_1/picture7.png";
 import p8 from "../asset/pic_userstory_1/picture8.png";
 
+import { Link } from "react-router-dom";
+import TagTool from '../components/TagTool';
+
 const whatever = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -168,7 +171,18 @@ const cards = [
     image: p8,
   },
 ];
-
+let buttonStyle = {  
+  BORDERRIGHT: '#7b9ebd 1px solid',
+  PADDINGRIGHT: '2px',
+  BORDERTOP:  '#7b9ebd 1px solid', 
+  PADDINGLEFT: '2px', 
+  FONTSIZE: '12px', 
+  BORDERLEFT: '#7b9ebd 1px solid', 
+  CURSOR: 'hand', 
+  COLOR: 'black', 
+  PADDINGTOP: '2px', 
+  BORDERBOTTOM: '#7b9ebd 1px solid',
+}
 function Cause() {
   const classes = whatever();
 
@@ -243,6 +257,8 @@ function Cause() {
     });
     return cardUI;
   };
+
+  
 
   return (
     <>
@@ -336,7 +352,14 @@ function Cause() {
             {mapCard(cards.slice(4, 8))};
           </Grid>
         </Container>
+      
       </main>
+      <TagTool></TagTool> 
+      {/* <button style={buttonStyle}>
+          <Link to={"/fact"}>
+          Go Back   
+          </Link>
+        </button> */}
       <Footer />
     </>
   );

@@ -33,6 +33,8 @@ import soilMoisture from "../asset/pic_userstory_2/pictureI2.png";
 import timeDifferent from "../asset/pic_userstory_2/PictureI3.png";
 import saveWater from "../asset/pic_userstory_2/pictureI4.png";
 
+import TagTool from '../components/TagTool';
+
 const whatever = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -290,6 +292,7 @@ function Cause() {
           </Grid>
         </Container>
       </main>
+      <TagTool></TagTool> 
       <Footer />
     </>
   );
