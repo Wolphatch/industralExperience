@@ -101,7 +101,7 @@ const Navbar = ({ sticky }) => {
   return (
     <>
       <Box component="nav">
-        <AppBar position="static" style={{ background: "white" }}>
+        <AppBar position="fixed" style={{ background: "white" }}>
           <Toolbar>
             <IconButton onClick={toggleSlider("right", true)}>
               <ArrowForwardIos style={{ color: "green" }} />
