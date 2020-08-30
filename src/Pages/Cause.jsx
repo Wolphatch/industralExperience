@@ -48,6 +48,10 @@ const whatever = makeStyles((theme) => ({
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
+  placeHolder: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+  },
   card: {
     height: "100%",
     display: "flex",
@@ -153,12 +157,12 @@ function Cause() {
     setExpanded(!expanded);
   };
 
-  const mapCard = () => {
+  const mapCard = (cardGroup) => {
     const classes = whatever();
 
     let cardUI = [];
 
-    cards.map((card, key) => {
+    cardGroup.map((card, key) => {
       cardUI.push(
         <Grid item id={key} xs={12} sm={6} md={4}>
           <Card className={classes.card}>
@@ -249,8 +253,40 @@ function Cause() {
         {/* card container */}
         <Container className={classes.cardGrid} maxWidth="xl">
           {/* grid container */}
+          <div className={classes.heroContent}>
+            <Container maxWidth="md">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                Direct factors influence rainfall
+              </Typography>
+            </Container>
+          </div>
+          <Container className={classes.placeHolder} />
           <Grid container spacing={4}>
-            {mapCard()};
+            {mapCard(cards.slice(0, 3))};
+          </Grid>
+
+          <div className={classes.heroContent}>
+            <Container maxWidth="md">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                Indirect factors lead to drought
+              </Typography>
+            </Container>
+          </div>
+          <Container className={classes.placeHolder} />
+          <Grid container spacing={4}>
+            {mapCard(cards.slice(3, 7))};
           </Grid>
         </Container>
       </main>

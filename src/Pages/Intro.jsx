@@ -49,6 +49,10 @@ const whatever = makeStyles((theme) => ({
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
+  placeHolder: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+  },
   card: {
     height: "100%",
     display: "flex",
@@ -174,12 +178,12 @@ function Cause() {
     setExpanded(!expanded);
   };
 
-  const mapCard = () => {
+  const mapCard = (cardGroup) => {
     const classes = whatever();
 
     let cardUI = [];
 
-    cards.map((card, key) => {
+    cardGroup.map((card, key) => {
       cardUI.push(
         <Grid item id={key} xs={12} sm={6} md={4}>
           <Card className={classes.card}>
@@ -254,7 +258,7 @@ function Cause() {
               color="textPrimary"
               gutterBottom
             >
-              Information about drought
+              Fact of drought in Australia
             </Typography>
             <Typography
               variant="h5"
@@ -294,8 +298,42 @@ function Cause() {
         {/* card container */}
         <Container className={classes.cardGrid} maxWidth="xl">
           {/* grid container */}
+          <div className={classes.heroContent}>
+            <Container maxWidth="md">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                What is drought
+              </Typography>
+            </Container>
+          </div>
+          <Container className={classes.placeHolder} />
           <Grid container spacing={4}>
-            {mapCard()};
+            {mapCard(cards.slice(0, 4))};
+          </Grid>
+          <Container className={classes.placeHolder} />
+
+          {/* grid container */}
+          <div className={classes.heroContent}>
+            <Container maxWidth="md">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                Impact of drought
+              </Typography>
+            </Container>
+          </div>
+          <Container className={classes.placeHolder} />
+          <Grid container spacing={4}>
+            {mapCard(cards.slice(4, 8))};
           </Grid>
         </Container>
       </main>
