@@ -107,9 +107,9 @@ const cards = [
     headerText: "agricultural drought",
     headerAvatar: "A",
     title: "Agricultural drought",
-    subtitle: "Different measure and defination ",
+    subtitle: "Differour soil becomes dry and lacks water.ent measure and defination",
     desciption:
-      "It is measured through deficits in soil moisture.Which indicate our soil becomes dry and lacks water.",
+      "It is measured through deficits in soil moisture.",
     image: p2,
   },
   {
@@ -117,8 +117,8 @@ const cards = [
     headerAvatar: "H",
     title: "Hydrological drought",
     subtitle:
-      "It is based on anomalies in streamflow, lake and/or groundwater levels (IPCC 2012)",
-    desciption: "Our streamflow, lake and groundwater become less than before.",
+      "Our streamflow, lake and groundwater become less than before.",
+    desciption: "It is based on anomalies in streamflow, lake and/or groundwater levels (IPCC 2012).",
     image: p3,
   },
   {
