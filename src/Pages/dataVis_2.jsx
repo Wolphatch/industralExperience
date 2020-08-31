@@ -13,7 +13,7 @@ import Footer from "../components/Footer";
 //assest
 import Temp_Vis from "../asset/WaterEvaporation_Visulization.png";
 
-import TagTool from '../components/TagTool';
+import TagTool from "../components/TagTool";
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -63,7 +63,7 @@ function Intro() {
               color="textPrimary"
               gutterBottom
             >
-              Introduction to drought
+              Water evaporation in Australia
             </Typography>
             <Typography
               variant="h5"
@@ -71,7 +71,7 @@ function Intro() {
               color="textSecondary"
               paragraph
             >
-              Some background knowledge of drought in Australia
+              Do you have any idea about water evaporation in Australia?
             </Typography>
           </Container>
         </div>
@@ -96,7 +96,7 @@ function Intro() {
           <Grid container spacing={4}></Grid>
         </Container>
       </main>
-      <TagTool></TagTool> 
+      <TagTool></TagTool>
       <Footer />
     </>
   );

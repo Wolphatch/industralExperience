@@ -23,6 +23,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 //components
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import TagTool from "../components/TagTool";
 
 //assest
 import p1 from "../asset/pic_userstory_1/picture1.png";
@@ -33,9 +34,6 @@ import p5 from "../asset/pic_userstory_1/picture5.png";
 import p6 from "../asset/pic_userstory_1/picture6.png";
 import p7 from "../asset/pic_userstory_1/picture7.png";
 import p8 from "../asset/pic_userstory_1/picture8.png";
-
-import { Link } from "react-router-dom";
-import TagTool from '../components/TagTool';
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -171,18 +169,18 @@ const cards = [
     image: p8,
   },
 ];
-let buttonStyle = {  
-  BORDERRIGHT: '#7b9ebd 1px solid',
-  PADDINGRIGHT: '2px',
-  BORDERTOP:  '#7b9ebd 1px solid', 
-  PADDINGLEFT: '2px', 
-  FONTSIZE: '12px', 
-  BORDERLEFT: '#7b9ebd 1px solid', 
-  CURSOR: 'hand', 
-  COLOR: 'black', 
-  PADDINGTOP: '2px', 
-  BORDERBOTTOM: '#7b9ebd 1px solid',
-}
+// let buttonStyle = {
+//   BORDERRIGHT: "#7b9ebd 1px solid",
+//   PADDINGRIGHT: "2px",
+//   BORDERTOP: "#7b9ebd 1px solid",
+//   PADDINGLEFT: "2px",
+//   FONTSIZE: "12px",
+//   BORDERLEFT: "#7b9ebd 1px solid",
+//   CURSOR: "hand",
+//   COLOR: "black",
+//   PADDINGTOP: "2px",
+//   BORDERBOTTOM: "#7b9ebd 1px solid",
+// };
 function Cause() {
   const classes = whatever();
 
@@ -257,8 +255,6 @@ function Cause() {
     });
     return cardUI;
   };
-
-  
 
   return (
     <>
@@ -352,9 +348,8 @@ function Cause() {
             {mapCard(cards.slice(4, 8))};
           </Grid>
         </Container>
-      
       </main>
-      <TagTool></TagTool> 
+      <TagTool></TagTool>
       {/* <button style={buttonStyle}>
           <Link to={"/fact"}>
           Go Back   
