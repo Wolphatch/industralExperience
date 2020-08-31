@@ -5,15 +5,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
+import tableau from "tableau-api";
 
 //components
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import TagTool from "../components/TagTool";
+import visAPI from "../components/visAPI";
 
 //assest
 import Temp_Vis from "../asset/Temperature_Visulization.png";
-
-import TagTool from "../components/TagTool";
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -96,10 +97,10 @@ function Intro() {
           <Grid container spacing={4}></Grid>
         </Container>
       </main>
+      <visAPI></visAPI>
       <TagTool></TagTool>
-      <Footer />
+      <Footer></Footer>
     </>
   );
 }
-
 export default Intro;
