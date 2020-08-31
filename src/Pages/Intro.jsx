@@ -107,7 +107,7 @@ const cards = [
     headerText: "agricultural drought",
     headerAvatar: "A",
     title: "Agricultural drought",
-    subtitle: "Differour soil becomes dry and lacks water.ent measure and defination",
+    subtitle: "Our soil becomes dry and lacks water.ent measure and defination",
     desciption:
       "It is measured through deficits in soil moisture.",
     image: p2,
