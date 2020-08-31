@@ -98,9 +98,9 @@ const cards = [
     headerAvatar: "M",
     title: "Meteorological drought",
     subtitle:
-      "In terms of its links to climate change, drought is best definedas meteorological drought",
+      "In the climate change part, drought means a long period with insufficient water to meet our normal use, this kind of phenomenon is called meteorological drought.",
     desciption:
-      "which is ‘a prolonged, abnormally dry period when the amount of available water is insufficient to meet our normal use’ and is generally measured by assessing rainfall deficiencies over three or more months (BoM 2014c). meteorological drought: In the climate change part, drought means a long period with insufficient water to meet our normal use, this kind of phenomenon is called meteorological drought.",
+      "In terms of its links to climate change, drought is best defined as meteorological drought, which is ‘a prolonged, abnormally dry period when the amount of available water is insufficient to meet our normal use’ and is generally measured by assessing rainfall deficiencies over three or more months (BoM 2014c).",
     image: p1,
   },
   {
