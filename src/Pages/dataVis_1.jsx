@@ -5,15 +5,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
+import tableau from "tableau-api";
 
 //components
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import TagTool from "../components/TagTool";
+import visAPI from "../components/visAPI";
 
 //assest
 import Temp_Vis from "../asset/Temperature_Visulization.png";
-
-import TagTool from '../components/TagTool';
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -63,7 +64,7 @@ function Intro() {
               color="textPrimary"
               gutterBottom
             >
-              Introduction to drought
+              Temperature in Australia
             </Typography>
             <Typography
               variant="h5"
@@ -71,7 +72,7 @@ function Intro() {
               color="textSecondary"
               paragraph
             >
-              Some background knowledge of drought in Australia
+              Get more awareness of Temperature in Australia
             </Typography>
           </Container>
         </div>
@@ -96,10 +97,10 @@ function Intro() {
           <Grid container spacing={4}></Grid>
         </Container>
       </main>
-      <TagTool></TagTool> 
-      <Footer />
+      <visAPI></visAPI>
+      <TagTool></TagTool>
+      <Footer></Footer>
     </>
   );
 }
-
 export default Intro;

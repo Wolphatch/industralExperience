@@ -69,18 +69,32 @@ const cards = [
     linkTo: "/Cause",
   },
   {
-    title: "Data Analysis 1",
-    desciption: "Learn more through graph of Drought Analysis",
+    title: "Temperature Visulization",
+    desciption: "Learn about temperature in Australia",
     image: card_img_3,
     linkText: "check it out",
     linkTo: "/dataVis_1",
   },
   {
-    title: "Data Analysis 2",
-    desciption: "Learn more through graph of Drought Analysis",
+    title: "Water Evaporation",
+    desciption: "Learn about Water Evaporation in Australia",
     image: card_img_3,
     linkText: "check it out",
     linkTo: "/dataVis_2",
+  },
+  {
+    title: "Rainfall Visulization",
+    desciption: "Learn about rainfall in Australia",
+    image: card_img_3,
+    linkText: "check it out",
+    linkTo: "/dataVis_3",
+  },
+  {
+    title: "Chronology of drought",
+    desciption: "A time of drought history in Australia",
+    image: card_img_3,
+    linkText: "check it out",
+    linkTo: "/Chronology",
   },
 ];
 

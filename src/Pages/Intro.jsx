@@ -23,6 +23,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 //components
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import TagTool from "../components/TagTool";
 
 //assest
 import p1 from "../asset/pic_userstory_1/picture1.png";
@@ -33,9 +34,6 @@ import p5 from "../asset/pic_userstory_1/picture5.png";
 import p6 from "../asset/pic_userstory_1/picture6.png";
 import p7 from "../asset/pic_userstory_1/picture7.png";
 import p8 from "../asset/pic_userstory_1/picture8.png";
-
-import { Link } from "react-router-dom";
-import TagTool from '../components/TagTool';
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -100,18 +98,18 @@ const cards = [
     headerAvatar: "M",
     title: "Meteorological drought",
     subtitle:
-      "In terms of its links to climate change, drought is best definedas meteorological drought",
+      "In the climate change part, drought means a long period with insufficient water to meet our normal use, this kind of phenomenon is called meteorological drought.",
     desciption:
-      "which is ‘a prolonged, abnormally dry period when the amount of available water is insufficient to meet our normal use’ and is generally measured by assessing rainfall deficiencies over three or more months (BoM 2014c). meteorological drought: In the climate change part, drought means a long period with insufficient water to meet our normal use, this kind of phenomenon is called meteorological drought.",
+      "In terms of its links to climate change, drought is best defined as meteorological drought, which is ‘a prolonged, abnormally dry period when the amount of available water is insufficient to meet our normal use’ and is generally measured by assessing rainfall deficiencies over three or more months (BoM 2014c).",
     image: p1,
   },
   {
     headerText: "agricultural drought",
     headerAvatar: "A",
     title: "Agricultural drought",
-    subtitle: "Different measure and defination ",
+    subtitle: "Our soil becomes dry and lacks water.ent measure and defination",
     desciption:
-      "It is measured through deficits in soil moisture.Which indicate our soil becomes dry and lacks water.",
+      "It is measured through deficits in soil moisture.",
     image: p2,
   },
   {
@@ -119,8 +117,8 @@ const cards = [
     headerAvatar: "H",
     title: "Hydrological drought",
     subtitle:
-      "It is based on anomalies in streamflow, lake and/or groundwater levels (IPCC 2012)",
-    desciption: "Our streamflow, lake and groundwater become less than before.",
+      "Our streamflow, lake and groundwater become less than before.",
+    desciption: "It is based on anomalies in streamflow, lake and/or groundwater levels (IPCC 2012).",
     image: p3,
   },
   {
@@ -171,18 +169,18 @@ const cards = [
     image: p8,
   },
 ];
-let buttonStyle = {  
-  BORDERRIGHT: '#7b9ebd 1px solid',
-  PADDINGRIGHT: '2px',
-  BORDERTOP:  '#7b9ebd 1px solid', 
-  PADDINGLEFT: '2px', 
-  FONTSIZE: '12px', 
-  BORDERLEFT: '#7b9ebd 1px solid', 
-  CURSOR: 'hand', 
-  COLOR: 'black', 
-  PADDINGTOP: '2px', 
-  BORDERBOTTOM: '#7b9ebd 1px solid',
-}
+// let buttonStyle = {
+//   BORDERRIGHT: "#7b9ebd 1px solid",
+//   PADDINGRIGHT: "2px",
+//   BORDERTOP: "#7b9ebd 1px solid",
+//   PADDINGLEFT: "2px",
+//   FONTSIZE: "12px",
+//   BORDERLEFT: "#7b9ebd 1px solid",
+//   CURSOR: "hand",
+//   COLOR: "black",
+//   PADDINGTOP: "2px",
+//   BORDERBOTTOM: "#7b9ebd 1px solid",
+// };
 function Cause() {
   const classes = whatever();
 
@@ -257,8 +255,6 @@ function Cause() {
     });
     return cardUI;
   };
-
-  
 
   return (
     <>
@@ -352,9 +348,8 @@ function Cause() {
             {mapCard(cards.slice(4, 8))};
           </Grid>
         </Container>
-      
       </main>
-      <TagTool></TagTool> 
+      <TagTool></TagTool>
       {/* <button style={buttonStyle}>
           <Link to={"/fact"}>
           Go Back   

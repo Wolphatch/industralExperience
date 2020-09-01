@@ -109,6 +109,11 @@ const Navbar = ({ sticky }) => {
             <Typography variant="h5" style={{ color: "tan" }}>
               WhyIsDrought
             </Typography>
+            <IconButton >
+            <Link to={"/fact"}>
+              <Home style={{ color: "tan" }} />
+            </Link>
+            </IconButton>
             <SideMenuSlider
               anchor="left"
               open={state.right}

@@ -126,7 +126,7 @@ const aboutUs = () => {
                       component={Link}
                       to="/404"
                     >
-                      Kick his ass
+                      sayō nara (See you)
                     </Button>
                     {/* <Button size="small" color="primary">
                       Edit

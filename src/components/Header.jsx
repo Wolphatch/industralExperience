@@ -2,8 +2,9 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import temp from "../asset/3.gif";
 import Typed from "react-typed";
-import { Typography, Avatar, Grid } from "@material-ui/core";
+import { Typography, Avatar, Grid, Box } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import ExploreIcon from "@material-ui/icons/Explore";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 
@@ -14,10 +15,10 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   title: {
-    color: "Blue",
+    color: "#e8ffe8",
   },
   subtitle: {
-    color: "tan",
+    color: "#10316b",
     marginBottom: "3rem",
   },
   typedContainer: {
@@ -33,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+    // backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(40, 0, 6),
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -69,15 +70,24 @@ const Header = () => {
           <Avatar className={classes.avater} src={temp} alt="..." />
         </Grid>
         <Typography
+          className={classes.title}
           component="h1"
           variant="h2"
           align="center"
           color="textPrimary"
           gutterBottom
         >
-          <Typed strings={["Do you know:"]} typespeed={40} />
+          <Box fontWeight="fontWeightBold" m={1}>
+            Do you know:
+          </Box>
         </Typography>
-        <Typography variant="h5" align="center" color="textSecondary" paragraph>
+        <Typography
+          className={classes.subtitle}
+          variant="h4"
+          align="center"
+          color="textSecondary"
+          paragraph
+        >
           <Typed
             strings={[
               "Why is drought?",
@@ -93,8 +103,10 @@ const Header = () => {
           <Grid container spacing={2} justify="center">
             <Grid item>
               <Button
-                variant="outlined"
+                variant="contained"
                 color="primary"
+                size="large"
+                endIcon={<ExploreIcon />}
                 component={Link}
                 to="/fact"
               >
