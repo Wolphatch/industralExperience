@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 //package
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,7 +11,7 @@ import tableau from "tableau-api";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TagTool from "../components/TagTool";
-import Header from "../components/Title";
+import visAPI from "../components/visAPI";
 
 //assest
 import Temp_Vis from "../asset/Temperature_Visulization.png";
@@ -47,63 +47,6 @@ const whatever = makeStyles((theme) => ({
     padding: theme.spacing(6),
   },
 }));
-
-class API extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    this.initViz();
-  }
-
-  //Function call API
-  initViz() {
-    const vizUrl =
-      "https://public.tableau.com/views/temperature_15988427606310/Dashboard1?:device=tablet";
-    const options = {
-      height: "220vh",
-      width: "100%",
-      hideTabs: false,
-      hideToolbar: true,
-    };
-    const vizContainer = this.vizContainer;
-    let viz = new window.tableau.Viz(vizContainer, vizUrl, options);
-  }
-
-  render() {
-    return (
-      <>
-        <Navbar />
-        <main>
-          {/* Hero unit */}
-          <Header
-            title="Temperature in Australia"
-            subtitle="Get more awareness of Temperature in Australia"
-          ></Header>
-          {/* End hero unit */}
-        </main>
-
-        {/* card container */}
-
-        <div
-          style={{
-            paddingLeft: "1%",
-            paddingBottom: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          ref={(div) => {
-            this.vizContainer = div;
-          }}
-        />
-        <TagTool></TagTool>
-        <Footer></Footer>
-      </>
-    );
-  }
-}
 
 function Intro() {
   const classes = whatever();
@@ -154,9 +97,10 @@ function Intro() {
           <Grid container spacing={4}></Grid>
         </Container>
       </main>
+      <visAPI></visAPI>
       <TagTool></TagTool>
       <Footer></Footer>
     </>
   );
 }
-export default API;
+export default Intro;
