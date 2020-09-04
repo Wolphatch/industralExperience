@@ -24,7 +24,9 @@ class TagTool extends React.Component {
         }}
       >
         {}
-        <Link to={"/fact"}>Go Back</Link>
+        <Link to={"/fact"} style={{color:"Green",textDecorationLine: "initial", fontStyle: "italic"}}>
+          Go Back To Home
+          </Link>
       </div>
     );
   }
