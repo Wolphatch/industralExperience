@@ -16,6 +16,8 @@ import dataVis_2 from "./Pages/dataVis_2";
 import dataVis_3 from "./Pages/dataVis_3";
 import Chronology from "./Pages/Chronology";
 import ScrollToTop from "./components/ScrollToTop";
+import temp from "./Pages/temp";
+
 function App() {
   return (
     <>
@@ -31,6 +33,7 @@ function App() {
           <Route path="/dataVis_2" component={dataVis_2} />
           <Route path="/dataVis_3" component={dataVis_3} />
           <Route path="/Chronology" component={Chronology} />
+          <Route path="/temp" component={temp} />
           <Route exact path="/404" component={NotFoundPage} />
           <Redirect to="/404" />
         </Switch>
