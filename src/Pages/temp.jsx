@@ -33,7 +33,6 @@ import soilTemp from "../asset/pic_userstory_2/PictureI1.png";
 import soilMoisture from "../asset/pic_userstory_2/pictureI2.png";
 import timeDifferent from "../asset/pic_userstory_2/PictureI3.png";
 import saveWater from "../asset/pic_userstory_2/pictureI4.png";
-import bubbleBox from "../asset/G5tbp.png";
 
 import TagTool from "../components/TagTool";
 
@@ -101,7 +100,6 @@ const useStyles = makeStyles((theme) => ({
   },
   grid: {
     marginLeft: theme.spacing(0),
-    background: bubbleBox,
 
     //backgroundColor: theme.palette.background.paper,
     height: "100%",
