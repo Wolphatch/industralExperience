@@ -17,9 +17,10 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 //assest
-import card_img_1 from "../asset/card_img_1.jpg";
-import card_img_2 from "../asset/card_img_2.jpg";
-import card_img_3 from "../asset/card_img_3.png";
+import card_img_1 from "../asset/homePage/card_img_1.jpg";
+import card_img_2 from "../asset/homePage/card_img_2.jpg";
+import card_img_3 from "../asset/homePage/card_img_3.png";
+import history_img from "../asset/homePage/background.jpg";
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -36,6 +37,10 @@ const whatever = makeStyles((theme) => ({
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
+  placeHolder: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+  },
   card: {
     height: "100%",
     display: "flex",
@@ -50,6 +55,23 @@ const whatever = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
+  },
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 0,
+    paddingTop: "56.25%", // 16:9
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: "rotate(180deg)",
   },
 }));
 
@@ -67,6 +89,13 @@ const cards = [
     image: card_img_2,
     linkText: "check it out",
     linkTo: "/Cause",
+  },
+  {
+    title: "Chronology of drought",
+    desciption: "A time of drought history in Australia",
+    image: history_img,
+    linkText: "check it out",
+    linkTo: "/Chronology",
   },
   {
     title: "Temperature Visulization",
@@ -89,21 +118,14 @@ const cards = [
     linkText: "check it out",
     linkTo: "/dataVis_3",
   },
-  {
-    title: "Chronology of drought",
-    desciption: "A time of drought history in Australia",
-    image: card_img_3,
-    linkText: "check it out",
-    linkTo: "/Chronology",
-  },
 ];
 
-const mapCard = () => {
+const mapCard = (cardGroup) => {
   const classes = whatever();
 
   let cardUI = [];
 
-  cards.map((card, key) => {
+  cardGroup.map((card, key) => {
     cardUI.push(
       <Grid item id={key} xs={12} sm={6} md={4}>
         <Card className={classes.card}>
@@ -172,8 +194,41 @@ function fact() {
         {/* card container */}
         <Container className={classes.cardGrid} maxWidth="xl">
           {/* grid container */}
+          <div className={classes.heroContent}>
+            <Container maxWidth="md">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                Background Information
+              </Typography>
+            </Container>
+          </div>
+          <Container className={classes.placeHolder} />
           <Grid container spacing={4}>
-            {mapCard()}
+            {mapCard(cards.slice(0, 3))};
+          </Grid>
+          <Container className={classes.placeHolder} />
+
+          <div className={classes.heroContent}>
+            <Container maxWidth="md">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                Visulization
+              </Typography>
+            </Container>
+          </div>
+          <Container className={classes.placeHolder} />
+          <Grid container spacing={4}>
+            {mapCard(cards.slice(3, 6))};
           </Grid>
         </Container>
       </main>

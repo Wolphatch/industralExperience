@@ -94,17 +94,17 @@ const Navbar = ({ sticky }) => {
             </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Link to={"/dataVis_2"} style={{color:"Green",textDecorationLine: "initial",fontStyle: "italic"}}>
+                <Link to={"/dataVis_2"} style={{color:"limegreen",textDecorationLine: "initial",fontStyle: "italic",fontSize:"15px"}}>
                   Evaporation
             </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Link to={"/dataVis_1"} style={{color:"Green",textDecorationLine: "initial",fontStyle: "italic"}}>
+                <Link to={"/dataVis_1"} style={{color:"limegreen",textDecorationLine: "initial",fontStyle: "italic",fontSize:"15px"}}>
                   Temperature
             </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Link to={"/dataVis_3"} style={{color:"Green",textDecorationLine: "initial",fontStyle: "italic"}}>
+                <Link to={"/dataVis_3"} style={{color:"limegreen",textDecorationLine: "initial",fontStyle: "italic",fontSize:"15px"}}>
                   Rainfall
             </Link>
               </MenuItem>

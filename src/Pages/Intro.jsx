@@ -34,13 +34,17 @@ import p5 from "../asset/pic_userstory_1/picture5.png";
 import p6 from "../asset/pic_userstory_1/picture6.png";
 import p7 from "../asset/pic_userstory_1/picture7.png";
 import p8 from "../asset/pic_userstory_1/picture8.png";
+import test from "../asset/waterDrop.jpg";
 
 const whatever = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
+    // backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(25, 0, 25),
+  },
+  headingContent: {
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -53,6 +57,10 @@ const whatever = makeStyles((theme) => ({
   placeHolder: {
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
+  },
+  placeHolder2: {
+    paddingTop: theme.spacing(10),
+    paddingBottom: theme.spacing(10),
   },
   card: {
     height: "100%",
@@ -93,16 +101,24 @@ const whatever = makeStyles((theme) => ({
   grid: {
     //maxHeight: theme.spacing(50),
   },
+  titleStyle: {
+    color: "#fdfdfd",
+    fontSize: 80,
+  },
+  subtitleStyle: {
+    color: "#fdfdfd",
+  },
 }));
 
 const cards = [
   {
     headerText: "agricultural drought",
     headerAvatar: "A",
-    title: "Agricultural drought",
+    title: "1. Agricultural drought",
     desciption:
       "Our soil becomes dry and lacks water.ent measure and defination. It is measured through deficits in soil moisture.",
     image: p2,
+    heading: "This is card 1",
   },
   {
     headerText: "Meteorological drought",
@@ -201,30 +217,24 @@ function Cause() {
     cardGroup.map((card, key) => {
       cardUI.push(
         <Grid container spacing={3}>
-          <Grid item xs={handleStrip(key)} className={classes.grid}>
-            <Card className={classes.card}>
-              <CardContent className={classes.cardContent}>
-                <Typography gutterBottom variant="h2" component="h2">
-                  {card.title}
-                </Typography>
-                <Typography
-                  square="false"
-                  variant="h5"
-                  align="left"
-                  color="textSecondary"
-                  paragraph
-                >
-                  {card.desciption}
-                </Typography>
-              </CardContent>
-            </Card>
+          <Grid item xs={6} className={classes.grid}>
+            <CardMedia className={classes.cardMedia} image={card.image} />
           </Grid>
-          <Grid item xs={12 - handleStrip(key)} className={classes.grid}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.cardMedia} image={card.image} />
-            </Card>
+          <Grid item xs={6} className={classes.grid}>
+            <Typography gutterBottom variant="h2" component="h2">
+              {card.title}
+            </Typography>
+            <Typography
+              square="false"
+              variant="h5"
+              align="left"
+              color="textSecondary"
+              paragraph
+            >
+              {card.desciption}
+            </Typography>
           </Grid>
-          <Container className={classes.placeHolder} />
+          <Container className={classes.placeHolder2} />
         </Grid>
       );
       return null;
@@ -237,11 +247,20 @@ function Cause() {
       <Navbar />
       <main>
         {/* Hero unit */}
-        <div className={classes.heroContent}>
+        <div
+          className={classes.heroContent}
+          style={{
+            backgroundImage: `url(${test})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
           <Container maxWidth="md">
             <Typography
+              className={classes.titleStyle}
               component="h1"
-              variant="h2"
+              variant="h1"
               align="center"
               color="textPrimary"
               gutterBottom
@@ -249,6 +268,8 @@ function Cause() {
               Fact of drought in Australia
             </Typography>
             <Typography
+              className={classes.subtitleStyle}
+              component="h4"
               variant="h5"
               align="center"
               color="textSecondary"
@@ -263,7 +284,7 @@ function Cause() {
         {/* card container */}
         <Container className={classes.cardGrid} maxWidth="xl">
           {/* grid container */}
-          <div className={classes.heroContent}>
+          <div className={classes.headingContent}>
             <Container maxWidth="md">
               <Typography
                 component="h1"
@@ -283,7 +304,7 @@ function Cause() {
           <Container className={classes.placeHolder} />
 
           {/* grid container */}
-          <div className={classes.heroContent}>
+          {/* <div className={classes.heroContent}>
             <Container maxWidth="md">
               <Typography
                 component="h1"
@@ -299,7 +320,7 @@ function Cause() {
           <Container className={classes.placeHolder} />
           <Grid container spacing={1}>
             {mapCard(cards.slice(4, 8))};
-          </Grid>
+          </Grid> */}
         </Container>
       </main>
       <TagTool></TagTool>
