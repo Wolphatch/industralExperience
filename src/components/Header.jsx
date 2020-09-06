@@ -173,7 +173,7 @@ const Header = () => {
                   size="large"
                   endIcon={<ExploreIcon />}
                   component={Link}
-                  to="/fact"
+                  to="/slideShow"
                 >
                   Get Started
                 </Button>
