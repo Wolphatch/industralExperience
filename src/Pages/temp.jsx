@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component, useRef, useEffect } from "react";
 
 //package
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,6 +20,9 @@ import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Paper from "@material-ui/core/Paper";
+import { render } from "react-dom";
+import Button from "@material-ui/core/Button";
+import ExploreIcon from "@material-ui/icons/Explore";
 
 //components
 import Navbar from "../components/Navbar";
@@ -107,8 +110,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+const useMountEffect = (fun) => useEffect(fun, []);
+
 export default function AutoGrid() {
   const classes = useStyles();
+
+  const myRef = useRef(null);
+
+  useMountEffect(() => scrollToRef(myRef));
 
   return (
     <>
@@ -135,6 +145,21 @@ export default function AutoGrid() {
               Understand the cause of drought
             </Typography>
           </Container>
+          <div className={classes.heroButtons}>
+            <Grid container spacing={2} justify="center">
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  endIcon={<ExploreIcon />}
+                  onClick={() => scrollToRef(myRef)}
+                >
+                  Go!!!
+                </Button>
+              </Grid>
+            </Grid>
+          </div>
         </div>
         {/* End hero unit */}
 
@@ -191,7 +216,7 @@ export default function AutoGrid() {
           </Grid>
           <Container className={classes.placeHolder} />
 
-          <div className={classes.heroContent}>
+          <div ref={myRef} className={classes.heroContent}>
             <Container maxWidth="md">
               <Typography
                 component="h1"
