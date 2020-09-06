@@ -33,7 +33,7 @@ import soilMoisture from "../asset/pic_userstory_2/pictureI2.png";
 import timeDifferent from "../asset/pic_userstory_2/PictureI3.png";
 import saveWater from "../asset/pic_userstory_2/pictureI4.png";
 
-import TagTool from '../components/TagTool';
+import TagTool from "../components/TagTool";
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -159,6 +159,10 @@ function Cause() {
     setExpanded(!expanded);
   };
 
+  const handleStrip = (props) => {
+    return props % 2 == 0 ? 4 : 8;
+  };
+
   const mapCard = (cardGroup) => {
     const classes = whatever();
 
@@ -166,57 +170,31 @@ function Cause() {
 
     cardGroup.map((card, key) => {
       cardUI.push(
-        <Grid item id={key} xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardHeader
-              avatar={
-                <Avatar aria-label={card.headerText} className={classes.avatar}>
-                  {card.headerAvatar}
-                </Avatar>
-              }
-              action={
-                <IconButton aria-label="settings">
-                  <MoreVertIcon />
-                </IconButton>
-              }
-              title={card.headerText}
-            />
-            <CardMedia
-              className={classes.cardMedia}
-              image={card.image}
-              title={card.title}
-              onClick={handleExpandClick}
-            />
-            <CardContent className={classes.cardContent}>
-              <Typography gutterBottom variant="h5" component="h2">
-                {card.title}
-              </Typography>
-            </CardContent>
-
-            <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="share">
-                <ShareIcon />
-              </IconButton>
-              <IconButton
-                className={clsx(classes.expand, {
-                  [classes.expandOpen]: expanded,
-                })}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-              >
-                <ExpandMoreIcon />
-              </IconButton>
-            </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-              <CardContent>
-                <Typography paragraph>{card.desciption}</Typography>
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={handleStrip(key)}>
+            <Card className={classes.card}>
+              <CardContent className={classes.cardContent}>
+                <Typography gutterBottom variant="h2" component="h2">
+                  {card.title}
+                </Typography>
+                <Typography
+                  square="false"
+                  variant="h5"
+                  align="left"
+                  color="textSecondary"
+                  paragraph
+                >
+                  {card.desciption}
+                </Typography>
               </CardContent>
-            </Collapse>
-          </Card>
+            </Card>
+          </Grid>
+          <Grid item xs={12 - handleStrip(key)}>
+            <Card className={classes.card}>
+              <CardMedia className={classes.cardMedia} image={card.image} />
+            </Card>
+          </Grid>
+          <Container className={classes.placeHolder} />
         </Grid>
       );
       return null;
@@ -269,7 +247,7 @@ function Cause() {
             </Container>
           </div>
           <Container className={classes.placeHolder} />
-          <Grid container spacing={4}>
+          <Grid container spacing={1}>
             {mapCard(cards.slice(0, 3))};
           </Grid>
 
@@ -287,12 +265,12 @@ function Cause() {
             </Container>
           </div>
           <Container className={classes.placeHolder} />
-          <Grid container spacing={4}>
+          <Grid container spacing={1}>
             {mapCard(cards.slice(3, 7))};
           </Grid>
         </Container>
       </main>
-      <TagTool></TagTool> 
+      <TagTool></TagTool>
       <Footer />
     </>
   );

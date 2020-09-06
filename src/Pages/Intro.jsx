@@ -90,43 +90,42 @@ const whatever = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
+  grid: {
+    //maxHeight: theme.spacing(50),
+  },
 }));
 
 const cards = [
   {
-    headerText: "Meteorological drought",
-    headerAvatar: "M",
-    title: "Meteorological drought",
-    subtitle:
-      "In the climate change part, drought means a long period with insufficient water to meet our normal use, this kind of phenomenon is called meteorological drought.",
-    desciption:
-      "In terms of its links to climate change, drought is best defined as meteorological drought, which is ‘a prolonged, abnormally dry period when the amount of available water is insufficient to meet our normal use’ and is generally measured by assessing rainfall deficiencies over three or more months (BoM 2014c).",
-    image: p1,
-  },
-  {
     headerText: "agricultural drought",
     headerAvatar: "A",
     title: "Agricultural drought",
-    subtitle: "Our soil becomes dry and lacks water.ent measure and defination",
     desciption:
-      "It is measured through deficits in soil moisture.",
+      "Our soil becomes dry and lacks water.ent measure and defination. It is measured through deficits in soil moisture.",
     image: p2,
+  },
+  {
+    headerText: "Meteorological drought",
+    headerAvatar: "M",
+    title: "Meteorological drought",
+    desciption:
+      "In the climate change part, drought means a long period with insufficient water to meet our normal use, this kind of phenomenon is called meteorological drought. In terms of its links to climate change, drought is best defined as meteorological drought, which is ‘a prolonged, abnormally dry period when the amount of available water is insufficient to meet our normal use’ and is generally measured by assessing rainfall deficiencies over three or more months (BoM 2014c).",
+    image: p1,
   },
   {
     headerText: "hydrological drought",
     headerAvatar: "H",
     title: "Hydrological drought",
-    subtitle:
-      "Our streamflow, lake and groundwater become less than before.",
-    desciption: "It is based on anomalies in streamflow, lake and/or groundwater levels (IPCC 2012).",
+    desciption:
+      "Our streamflow, lake and groundwater become less than before. It is based on anomalies in streamflow, lake and/or groundwater levels (IPCC 2012).",
     image: p3,
   },
   {
     headerText: "Socioeconomic drought",
     headerAvatar: "S",
     title: "Socioeconomic drought",
-    subtitle: "Effect of drought spread through the wider community",
-    desciption: "Lack of water or increase desalination plants.",
+    desciption:
+      "Effect of drought spread through the wider community. Lack of water or increase desalination plants.",
     image: p4,
   },
   {
@@ -190,6 +189,10 @@ function Cause() {
     setExpanded(!expanded);
   };
 
+  const handleStrip = (props) => {
+    return props % 2 == 0 ? 4 : 8;
+  };
+
   const mapCard = (cardGroup) => {
     const classes = whatever();
 
@@ -197,58 +200,31 @@ function Cause() {
 
     cardGroup.map((card, key) => {
       cardUI.push(
-        <Grid item id={key} xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardHeader
-              avatar={
-                <Avatar aria-label={card.headerText} className={classes.avatar}>
-                  {card.headerAvatar}
-                </Avatar>
-              }
-              action={
-                <IconButton aria-label="settings">
-                  <MoreVertIcon />
-                </IconButton>
-              }
-              title={card.headerText}
-            />
-            <CardMedia
-              className={classes.cardMedia}
-              image={card.image}
-              title={card.title}
-              onClick={handleExpandClick}
-            />
-            <CardContent className={classes.cardContent}>
-              <Typography gutterBottom variant="h5" component="h2">
-                {card.title}
-              </Typography>
-              <Typography>{card.subtitle}</Typography>
-            </CardContent>
-
-            <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="share">
-                <ShareIcon />
-              </IconButton>
-              <IconButton
-                className={clsx(classes.expand, {
-                  [classes.expandOpen]: expanded,
-                })}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-              >
-                <ExpandMoreIcon />
-              </IconButton>
-            </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-              <CardContent>
-                <Typography paragraph>{card.desciption}</Typography>
+        <Grid container spacing={3}>
+          <Grid item xs={handleStrip(key)} className={classes.grid}>
+            <Card className={classes.card}>
+              <CardContent className={classes.cardContent}>
+                <Typography gutterBottom variant="h2" component="h2">
+                  {card.title}
+                </Typography>
+                <Typography
+                  square="false"
+                  variant="h5"
+                  align="left"
+                  color="textSecondary"
+                  paragraph
+                >
+                  {card.desciption}
+                </Typography>
               </CardContent>
-            </Collapse>
-          </Card>
+            </Card>
+          </Grid>
+          <Grid item xs={12 - handleStrip(key)} className={classes.grid}>
+            <Card className={classes.card}>
+              <CardMedia className={classes.cardMedia} image={card.image} />
+            </Card>
+          </Grid>
+          <Container className={classes.placeHolder} />
         </Grid>
       );
       return null;
@@ -278,30 +254,7 @@ function Cause() {
               color="textSecondary"
               paragraph
             >
-              <p>Australia has a long history of drought.</p>
-              <p> Drought is considered as a feature of Australia.</p>
-              <p>
-                Australia continent itself is the driest inhabited continent on
-                Earth.
-              </p>
-              <p>
-                Australias has the most variable rainfall and stream-flow on
-                Earth.
-              </p>
-
-              <p>
-                Hot extremes are becoming more frequent and intense (IPCC2014).
-              </p>
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
-              Australia is the driest inhabited continent on Earth, with some of
-              the world’s most variable rainfall and stream-flow (DFAT 2014).
-              (bom.gov.au/climate/drought)
+              <p>Know what and how drought affect Australia</p>
             </Typography>
           </Container>
         </div>
@@ -324,7 +277,7 @@ function Cause() {
             </Container>
           </div>
           <Container className={classes.placeHolder} />
-          <Grid container spacing={4}>
+          <Grid container spacing={1}>
             {mapCard(cards.slice(0, 4))};
           </Grid>
           <Container className={classes.placeHolder} />
@@ -344,7 +297,7 @@ function Cause() {
             </Container>
           </div>
           <Container className={classes.placeHolder} />
-          <Grid container spacing={4}>
+          <Grid container spacing={1}>
             {mapCard(cards.slice(4, 8))};
           </Grid>
         </Container>

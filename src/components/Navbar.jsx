@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import SideMenuSlider from "@material-ui/core/Drawer";
 import {
   AppBar,
   Toolbar,
@@ -23,104 +22,95 @@ import {
   InfoOutlined,
 } from "@material-ui/icons";
 import waterDrop from "../asset/waterDrop.jpg";
-
+import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import { green } from '@material-ui/core/colors';
 const useStyles = makeStyles((theme) => ({
-  menuSlider: {
-    width: 250,
-    background: "white",
-    height: "100rem",
+  margin: {
+    margin: theme.spacing(1),
   },
-  avater: {
-    display: "block",
-    margin: "0.5rem auto",
-    width: theme.spacing(13),
-    height: theme.spacing(13),
+  extendedIcon: {
+    marginRight: theme.spacing(1),
   },
-  ListItem: {
-    color: "tan",
-  },
+
 }));
 
-const menuItems = [
-  {
-    listIcon: <Home />,
-    listText: "Home",
-    listPath: "/",
-  },
-  {
-    listIcon: <Assignment />,
-    listText: "Drought in Australia",
-    listPath: "/fact",
-  },
-  {
-    listIcon: <Apps />,
-    listText: "Counter Mesure",
-  },
-  {
-    listIcon: <InfoOutlined />,
-    listText: "aboutUs",
-    listPath: "/aboutUs",
-  },
-];
 
 const Navbar = ({ sticky }) => {
-  const [state, setState] = useState({
-    right: false,
-  });
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const toggleSlider = (slider, open) => () => {
-    setState({ ...state, [slider]: open });
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  const classes = useStyles();
-
-  const sideList = (slider) => (
-    <Box
-      className={classes.menuSlider}
-      component="div"
-      onClick={toggleSlider(slider, false)}
-    >
-      <Avatar className={classes.avater} src={waterDrop} alt="..." />
-      <Divider />
-      <List>
-        {menuItems.map((listItem, key) => (
-          <ListItem button key={key} component={Link} to={listItem.listPath}>
-            <ListItemIcon className={classes.ListItem}>
-              {listItem.listIcon}
-            </ListItemIcon>
-            <ListItemText
-              className={classes.ListItem}
-              primary={listItem.listText}
-            />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <>
       <Box component="nav">
         <AppBar position="fixed" style={{ background: "white" }}>
           <Toolbar>
-            <IconButton onClick={toggleSlider("right", true)}>
-              <ArrowForwardIos style={{ color: "green" }} />
-            </IconButton>
-            <Typography variant="h5" style={{ color: "tan" }}>
+            <Typography variant="h5" style={{ color: "Green",fontStyle: "italic" }} className={classes.margin} >
               WhyIsDrought
             </Typography>
-            <IconButton >
-            <Link to={"/fact"}>
-              <Home style={{ color: "tan" }} />
+
+            <Button
+              variant="none"
+              size="large"
+              style={{ fontSize: "20px" }}
+              className={classes.margin}
+              startIcon={<Home style={{ color: green[500] }} />}>
+              <Link to={"/"} style={{ color: "Green", textDecorationLine: "initial",fontStyle: "italic"}}>
+                Home
             </Link>
-            </IconButton>
-            <SideMenuSlider
-              anchor="left"
-              open={state.right}
-              onClose={toggleSlider("right", false)}
+            </Button>
+            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}
+              style={{ color: "Green", fontSize: "20px", fontStyle: "italic" }}>
+              Do you know?
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
             >
-              {sideList("right")}
-            </SideMenuSlider>
+              <MenuItem onClick={handleClose}>
+                <Link to={"/Intro"} style={{color:"Green",textDecorationLine: "initial",fontStyle: "italic"}}>
+                  What is drought?
+            </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to={"/Cause"} style={{color:"Green",textDecorationLine: "initial",fontStyle: "italic"}}>
+                  Why drought happens?
+            </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to={"/fact"} style={{color:"Green",textDecorationLine: "initial",fontStyle: "italic"}}>
+                  The climate in Australia?
+            </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to={"/dataVis_2"} style={{color:"Green",textDecorationLine: "initial",fontStyle: "italic"}}>
+                  Evaporation
+            </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to={"/dataVis_1"} style={{color:"Green",textDecorationLine: "initial",fontStyle: "italic"}}>
+                  Temperature
+            </Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to={"/dataVis_3"} style={{color:"Green",textDecorationLine: "initial",fontStyle: "italic"}}>
+                  Rainfall
+            </Link>
+              </MenuItem>
+            </Menu>
+
+
           </Toolbar>
         </AppBar>
       </Box>
