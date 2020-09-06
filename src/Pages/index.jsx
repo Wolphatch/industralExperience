@@ -28,7 +28,8 @@ import card_img_1 from "../asset/homePage/card_img_1.jpg";
 import card_img_2 from "../asset/homePage/card_img_2.jpg";
 import card_img_3 from "../asset/homePage/card_img_3.png";
 import history_img from "../asset/homePage/background.jpg";
-
+import background3 from "../asset/homePage/background3.png";
+import background4 from "../asset/homePage/background4.png";
 const whatever = makeStyles((theme) => ({
   avater: {
     width: theme.spacing(15),
@@ -206,58 +207,59 @@ const MainPage = () => {
 
   const myRef = useRef(null);
 
-  
+
 
   return (
     <>
       <div>
         <Navbar />
-
-        {/*Header content*/}
-        <div className={classes.headerContent}>
-          {/* <Grid container justify="center">
+        <div style={{
+          backgroundImage: `url(${background4})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}>
+          {/*Header content*/}
+          <div className={classes.headerContent}>
+            {/* <Grid container justify="center">
           <Avatar className={classes.avater} src={temp} alt="..." />
         </Grid> */}
-          <FlipPage
-            width={window.innerWidth}
-            height={600}
-            pageBackground="#17b978"
-            flipOnTouch="true"
-            disableSwipe="true"
-          >
-            {/* page 1*/}
-            <div>
-              <Typography
-                className={classes.titleTemp}
-                component="h1"
-                variant="h2"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              >
-                <Box fontWeight="fontWeightBold" m={1}>
-                  Do you know:
+            <div
+
+            >
+              {/* page 1*/}
+              <div>
+                <Typography
+                  className={classes.titleTemp}
+                  component="h1"
+                  variant="h2"
+                  align="left"
+                  style={{color: "lightBlue"}}
+                  gutterBottom
+                >
+                  <Box fontWeight="fontWeightBold" m={1}>
+                    Do you know:
                 </Box>
-              </Typography>
-              <Typography
-                className={classes.subtitle}
-                variant="h4"
-                align="center"
-                color="textSecondary"
-                paragraph
-              >
-                <Typed
-                  strings={[
-                    "Why is drought?",
-                    "What are the effects?",
-                    "What can we do?",
-                  ]}
-                  typespeed={40}
-                  backSpeed={60}
-                  loop
-                />
-              </Typography>
-              <div className={classes.IconButton}>
+                </Typography>
+                <Typography
+                  className={classes.subtitle}
+                  variant="h4"
+                  align="left"
+                  color="textSecondary"
+                  paragraph
+                >
+                  <Typed
+                    strings={[
+                      "Why is drought?",
+                      "What are the effects?",
+                      "What can we do?",
+                    ]}
+                    typespeed={40}
+                    backSpeed={60}
+                    loop
+                  />
+                </Typography>
+                {/* <div className={classes.IconButton}>
                 <Grid container spacing={2} justify="center">
                   <Grid item>
                     <IconButton aria-label="expand">
@@ -265,12 +267,12 @@ const MainPage = () => {
                     </IconButton>
                   </Grid>
                 </Grid>
+              </div> */}
               </div>
-            </div>
 
-            {/* page 2*/}
-            <div>
-              <Typography
+              {/* page 2*/}
+              <div>
+                {/* <Typography
                 className={classes.title}
                 component="h1"
                 variant="h2"
@@ -304,29 +306,31 @@ const MainPage = () => {
                   Hot extremes are becoming more frequent and intense
                   (IPCC2014).
                 </p>
-              </Typography>
-              <div className={classes.heroButtons}>
-                <Grid container spacing={2} justify="center">
-                  <Grid item>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      size="large"
-                      endIcon={<ExploreIcon />}
-                      onClick={() => scrollToRef(myRef)}
-                    >
-                      Get Started
+              </Typography> */}
+                <div className={classes.heroButtons}>
+                  <Grid container spacing={2} justify="center">
+                    <Grid item>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        style={{align:"left"}}
+                        endIcon={<ExploreIcon />}
+                        onClick={() => scrollToRef(myRef)}
+                      >
+                        Get Started
                     </Button>
+                    </Grid>
                   </Grid>
-                </Grid>
+                </div>
               </div>
             </div>
-          </FlipPage>
-        </div>
+          
 
         {/*Placeholder*/}
-        <div style={{ height: 350 }} />
-
+        <div style={{ height: 450 }} />
+        </div>
+        </div>
         {/*Main content*/}
         <main>
           {/* Hero unit */}
