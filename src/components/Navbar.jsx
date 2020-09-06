@@ -22,10 +22,10 @@ import {
   InfoOutlined,
 } from "@material-ui/icons";
 import waterDrop from "../asset/waterDrop.jpg";
-import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import { green } from '@material-ui/core/colors';
+import Button from "@material-ui/core/Button";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import { green } from "@material-ui/core/colors";
 const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
@@ -33,9 +33,7 @@ const useStyles = makeStyles((theme) => ({
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
-
 }));
-
 
 const Navbar = ({ sticky }) => {
   const classes = useStyles();
@@ -53,7 +51,11 @@ const Navbar = ({ sticky }) => {
       <Box component="nav">
         <AppBar position="fixed" style={{ background: "white" }}>
           <Toolbar>
-            <Typography variant="h5" style={{ color: "Green",fontStyle: "italic" }} className={classes.margin} >
+            <Typography
+              variant="h5"
+              style={{ color: "Green", fontStyle: "italic" }}
+              className={classes.margin}
+            >
               WhyIsDrought
             </Typography>
 
@@ -62,13 +64,25 @@ const Navbar = ({ sticky }) => {
               size="large"
               style={{ fontSize: "20px" }}
               className={classes.margin}
-              startIcon={<Home style={{ color: green[500] }} />}>
-              <Link to={"/"} style={{ color: "Green", textDecorationLine: "initial",fontStyle: "italic"}}>
+              startIcon={<Home style={{ color: green[500] }} />}
+            >
+              <Link
+                to={"/"}
+                style={{
+                  color: "Green",
+                  textDecorationLine: "initial",
+                  fontStyle: "italic",
+                }}
+              >
                 Home
-            </Link>
+              </Link>
             </Button>
-            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}
-              style={{ color: "Green", fontSize: "20px", fontStyle: "italic" }}>
+            <Button
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+              style={{ color: "Green", fontSize: "20px", fontStyle: "italic" }}
+            >
               Do you know?
             </Button>
             <Menu
@@ -79,38 +93,81 @@ const Navbar = ({ sticky }) => {
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose}>
-                <Link to={"/Intro"} style={{color:"Green",textDecorationLine: "initial",fontStyle: "italic"}}>
+                <Link
+                  to={"/Intro"}
+                  style={{
+                    color: "Green",
+                    textDecorationLine: "initial",
+                    fontStyle: "italic",
+                  }}
+                >
                   What is drought?
-            </Link>
+                </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Link to={"/Cause"} style={{color:"Green",textDecorationLine: "initial",fontStyle: "italic"}}>
+                <Link
+                  to={"/Cause"}
+                  style={{
+                    color: "Green",
+                    textDecorationLine: "initial",
+                    fontStyle: "italic",
+                  }}
+                >
                   Why drought happens?
-            </Link>
+                </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Link to={"/fact"} style={{color:"Green",textDecorationLine: "initial",fontStyle: "italic"}}>
+                <Link
+                  to={"/fact"}
+                  style={{
+                    color: "Green",
+                    textDecorationLine: "initial",
+                    fontStyle: "italic",
+                  }}
+                >
                   The climate in Australia?
-            </Link>
+                </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Link to={"/dataVis_2"} style={{color:"limegreen",textDecorationLine: "initial",fontStyle: "italic",fontSize:"15px"}}>
+                <Link
+                  to={"/dataVis_evap"}
+                  style={{
+                    color: "limegreen",
+                    textDecorationLine: "initial",
+                    fontStyle: "italic",
+                    fontSize: "15px",
+                  }}
+                >
                   Evaporation
-            </Link>
+                </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Link to={"/dataVis_1"} style={{color:"limegreen",textDecorationLine: "initial",fontStyle: "italic",fontSize:"15px"}}>
+                <Link
+                  to={"/dataVis_Temp"}
+                  style={{
+                    color: "limegreen",
+                    textDecorationLine: "initial",
+                    fontStyle: "italic",
+                    fontSize: "15px",
+                  }}
+                >
                   Temperature
-            </Link>
+                </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Link to={"/dataVis_3"} style={{color:"limegreen",textDecorationLine: "initial",fontStyle: "italic",fontSize:"15px"}}>
+                <Link
+                  to={"/dataVis_Rainfall"}
+                  style={{
+                    color: "limegreen",
+                    textDecorationLine: "initial",
+                    fontStyle: "italic",
+                    fontSize: "15px",
+                  }}
+                >
                   Rainfall
-            </Link>
+                </Link>
               </MenuItem>
             </Menu>
-
-
           </Toolbar>
         </AppBar>
       </Box>
