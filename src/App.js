@@ -18,7 +18,8 @@ import Chronology from "./Pages/Chronology";
 import ScrollToTop from "./components/ScrollToTop";
 import temp from "./Pages/temp";
 import slideShow from "./Pages/slideShow";
-
+import index from "./Pages/index";
+import viz from "./Pages/viz";
 function App() {
   return (
     <>
@@ -37,6 +38,8 @@ function App() {
           <Route path="/temp" component={temp} />
           <Route exact path="/404" component={NotFoundPage} />
           <Route path="/slideShow" component={slideShow} />
+          
+          <Route path="/viz" component={viz} />
           <Redirect to="/404" />
         </Switch>
       </ScrollToTop>

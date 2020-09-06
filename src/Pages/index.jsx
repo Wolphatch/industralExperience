@@ -206,7 +206,7 @@ const MainPage = () => {
 
   const myRef = useRef(null);
 
-  useMountEffect(() => scrollToRef(myRef)); // Scroll on mount
+  
 
   return (
     <>
