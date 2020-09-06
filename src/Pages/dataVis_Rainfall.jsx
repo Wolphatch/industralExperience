@@ -9,11 +9,17 @@ import Container from "@material-ui/core/Container";
 //components
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SlideShow from "./slideShow";
 
 //assest
 import Temp_Vis from "../asset/Rainfall_visualization.png";
 
 import TagTool from "../components/TagTool";
+
+const URLS = [
+  "https://public.tableau.com/views/Rainfall_visualization/Rainfall_01_V1?:language=zh-Hans&:display_count=y&:origin=viz_share_link",
+  "https://public.tableau.com/views/Rainfall_visualization/Rainfall_02_V1?:language=zh-Hans&:display_count=y&:origin=viz_share_link",
+];
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -77,18 +83,7 @@ function Intro() {
         </div>
         {/* End hero unit */}
 
-        <div>
-          <img
-            src={Temp_Vis}
-            alt="..."
-            style={{
-              marginTop: "100px",
-              marginLeft: "10%",
-              width: "80%",
-              height: "100%",
-            }}
-          />
-        </div>
+        <SlideShow URLS={URLS} />
 
         {/* card container */}
         <Container className={classes.cardGrid} maxWidth="md">

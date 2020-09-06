@@ -5,15 +5,22 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
+import tableau from "tableau-api";
 
 //components
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import TagTool from "../components/TagTool";
+import SlideShow from "./slideShow";
 
 //assest
-import Temp_Vis from "../asset/WaterEvaporation_Visulization.png";
+import Temp_Vis from "../asset/Temperature_Visulization.png";
 
-import TagTool from "../components/TagTool";
+const URLS = [
+  "https://public.tableau.com/views/evop/Evap_01_V1?:language=zh-Hans&:display_count=y&:origin=viz_share_link",
+  "https://public.tableau.com/views/evop/Evap_02_V1?:language=zh-Hans&:display_count=y&:origin=viz_share_link",
+  "https://public.tableau.com/views/evop/Evap_03_V1?:language=zh-Hans&:display_count=y&:origin=viz_share_link",
+];
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -77,7 +84,7 @@ function Intro() {
         </div>
         {/* End hero unit */}
 
-        <div>
+        {/* <div>
           <img
             src={Temp_Vis}
             alt="..."
@@ -88,7 +95,9 @@ function Intro() {
               height: "100%",
             }}
           />
-        </div>
+        </div> */}
+
+        <SlideShow URLS={URLS} />
 
         {/* card container */}
         <Container className={classes.cardGrid} maxWidth="md">
@@ -97,9 +106,8 @@ function Intro() {
         </Container>
       </main>
       <TagTool></TagTool>
-      <Footer />
+      <Footer></Footer>
     </>
   );
 }
-
 export default Intro;
