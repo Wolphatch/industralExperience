@@ -1,35 +1,31 @@
-import React, { Component, useRef, useEffect } from "react";
-import { render } from "react-dom";
+import React, { useRef } from "react";
 
 //Pages
 import Navbar from "../components/Navbar";
-import Header from "../components/Header";
-import Home from "../Pages/fact";
 import Footer from "../components/Footer";
 
 //Packages
 import { makeStyles } from "@material-ui/core/styles";
 import Typed from "react-typed";
-import { Typography, Avatar, Grid, Box } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
+import { Typography, Grid, Box } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import ExploreIcon from "@material-ui/icons/Explore";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
-import FlipPage from "react-flip-page";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
 
 //asset
-import card_img_1 from "../asset/homePage/card_img_1.jpg";
-import card_img_2 from "../asset/homePage/card_img_2.jpg";
-import card_img_3 from "../asset/homePage/card_img_3.png";
-import history_img from "../asset/homePage/background.jpg";
-import background3 from "../asset/homePage/background3.png";
 import background4 from "../asset/homePage/background4.png";
+import drought_intro from "../asset/cardImage/Drought_Intro.png";
+import cause_of_drought from "../asset/cardImage/Cause_of_Drought.png";
+import drought_history from "../asset/cardImage/drought_history.png";
+import Viz1 from "../asset/cardImage/temp.jpg";
+import Viz2 from "../asset/cardImage/evap.jpg";
+import Viz3 from "../asset/cardImage/Rainfall.jpg";
+
 const whatever = makeStyles((theme) => ({
   avater: {
     width: theme.spacing(15),
@@ -63,7 +59,7 @@ const whatever = makeStyles((theme) => ({
     marginTop: "200px",
   },
   heroButtons: {
-    marginTop: theme.spacing(48),
+    marginTop: theme.spacing(0),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -118,44 +114,44 @@ const cards = [
   {
     title: "Introduction to drought",
     desciption: "Understand drought in one picture",
-    image: card_img_1,
+    image: drought_intro,
     linkText: "check it out",
     linkTo: "/Intro",
   },
   {
     title: "Casue of drought",
     desciption: "Learn the diifferent factor that cause drought",
-    image: card_img_2,
+    image: cause_of_drought,
     linkText: "check it out",
     linkTo: "/Cause",
   },
   {
     title: "Chronology of drought",
     desciption: "A time of drought history in Australia",
-    image: history_img,
+    image: drought_history,
     linkText: "check it out",
     linkTo: "/Chronology",
   },
   {
     title: "Temperature Visulization",
     desciption: "Learn about temperature in Australia",
-    image: card_img_3,
+    image: Viz1,
     linkText: "check it out",
-    linkTo: "/dataVis_1",
+    linkTo: "/dataVis_Temp",
   },
   {
     title: "Water Evaporation",
     desciption: "Learn about Water Evaporation in Australia",
-    image: card_img_3,
+    image: Viz2,
     linkText: "check it out",
-    linkTo: "/dataVis_2",
+    linkTo: "/dataVis_evap",
   },
   {
     title: "Rainfall Visulization",
     desciption: "Learn about rainfall in Australia",
-    image: card_img_3,
+    image: Viz3,
     linkText: "check it out",
-    linkTo: "/dataVis_3",
+    linkTo: "/dataVis_Rainfall",
   },
 ];
 
@@ -200,7 +196,6 @@ const mapCard = (cardGroup) => {
 };
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-const useMountEffect = (fun) => useEffect(fun, []);
 
 const MainPage = () => {
   const classes = whatever();
@@ -311,7 +306,12 @@ const MainPage = () => {
                   (IPCC2014).
                 </p>
                 </Typography> */}
-          <div className={classes.heroButtons}>
+          <div
+            className={classes.heroButtons}
+            style={{
+              maxWidth: window.innerWidth / 2,
+            }}
+          >
             <Grid container spacing={2} justify="center">
               <Grid item>
                 <Button

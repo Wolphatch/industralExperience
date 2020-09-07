@@ -1,26 +1,15 @@
-import React, { Component, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 
 //package
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import clsx from "clsx";
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
 import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Paper from "@material-ui/core/Paper";
-import { render } from "react-dom";
 import Button from "@material-ui/core/Button";
 import ExploreIcon from "@material-ui/icons/Explore";
 
@@ -30,12 +19,6 @@ import Footer from "../components/Footer";
 
 //assest
 import climateChange from "../asset/pic_userstory_2/picture1.png";
-import Air from "../asset/pic_userstory_2/picture2.png";
-import greenhouse from "../asset/pic_userstory_2/picture3.png";
-import soilTemp from "../asset/pic_userstory_2/PictureI1.png";
-import soilMoisture from "../asset/pic_userstory_2/pictureI2.png";
-import timeDifferent from "../asset/pic_userstory_2/PictureI3.png";
-import saveWater from "../asset/pic_userstory_2/pictureI4.png";
 
 import TagTool from "../components/TagTool";
 
@@ -80,9 +63,6 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
-  },
-  root: {
-    maxWidth: 345,
   },
   media: {
     height: 0,

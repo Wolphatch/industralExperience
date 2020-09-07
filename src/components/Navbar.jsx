@@ -1,27 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  AppBar,
-  Toolbar,
-  ListItem,
-  IconButton,
-  ListItemText,
-  ListItemIcon,
-  Avatar,
-  Divider,
-  List,
-  Typography,
-  Box,
-} from "@material-ui/core";
-import {
-  ArrowForwardIos,
-  Assignment,
-  Home,
-  Apps,
-  InfoOutlined,
-} from "@material-ui/icons";
-import waterDrop from "../asset/waterDrop.jpg";
+import { AppBar, Toolbar, Typography, Box } from "@material-ui/core";
+import { Home } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";

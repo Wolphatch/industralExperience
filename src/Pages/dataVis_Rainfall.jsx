@@ -11,9 +11,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SlideShow from "./slideShow";
 
-//assest
-import Temp_Vis from "../asset/Rainfall_visualization.png";
-
 import TagTool from "../components/TagTool";
 
 const URLS = [

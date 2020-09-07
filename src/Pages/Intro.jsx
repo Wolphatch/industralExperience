@@ -5,20 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
 import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 //components
 import Navbar from "../components/Navbar";
@@ -123,7 +111,7 @@ const cards = [
   {
     headerText: "Meteorological drought",
     headerAvatar: "M",
-    title: "Meteorological drought",
+    title: "2. Meteorological drought",
     desciption:
       "In the climate change part, drought means a long period with insufficient water to meet our normal use, this kind of phenomenon is called meteorological drought. In terms of its links to climate change, drought is best defined as meteorological drought, which is ‘a prolonged, abnormally dry period when the amount of available water is insufficient to meet our normal use’ and is generally measured by assessing rainfall deficiencies over three or more months (BoM 2014c).",
     image: p1,
@@ -131,7 +119,7 @@ const cards = [
   {
     headerText: "hydrological drought",
     headerAvatar: "H",
-    title: "Hydrological drought",
+    title: "3. Hydrological drought",
     desciption:
       "Our streamflow, lake and groundwater become less than before. It is based on anomalies in streamflow, lake and/or groundwater levels (IPCC 2012).",
     image: p3,
@@ -139,7 +127,7 @@ const cards = [
   {
     headerText: "Socioeconomic drought",
     headerAvatar: "S",
-    title: "Socioeconomic drought",
+    title: "4. Socioeconomic drought",
     desciption:
       "Effect of drought spread through the wider community. Lack of water or increase desalination plants.",
     image: p4,
@@ -199,15 +187,9 @@ const cards = [
 function Cause() {
   const classes = whatever();
 
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
-  const handleStrip = (props) => {
-    return props % 2 == 0 ? 4 : 8;
-  };
+  // const handleStrip = (props) => {
+  //   return props % 2 == 0 ? 4 : 8;
+  // };
 
   const mapCard = (cardGroup) => {
     const classes = whatever();
@@ -285,7 +267,7 @@ function Cause() {
         <Container className={classes.cardGrid} maxWidth="xl">
           {/* grid container */}
           <div className={classes.headingContent}>
-            <Container maxWidth="md">
+            <Container maxWidth="xl">
               <Typography
                 component="h1"
                 variant="h2"
@@ -294,6 +276,16 @@ function Cause() {
                 gutterBottom
               >
                 What is drought
+              </Typography>
+              <Typography
+                component="h4"
+                variant="h5"
+                align="center"
+                color="textSecondary"
+                paragraph
+              >
+                Do you think drought only means our soil is dry? No! Actullay ,
+                it has four definitions in general! Let's see all of them!
               </Typography>
             </Container>
           </div>

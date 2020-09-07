@@ -1,9 +1,6 @@
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import a from "../asset/background2.jpg";
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
-import tableau from "tableau-api";
 import Viz from "../Pages/viz";
 
 // const vizURLs = [

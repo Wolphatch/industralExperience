@@ -18,7 +18,6 @@ import Chronology from "./Pages/Chronology";
 import ScrollToTop from "./components/ScrollToTop";
 import temp from "./Pages/temp";
 import slideShow from "./Pages/slideShow";
-import index from "./Pages/index";
 import viz from "./Pages/viz";
 function App() {
   return (

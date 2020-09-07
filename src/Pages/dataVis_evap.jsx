@@ -5,16 +5,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import tableau from "tableau-api";
 
 //components
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TagTool from "../components/TagTool";
 import SlideShow from "./slideShow";
-
-//assest
-import Temp_Vis from "../asset/Temperature_Visulization.png";
 
 const URLS = [
   "https://public.tableau.com/views/evop/Evap_01_V1?:language=zh-Hans&:display_count=y&:origin=viz_share_link",

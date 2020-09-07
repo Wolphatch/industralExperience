@@ -2,12 +2,11 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 // import temp from "../asset/3.gif";
 import Typed from "react-typed";
-import { Typography, Avatar, Grid, Box } from "@material-ui/core";
+import { Typography, Grid, Box } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import ExploreIcon from "@material-ui/icons/Explore";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import FlipPage from "react-flip-page";
 
