@@ -99,14 +99,14 @@ const Navbar = ({ sticky }) => {
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <Link
-                  to={"/fact"}
+                  to={"/Chronology"}
                   style={{
                     color: "Green",
                     textDecorationLine: "initial",
                     fontStyle: "italic",
                   }}
                 >
-                  The climate in Australia?
+                  The history in Australia?
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>

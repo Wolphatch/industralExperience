@@ -329,7 +329,7 @@ const MainPage = () => {
         </div>
 
         {/*Placeholder*/}
-        <div style={{ height: 450 }} />
+        <div style={{ height: 50 }} />
         {/*Main content*/}
         <main>
           {/* Hero unit */}
