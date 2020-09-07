@@ -15,8 +15,8 @@ import TagTool from "../components/TagTool";
 
 //assest
 import p1 from "../asset/pic_userstory_1/picture1.png";
-import p2 from "../asset/pic_userstory_1/picture2.jpg";
-import p3 from "../asset/pic_userstory_1/picture3.jpg";
+import p2 from "../asset/pic_userstory_1/picture2.png";
+import p3 from "../asset/pic_userstory_1/picture3.png";
 import p4 from "../asset/pic_userstory_1/picture4.png";
 import p5 from "../asset/pic_userstory_1/picture5.png";
 import p6 from "../asset/pic_userstory_1/picture6.png";

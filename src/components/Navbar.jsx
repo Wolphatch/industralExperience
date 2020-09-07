@@ -7,17 +7,88 @@ import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { green } from "@material-ui/core/colors";
-const useStyles = makeStyles((theme) => ({
+
+//import DataVis from "../Pages/dataVis_evap";
+
+const whatever = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
+  menuItem1: {
+    color: "Green",
+    textDecorationLine: "initial",
+  },
+  menuItem2: {
+    color: "limegreen",
+    textDecorationLine: "initial",
+  },
+  AppBar: {
+    background: "white",
+  },
+  homeIcon: {
+    color: green[500],
+  },
+  mainButton: {
+    color: "Green",
+    fontSize: "20px",
+  },
 }));
 
+const testLink = {
+  path: "/dataVis_evap",
+  title: "Water evaporation in Australia",
+  subTitle: "Do you have any idea about water evaporation in Australia?",
+};
+
+const menuItems = [
+  {
+    linkText: "What is drought?",
+    linkTo: "/Intro",
+  },
+  {
+    linkText: "Why drought happens?",
+    linkTo: "/Cause",
+  },
+  {
+    linkText: "History of drought",
+    linkTo: "/Chronology",
+  },
+  {
+    linkText: "Evaporation",
+    linkTo: "/dataVis_evap",
+  },
+  {
+    linkText: "Temperature",
+    linkTo: "/dataVis_Temp",
+  },
+  {
+    linkText: "Rainfall",
+    linkTo: "/dataVis_Rainfall",
+  },
+];
+
+const mapMenu = (menuGroup) => {
+  const classes = whatever();
+  let menuUI = [];
+
+  menuGroup.map((item, key) => {
+    menuUI.push(
+      <MenuItem>
+        <Link className={classes.menuItem1} to={item.linkTo}>
+          {item.linkText}
+        </Link>
+      </MenuItem>
+    );
+    return null;
+  });
+  return menuUI;
+};
+
 const Navbar = ({ sticky }) => {
-  const classes = useStyles();
+  const classes = whatever();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -30,11 +101,11 @@ const Navbar = ({ sticky }) => {
   return (
     <>
       <Box component="nav">
-        <AppBar position="fixed" style={{ background: "white" }}>
+        <AppBar className={classes.AppBar} position="fixed">
           <Toolbar>
             <Typography
               variant="h5"
-              style={{ color: "Green", fontStyle: "italic" }}
+              style={{ color: "Green" }}
               className={classes.margin}
             >
               WhyIsDrought
@@ -45,24 +116,17 @@ const Navbar = ({ sticky }) => {
               size="large"
               style={{ fontSize: "20px" }}
               className={classes.margin}
-              startIcon={<Home style={{ color: green[500] }} />}
+              startIcon={<Home className={classes.homeIcon} />}
             >
-              <Link
-                to={"/"}
-                style={{
-                  color: "Green",
-                  textDecorationLine: "initial",
-                  fontStyle: "italic",
-                }}
-              >
+              <Link className={classes.menuItem1} to={"/"}>
                 Home
               </Link>
             </Button>
             <Button
+              className={classes.mainButton}
               aria-controls="simple-menu"
               aria-haspopup="true"
               onClick={handleClick}
-              style={{ color: "Green", fontSize: "20px", fontStyle: "italic" }}
             >
               Do you know?
             </Button>
@@ -73,81 +137,7 @@ const Navbar = ({ sticky }) => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>
-                <Link
-                  to={"/Intro"}
-                  style={{
-                    color: "Green",
-                    textDecorationLine: "initial",
-                    fontStyle: "italic",
-                  }}
-                >
-                  What is drought?
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Link
-                  to={"/Cause"}
-                  style={{
-                    color: "Green",
-                    textDecorationLine: "initial",
-                    fontStyle: "italic",
-                  }}
-                >
-                  Why drought happens?
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Link
-                  to={"/Chronology"}
-                  style={{
-                    color: "Green",
-                    textDecorationLine: "initial",
-                    fontStyle: "italic",
-                  }}
-                >
-                  The history in Australia?
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Link
-                  to={"/dataVis_evap"}
-                  style={{
-                    color: "limegreen",
-                    textDecorationLine: "initial",
-                    fontStyle: "italic",
-                    fontSize: "15px",
-                  }}
-                >
-                  Evaporation
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Link
-                  to={"/dataVis_Temp"}
-                  style={{
-                    color: "limegreen",
-                    textDecorationLine: "initial",
-                    fontStyle: "italic",
-                    fontSize: "15px",
-                  }}
-                >
-                  Temperature
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Link
-                  to={"/dataVis_Rainfall"}
-                  style={{
-                    color: "limegreen",
-                    textDecorationLine: "initial",
-                    fontStyle: "italic",
-                    fontSize: "15px",
-                  }}
-                >
-                  Rainfall
-                </Link>
-              </MenuItem>
+              {mapMenu(menuItems)}
             </Menu>
           </Toolbar>
         </AppBar>

@@ -16,9 +16,6 @@ import dataVis_Temp from "./Pages/dataVis_Temp";
 import dataVis_Rainfall from "./Pages/dataVis_Rainfall";
 import Chronology from "./Pages/Chronology";
 import ScrollToTop from "./components/ScrollToTop";
-import temp from "./Pages/temp";
-import slideShow from "./Pages/slideShow";
-import viz from "./Pages/viz";
 function App() {
   return (
     <>
@@ -34,10 +31,7 @@ function App() {
           <Route path="/dataVis_Temp" component={dataVis_Temp} />
           <Route path="/dataVis_Rainfall" component={dataVis_Rainfall} />
           <Route path="/Chronology" component={Chronology} />
-          <Route path="/temp" component={temp} />
           <Route exact path="/404" component={NotFoundPage} />
-          <Route path="/slideShow" component={slideShow} />
-          <Route path="/viz" component={viz} />
           <Redirect to="/404" />
         </Switch>
       </ScrollToTop>
