@@ -11,11 +11,14 @@ import NotFoundPage from "./Pages/404";
 import fact from "./Pages/fact";
 import intro from "./Pages/Intro";
 import cause from "./Pages/Cause";
-import dataVis_1 from "./Pages/dataVis_1";
-import dataVis_2 from "./Pages/dataVis_2";
-import dataVis_3 from "./Pages/dataVis_3";
+import dataVis_evap from "./Pages/dataVis_evap";
+import dataVis_Temp from "./Pages/dataVis_Temp";
+import dataVis_Rainfall from "./Pages/dataVis_Rainfall";
 import Chronology from "./Pages/Chronology";
 import ScrollToTop from "./components/ScrollToTop";
+import temp from "./Pages/temp";
+import slideShow from "./Pages/slideShow";
+import viz from "./Pages/viz";
 function App() {
   return (
     <>
@@ -27,11 +30,14 @@ function App() {
           <Route path="/fact" component={fact} />
           <Route path="/Intro" component={intro} />
           <Route path="/Cause" component={cause} />
-          <Route path="/dataVis_1" component={dataVis_1} />
-          <Route path="/dataVis_2" component={dataVis_2} />
-          <Route path="/dataVis_3" component={dataVis_3} />
+          <Route path="/dataVis_evap" component={dataVis_evap} />
+          <Route path="/dataVis_Temp" component={dataVis_Temp} />
+          <Route path="/dataVis_Rainfall" component={dataVis_Rainfall} />
           <Route path="/Chronology" component={Chronology} />
+          <Route path="/temp" component={temp} />
           <Route exact path="/404" component={NotFoundPage} />
+          <Route path="/slideShow" component={slideShow} />
+          <Route path="/viz" component={viz} />
           <Redirect to="/404" />
         </Switch>
       </ScrollToTop>

@@ -1,33 +1,36 @@
-import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
-import CameraIcon from "@material-ui/icons/PhotoCamera";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import { Link } from "react-router-dom";
+import React, { useRef, useEffect } from "react";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" to="/">
-        WhyIsDrought
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+//package
+import { makeStyles } from "@material-ui/core/styles";
+import { Typography } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import { red } from "@material-ui/core/colors";
+import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
+import ExploreIcon from "@material-ui/icons/Explore";
+
+//components
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
+//assest
+import climateChange from "../asset/pic_userstory_2/picture1.png";
+
+import TagTool from "../components/TagTool";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
   icon: {
     marginRight: theme.spacing(2),
   },
@@ -41,6 +44,10 @@ const useStyles = makeStyles((theme) => ({
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
+  },
+  placeHolder: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
   card: {
     height: "100%",
@@ -57,28 +64,49 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  media: {
+    height: 0,
+    paddingTop: "56.25%", // 16:9
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: "rotate(180deg)",
+  },
+  avatar: {
+    backgroundColor: red[500],
+  },
+  grid: {
+    marginLeft: theme.spacing(0),
+
+    //backgroundColor: theme.palette.background.paper,
+    height: "100%",
+    width: "100%",
+  },
 }));
 
-const cards = [1];
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+const useMountEffect = (fun) => useEffect(fun, []);
 
-export default function Album() {
+export default function AutoGrid() {
   const classes = useStyles();
 
+  const myRef = useRef(null);
+
+  useMountEffect(() => scrollToRef(myRef));
+
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Here should be a title
-          </Typography>
-        </Toolbar>
-      </AppBar>
+    <>
+      <Navbar />
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
-          <Container maxWidth="sm">
+          <Container maxWidth="md">
             <Typography
               component="h1"
               variant="h2"
@@ -86,7 +114,7 @@ export default function Album() {
               color="textPrimary"
               gutterBottom
             >
-              Album layout
+              Cause of drought
             </Typography>
             <Typography
               variant="h5"
@@ -94,76 +122,110 @@ export default function Album() {
               color="textSecondary"
               paragraph
             >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+              Understand the cause of drought
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
           </Container>
-        </div>
-        <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
-                  </CardActions>
-                </Card>
+          <div className={classes.heroButtons}>
+            <Grid container spacing={2} justify="center">
+              <Grid item>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  endIcon={<ExploreIcon />}
+                  onClick={() => scrollToRef(myRef)}
+                >
+                  Go!!!
+                </Button>
               </Grid>
-            ))}
+            </Grid>
+          </div>
+        </div>
+        {/* End hero unit */}
+
+        {/* card container */}
+        <Container className={classes.cardGrid} maxWidth="xl">
+          {/* grid container */}
+          <div className={classes.heroContent}>
+            <Container maxWidth="md">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                Direct factors influence rainfall
+              </Typography>
+            </Container>
+          </div>
+          <Container className={classes.placeHolder} />
+          <Grid container spacing={3} className={classes.grid}>
+            <Grid item xs={8}>
+              <Card className={classes.card}>
+                <CardContent>
+                  <Typography gutterBottom variant="h2" component="h2">
+                    Climate Change
+                  </Typography>
+                </CardContent>
+                <CardContent>
+                  <Typography
+                    square="false"
+                    variant="h5"
+                    align="left"
+                    color="textSecondary"
+                    paragraph
+                  >
+                    Fronts from the Southern Ocean have shifted southwards as a
+                    warming climate, it originally brings rainfall in southern
+                    Australia in winter and spring so the southwest and
+                    southeast Australia may have a decline in rainfall and
+                    become warmer, so it faces a high risk of drought.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={4}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image={climateChange}
+                />
+              </Card>
+            </Grid>
           </Grid>
+          <Container className={classes.placeHolder} />
+
+          <div ref={myRef} className={classes.heroContent}>
+            <Container maxWidth="md">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                Indirect factors lead to drought
+              </Typography>
+              <Grid container spacing={3}>
+                <Grid item xs>
+                  <Paper className={classes.paper}>xs</Paper>
+                </Grid>
+                <Grid item xs={6}>
+                  <Paper className={classes.paper}>xs=6</Paper>
+                </Grid>
+                <Grid item xs>
+                  <Paper className={classes.paper}>xs</Paper>
+                </Grid>
+              </Grid>
+            </Container>
+          </div>
+          <Container className={classes.placeHolder} />
         </Container>
       </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          You have reach the end of the page
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </footer>
-      {/* End footer */}
-    </React.Fragment>
+
+      <TagTool></TagTool>
+      <Footer />
+    </>
   );
 }

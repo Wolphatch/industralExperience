@@ -5,20 +5,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import clsx from "clsx";
 import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
 import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 //components
 import Navbar from "../components/Navbar";
@@ -32,15 +22,19 @@ import soilTemp from "../asset/pic_userstory_2/PictureI1.png";
 import soilMoisture from "../asset/pic_userstory_2/pictureI2.png";
 import timeDifferent from "../asset/pic_userstory_2/PictureI3.png";
 import saveWater from "../asset/pic_userstory_2/pictureI4.png";
+import test from "../asset/waterDrop.jpg";
 
-import TagTool from '../components/TagTool';
+import TagTool from "../components/TagTool";
 
 const whatever = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
+    // backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(25, 0, 25),
+  },
+  headingContent: {
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -54,12 +48,17 @@ const whatever = makeStyles((theme) => ({
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
   },
+  placeHolder2: {
+    paddingTop: theme.spacing(10),
+    paddingBottom: theme.spacing(10),
+  },
   card: {
     height: "100%",
     display: "flex",
     flexDirection: "column",
   },
   cardMedia: {
+    height: 0,
     paddingTop: "56.25%", // 16:9
   },
   cardContent: {
@@ -88,6 +87,16 @@ const whatever = makeStyles((theme) => ({
   },
   avatar: {
     backgroundColor: red[500],
+  },
+  grid: {
+    //maxHeight: theme.spacing(50),
+  },
+  titleStyle: {
+    color: "#fdfdfd",
+    fontSize: 80,
+  },
+  subtitleStyle: {
+    color: "#fdfdfd",
   },
 }));
 
@@ -153,11 +162,9 @@ const cards = [
 function Cause() {
   const classes = whatever();
 
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  // const handleStrip = (props) => {
+  //   return props % 2 === 0 ? 4 : 8;
+  // };
 
   const mapCard = (cardGroup) => {
     const classes = whatever();
@@ -166,57 +173,27 @@ function Cause() {
 
     cardGroup.map((card, key) => {
       cardUI.push(
-        <Grid item id={key} xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardHeader
-              avatar={
-                <Avatar aria-label={card.headerText} className={classes.avatar}>
-                  {card.headerAvatar}
-                </Avatar>
-              }
-              action={
-                <IconButton aria-label="settings">
-                  <MoreVertIcon />
-                </IconButton>
-              }
-              title={card.headerText}
-            />
-            <CardMedia
-              className={classes.cardMedia}
-              image={card.image}
-              title={card.title}
-              onClick={handleExpandClick}
-            />
+        <Grid container spacing={3} className={classes.grid}>
+          <Grid item xs={6}>
             <CardContent className={classes.cardContent}>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography gutterBottom variant="h2" component="h2">
                 {card.title}
               </Typography>
-            </CardContent>
-
-            <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="share">
-                <ShareIcon />
-              </IconButton>
-              <IconButton
-                className={clsx(classes.expand, {
-                  [classes.expandOpen]: expanded,
-                })}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
+              <Typography
+                square="false"
+                variant="h5"
+                align="left"
+                color="textSecondary"
+                paragraph
               >
-                <ExpandMoreIcon />
-              </IconButton>
-            </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-              <CardContent>
-                <Typography paragraph>{card.desciption}</Typography>
-              </CardContent>
-            </Collapse>
-          </Card>
+                {card.desciption}
+              </Typography>
+            </CardContent>
+          </Grid>
+          <Grid item xs={6}>
+            <CardMedia className={classes.cardMedia} image={card.image} />
+          </Grid>
+          <Container className={classes.placeHolder} />
         </Grid>
       );
       return null;
@@ -229,11 +206,20 @@ function Cause() {
       <Navbar />
       <main>
         {/* Hero unit */}
-        <div className={classes.heroContent}>
+        <div
+          className={classes.heroContent}
+          style={{
+            backgroundImage: `url(${test})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
           <Container maxWidth="md">
             <Typography
+              className={classes.titleStyle}
               component="h1"
-              variant="h2"
+              variant="h1"
               align="center"
               color="textPrimary"
               gutterBottom
@@ -241,6 +227,8 @@ function Cause() {
               Cause of drought
             </Typography>
             <Typography
+              className={classes.subtitleStyle}
+              component="h4"
               variant="h5"
               align="center"
               color="textSecondary"
@@ -255,7 +243,7 @@ function Cause() {
         {/* card container */}
         <Container className={classes.cardGrid} maxWidth="xl">
           {/* grid container */}
-          <div className={classes.heroContent}>
+          <div className={classes.headingContent}>
             <Container maxWidth="md">
               <Typography
                 component="h1"
@@ -269,11 +257,11 @@ function Cause() {
             </Container>
           </div>
           <Container className={classes.placeHolder} />
-          <Grid container spacing={4}>
+          <Grid container spacing={1}>
             {mapCard(cards.slice(0, 3))};
           </Grid>
 
-          <div className={classes.heroContent}>
+          <div className={classes.headingContent}>
             <Container maxWidth="md">
               <Typography
                 component="h1"
@@ -287,12 +275,12 @@ function Cause() {
             </Container>
           </div>
           <Container className={classes.placeHolder} />
-          <Grid container spacing={4}>
+          <Grid container spacing={1}>
             {mapCard(cards.slice(3, 7))};
           </Grid>
         </Container>
       </main>
-      <TagTool></TagTool> 
+      <TagTool></TagTool>
       <Footer />
     </>
   );

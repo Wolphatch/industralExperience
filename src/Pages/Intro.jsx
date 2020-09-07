@@ -5,20 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
 import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 //components
 import Navbar from "../components/Navbar";
@@ -34,13 +22,17 @@ import p5 from "../asset/pic_userstory_1/picture5.png";
 import p6 from "../asset/pic_userstory_1/picture6.png";
 import p7 from "../asset/pic_userstory_1/picture7.png";
 import p8 from "../asset/pic_userstory_1/picture8.png";
+import test from "../asset/waterDrop.jpg";
 
 const whatever = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
+    // backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(25, 0, 25),
+  },
+  headingContent: {
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -53,6 +45,10 @@ const whatever = makeStyles((theme) => ({
   placeHolder: {
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
+  },
+  placeHolder2: {
+    paddingTop: theme.spacing(10),
+    paddingBottom: theme.spacing(10),
   },
   card: {
     height: "100%",
@@ -90,43 +86,50 @@ const whatever = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
+  grid: {
+    //maxHeight: theme.spacing(50),
+  },
+  titleStyle: {
+    color: "#fdfdfd",
+    fontSize: 80,
+  },
+  subtitleStyle: {
+    color: "#fdfdfd",
+  },
 }));
 
 const cards = [
   {
-    headerText: "Meteorological drought",
-    headerAvatar: "M",
-    title: "Meteorological drought",
-    subtitle:
-      "In the climate change part, drought means a long period with insufficient water to meet our normal use, this kind of phenomenon is called meteorological drought.",
-    desciption:
-      "In terms of its links to climate change, drought is best defined as meteorological drought, which is ‘a prolonged, abnormally dry period when the amount of available water is insufficient to meet our normal use’ and is generally measured by assessing rainfall deficiencies over three or more months (BoM 2014c).",
-    image: p1,
-  },
-  {
     headerText: "agricultural drought",
     headerAvatar: "A",
-    title: "Agricultural drought",
-    subtitle: "Our soil becomes dry and lacks water.ent measure and defination",
+    title: "1. Agricultural drought",
     desciption:
-      "It is measured through deficits in soil moisture.",
+      "Our soil becomes dry and lacks water.ent measure and defination. It is measured through deficits in soil moisture.",
     image: p2,
+    heading: "This is card 1",
+  },
+  {
+    headerText: "Meteorological drought",
+    headerAvatar: "M",
+    title: "2. Meteorological drought",
+    desciption:
+      "In the climate change part, drought means a long period with insufficient water to meet our normal use, this kind of phenomenon is called meteorological drought. In terms of its links to climate change, drought is best defined as meteorological drought, which is ‘a prolonged, abnormally dry period when the amount of available water is insufficient to meet our normal use’ and is generally measured by assessing rainfall deficiencies over three or more months (BoM 2014c).",
+    image: p1,
   },
   {
     headerText: "hydrological drought",
     headerAvatar: "H",
-    title: "Hydrological drought",
-    subtitle:
-      "Our streamflow, lake and groundwater become less than before.",
-    desciption: "It is based on anomalies in streamflow, lake and/or groundwater levels (IPCC 2012).",
+    title: "3. Hydrological drought",
+    desciption:
+      "Our streamflow, lake and groundwater become less than before. It is based on anomalies in streamflow, lake and/or groundwater levels (IPCC 2012).",
     image: p3,
   },
   {
     headerText: "Socioeconomic drought",
     headerAvatar: "S",
-    title: "Socioeconomic drought",
-    subtitle: "Effect of drought spread through the wider community",
-    desciption: "Lack of water or increase desalination plants.",
+    title: "4. Socioeconomic drought",
+    desciption:
+      "Effect of drought spread through the wider community. Lack of water or increase desalination plants.",
     image: p4,
   },
   {
@@ -184,11 +187,9 @@ const cards = [
 function Cause() {
   const classes = whatever();
 
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  // const handleStrip = (props) => {
+  //   return props % 2 == 0 ? 4 : 8;
+  // };
 
   const mapCard = (cardGroup) => {
     const classes = whatever();
@@ -197,58 +198,25 @@ function Cause() {
 
     cardGroup.map((card, key) => {
       cardUI.push(
-        <Grid item id={key} xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardHeader
-              avatar={
-                <Avatar aria-label={card.headerText} className={classes.avatar}>
-                  {card.headerAvatar}
-                </Avatar>
-              }
-              action={
-                <IconButton aria-label="settings">
-                  <MoreVertIcon />
-                </IconButton>
-              }
-              title={card.headerText}
-            />
-            <CardMedia
-              className={classes.cardMedia}
-              image={card.image}
-              title={card.title}
-              onClick={handleExpandClick}
-            />
-            <CardContent className={classes.cardContent}>
-              <Typography gutterBottom variant="h5" component="h2">
-                {card.title}
-              </Typography>
-              <Typography>{card.subtitle}</Typography>
-            </CardContent>
-
-            <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="share">
-                <ShareIcon />
-              </IconButton>
-              <IconButton
-                className={clsx(classes.expand, {
-                  [classes.expandOpen]: expanded,
-                })}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-              >
-                <ExpandMoreIcon />
-              </IconButton>
-            </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
-              <CardContent>
-                <Typography paragraph>{card.desciption}</Typography>
-              </CardContent>
-            </Collapse>
-          </Card>
+        <Grid container spacing={3}>
+          <Grid item xs={6} className={classes.grid}>
+            <CardMedia className={classes.cardMedia} image={card.image} />
+          </Grid>
+          <Grid item xs={6} className={classes.grid}>
+            <Typography gutterBottom variant="h2" component="h2">
+              {card.title}
+            </Typography>
+            <Typography
+              square="false"
+              variant="h5"
+              align="left"
+              color="textSecondary"
+              paragraph
+            >
+              {card.desciption}
+            </Typography>
+          </Grid>
+          <Container className={classes.placeHolder2} />
         </Grid>
       );
       return null;
@@ -261,11 +229,20 @@ function Cause() {
       <Navbar />
       <main>
         {/* Hero unit */}
-        <div className={classes.heroContent}>
+        <div
+          className={classes.heroContent}
+          style={{
+            backgroundImage: `url(${test})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
           <Container maxWidth="md">
             <Typography
+              className={classes.titleStyle}
               component="h1"
-              variant="h2"
+              variant="h1"
               align="center"
               color="textPrimary"
               gutterBottom
@@ -273,35 +250,14 @@ function Cause() {
               Fact of drought in Australia
             </Typography>
             <Typography
+              className={classes.subtitleStyle}
+              component="h4"
               variant="h5"
               align="center"
               color="textSecondary"
               paragraph
             >
-              <p>Australia has a long history of drought.</p>
-              <p> Drought is considered as a feature of Australia.</p>
-              <p>
-                Australia continent itself is the driest inhabited continent on
-                Earth.
-              </p>
-              <p>
-                Australias has the most variable rainfall and stream-flow on
-                Earth.
-              </p>
-
-              <p>
-                Hot extremes are becoming more frequent and intense (IPCC2014).
-              </p>
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
-              Australia is the driest inhabited continent on Earth, with some of
-              the world’s most variable rainfall and stream-flow (DFAT 2014).
-              (bom.gov.au/climate/drought)
+              <p>Know what and how drought affect Australia</p>
             </Typography>
           </Container>
         </div>
@@ -310,8 +266,8 @@ function Cause() {
         {/* card container */}
         <Container className={classes.cardGrid} maxWidth="xl">
           {/* grid container */}
-          <div className={classes.heroContent}>
-            <Container maxWidth="md">
+          <div className={classes.headingContent}>
+            <Container maxWidth="xl">
               <Typography
                 component="h1"
                 variant="h2"
@@ -321,16 +277,26 @@ function Cause() {
               >
                 What is drought
               </Typography>
+              <Typography
+                component="h4"
+                variant="h5"
+                align="center"
+                color="textSecondary"
+                paragraph
+              >
+                Do you think drought only means our soil is dry? No! Actullay ,
+                it has four definitions in general! Let's see all of them!
+              </Typography>
             </Container>
           </div>
           <Container className={classes.placeHolder} />
-          <Grid container spacing={4}>
+          <Grid container spacing={1}>
             {mapCard(cards.slice(0, 4))};
           </Grid>
           <Container className={classes.placeHolder} />
 
           {/* grid container */}
-          <div className={classes.heroContent}>
+          {/* <div className={classes.heroContent}>
             <Container maxWidth="md">
               <Typography
                 component="h1"
@@ -344,9 +310,9 @@ function Cause() {
             </Container>
           </div>
           <Container className={classes.placeHolder} />
-          <Grid container spacing={4}>
+          <Grid container spacing={1}>
             {mapCard(cards.slice(4, 8))};
-          </Grid>
+          </Grid> */}
         </Container>
       </main>
       <TagTool></TagTool>
