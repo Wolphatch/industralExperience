@@ -68,6 +68,10 @@ const menuItems = [
     linkText: "Rainfall",
     linkTo: "/dataVis_Rainfall",
   },
+  {
+    linkText: "Water",
+    linkTo: "/dataVis_WaterConsumption",
+  },
 ];
 
 const mapMenu = (menuGroup) => {
