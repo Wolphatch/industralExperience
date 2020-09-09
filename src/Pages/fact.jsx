@@ -19,6 +19,7 @@ import drought_history from "../asset/cardImage/drought_history.png";
 import Viz1 from "../asset/cardImage/temp.jpg";
 import Viz2 from "../asset/cardImage/evap.jpg";
 import Viz3 from "../asset/cardImage/Rainfall.jpg";
+import Viz4 from "../asset/cardImage/water.jpg";
 
 const whatever = makeStyles((theme) => ({
   titleTemp: {
@@ -114,6 +115,13 @@ const cards = [
     image: Viz3,
     linkText: "check it out",
     linkTo: "/dataVis_Rainfall",
+  },
+  {
+    title: "Water consumption",
+    desciption: "Save water to relieve drought",
+    image: Viz4,
+    linkText: "check it out",
+    linkTo: "/dataVis_WaterConsumption",
   },
 ];
 
@@ -224,7 +232,7 @@ const fact = (props) => {
           </div>
           <Container className={classes.placeHolder} />
           <Grid container spacing={4}>
-            {mapCard(cards.slice(3, 6))};
+            {mapCard(cards.slice(3, cards.length))};
           </Grid>
         </Container>
       </main>
