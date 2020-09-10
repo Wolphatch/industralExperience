@@ -22,7 +22,7 @@ import p5 from "../asset/pic_userstory_1/picture5.png";
 import p6 from "../asset/pic_userstory_1/picture6.png";
 import p7 from "../asset/pic_userstory_1/picture7.png";
 import p8 from "../asset/pic_userstory_1/picture8.png";
-import test from "../asset/waterDrop.jpg";
+import test from "../asset/desert2.png";
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -92,6 +92,7 @@ const whatever = makeStyles((theme) => ({
   titleStyle: {
     color: "#fdfdfd",
     fontSize: 80,
+    fontWeight: "bold",
   },
   subtitleStyle: {
     color: "#fdfdfd",
