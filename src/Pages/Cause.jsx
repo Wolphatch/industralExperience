@@ -94,6 +94,7 @@ const whatever = makeStyles((theme) => ({
   titleStyle: {
     color: "#fdfdfd",
     fontSize: 80,
+    fontWeight: "bold",
   },
   subtitleStyle: {
     color: "#fdfdfd",
