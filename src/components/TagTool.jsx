@@ -10,9 +10,7 @@ class TagTool extends React.Component {
     };
   }
 
-  componentDidMount() {
-    console.log(">>>>>>>>>>>>>", this.props.history);
-  }
+  componentDidMount() {}
   render() {
     return (
       <div
@@ -24,9 +22,16 @@ class TagTool extends React.Component {
         }}
       >
         {}
-        <Link to={"/"} style={{color:"Green",textDecorationLine: "initial", fontStyle: "italic"}}>
+        <Link
+          to={"/"}
+          style={{
+            color: "Green",
+            textDecorationLine: "initial",
+            fontStyle: "italic",
+          }}
+        >
           Go Back To Home
-          </Link>
+        </Link>
       </div>
     );
   }
