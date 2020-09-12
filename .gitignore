@@ -26,3 +26,5 @@ package-lock.json
 package-lock.json
 *.json
 package.json
+apis/jquery-3.4.0.min.js
+apis/waterTestAPI.html
