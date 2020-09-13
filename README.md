@@ -33,6 +33,6 @@ You will also see any lint errors in the console.
 
 Because this project development is based on the React App.
 
-So you can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
