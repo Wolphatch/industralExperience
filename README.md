@@ -27,7 +27,7 @@ The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
 ## Maintainer
-@ddatker @Wolphatch @Rongkun390 @JJ-Huang
+[@ddatker](https://github.com/ddatker) [@Wolphatch](https://github.com/Wolphatch) [@Rongkun390](https://github.com/Rongkun390) [@JJ-Huang](https://github.com/JJ-Huang)
 
 ## Learn More
 
