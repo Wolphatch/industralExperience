@@ -1,14 +1,12 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-// import temp from "../asset/3.gif";
 import Typed from "react-typed";
 import { Typography, Grid, Box } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import ExploreIcon from "@material-ui/icons/Explore";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { Link } from "react-router-dom";
-import FlipPage from "react-flip-page";
+
+//asset
+import background4 from "../asset/homePage/background4.png";
 
 const useStyles = makeStyles((theme) => ({
   avater: {
@@ -17,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   titleTemp: {
-    color: "#e8ffe8",
-    marginTop: "200px",
+    color: "#2f89fc",
+    marginTop: theme.spacing(45),
   },
   title: {
     color: "#e8ffe8",
@@ -39,15 +37,11 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
   },
-  heroContent: {
-    // backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(30, 0, 6),
-  },
   IconButton: {
     marginTop: "200px",
   },
   heroButtons: {
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(0),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -68,119 +62,162 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  headerContent: {
+    paddingTop: theme.spacing(8),
+  },
+  heroContent: {
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(8, 0, 6),
+  },
+  placeHolder: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+  },
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 0,
+    paddingTop: "56.25%", // 16:9
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: "rotate(180deg)",
+  },
 }));
 
-const Header = () => {
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
+const Header = (props) => {
   const classes = useStyles();
   return (
-    <div className={classes.heroContent}>
-      {/* <Grid container justify="center">
-          <Avatar className={classes.avater} src={temp} alt="..." />
+    <div
+      style={{
+        backgroundImage: `url(${background4})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        width: window.innerWidth,
+        height: window.innerHeight,
+      }}
+    >
+      {/*Header content*/}
+      <div className={classes.headerContent}>
+        {/* <Grid container justify="center">
+              <Avatar className={classes.avater} src={temp} alt="..." />
         </Grid> */}
-      <FlipPage
-        width={window.innerWidth}
-        height={600}
-        pageBackground="#17b978"
-        flipOnTouch="true"
-        disableSwipe="true"
-      >
+
         {/* page 1*/}
-        <div>
-          <Typography
-            className={classes.titleTemp}
-            component="h1"
-            variant="h2"
-            align="center"
-            color="textPrimary"
-            gutterBottom
-          >
-            <Box fontWeight="fontWeightBold" m={1}>
-              Do you know:
-            </Box>
-          </Typography>
-          <Typography
-            className={classes.subtitle}
-            variant="h4"
-            align="center"
-            color="textSecondary"
-            paragraph
-          >
-            <Typed
-              strings={[
-                "Why is drought?",
-                "What are the effects?",
-                "What can we do?",
-              ]}
-              typespeed={40}
-              backSpeed={60}
-              loop
-            />
-          </Typography>
-          <div className={classes.IconButton}>
-            <Grid container spacing={2} justify="center">
-              <Grid item>
-                <IconButton aria-label="expand">
-                  <ExpandMoreIcon fontSize="large" />
-                </IconButton>
-              </Grid>
-            </Grid>
-          </div>
-        </div>
+        <Typography
+          className={classes.titleTemp}
+          component="h1"
+          variant="h2"
+          align="center"
+          style={{
+            maxWidth: window.innerWidth / 2,
+            maxHeight: window.innerHeight / 2,
+          }}
+          gutterBottom
+        >
+          <Box fontWeight="fontWeightBold" m={1}>
+            Drought - Australia Natural Hazard:
+          </Box>
+        </Typography>
+        <Typography
+          className={classes.subtitle}
+          variant="h4"
+          align="center"
+          color="textSecondary"
+          style={{
+            maxWidth: window.innerWidth / 2,
+            maxHeight: window.innerHeight / 2,
+          }}
+          paragraph
+        >
+          <Typed
+            strings={[
+              "Why is drought?",
+              "What are the effects?",
+              "What can we do?",
+            ]}
+            typespeed={40}
+            backSpeed={60}
+            loop
+          />
+        </Typography>
+        {/* <div className={classes.IconButton}>
+                <Grid container spacing={2} justify="center">
+                  <Grid item>
+                    <IconButton aria-label="expand">
+                      <ExpandMoreIcon fontSize="large" />
+                    </IconButton>
+                  </Grid>
+                </Grid>
+              </div> */}
+      </div>
 
-        {/* page 2*/}
-        <div>
-          <Typography
-            className={classes.title}
-            component="h1"
-            variant="h2"
-            align="center"
-            color="textPrimary"
-            gutterBottom
-          >
-            <Box fontWeight="fontWeightBold" m={1}>
-              Fact of drought in Australia
-            </Box>
-          </Typography>
-          <Typography
-            className={classes.subtitle}
-            variant="h4"
-            align="center"
-            color="textSecondary"
-            paragraph
-          >
-            <p>Australia has a long history of drought.</p>
-            <p> Drought is considered as a feature of Australia.</p>
-            <p>
-              Australia continent itself is the driest inhabited continent on
-              Earth.
-            </p>
-            <p>
-              Australias has the most variable rainfall and stream-flow on
-              Earth.
-            </p>
-
-            <p>
-              Hot extremes are becoming more frequent and intense (IPCC2014).
-            </p>
-          </Typography>
-          <div className={classes.heroButtons}>
-            <Grid container spacing={2} justify="center">
-              <Grid item>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  endIcon={<ExploreIcon />}
-                  component={Link}
-                  to="/slideShow"
+      {/* page 2*/}
+      {/* <Typography
+                className={classes.title}
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
                 >
-                  Get Started
-                </Button>
-              </Grid>
-            </Grid>
-          </div>
-        </div>
-      </FlipPage>
+                <Box fontWeight="fontWeightBold" m={1}>
+                  Fact of drought in Australia
+                </Box>
+               </Typography>
+                <Typography
+                className={classes.subtitle}
+                variant="h4"
+                align="center"
+                color="textSecondary"
+                paragraph
+                >
+                <p>Australia has a long history of drought.</p>
+                <p> Drought is considered as a feature of Australia.</p>
+                <p>
+                  Australia continent itself is the driest inhabited continent
+                  on Earth.
+                </p>
+                <p>
+                  Australias has the most variable rainfall and stream-flow on
+                  Earth.
+                </p>
+
+                <p>
+                  Hot extremes are becoming more frequent and intense
+                  (IPCC2014).
+                </p>
+                </Typography> */}
+      <div
+        className={classes.heroButtons}
+        style={{
+          maxWidth: window.innerWidth / 2,
+        }}
+      >
+        <Grid container spacing={2} justify="center">
+          <Grid item>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              endIcon={<ExploreIcon />}
+              onClick={() => scrollToRef(props.myRef)}
+            >
+              Get Started
+            </Button>
+          </Grid>
+        </Grid>
+      </div>
     </div>
   );
 };

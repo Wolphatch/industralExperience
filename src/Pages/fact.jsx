@@ -12,34 +12,41 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 
-//components
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-
-//assest
-import card_img_1 from "../asset/homePage/card_img_1.jpg";
-import card_img_2 from "../asset/homePage/card_img_2.jpg";
-import card_img_3 from "../asset/homePage/card_img_3.png";
-import history_img from "../asset/homePage/background.jpg";
+//asset
+import drought_intro from "../asset/cardImage/Drought_Intro.png";
+import cause_of_drought from "../asset/cardImage/Cause_of_Drought.png";
+import drought_history from "../asset/cardImage/drought_history.png";
+import drought_damage from "../asset/cardImage/damage.jpg";
+import drought_contermeasure from "../asset/cardImage/contermeasure.jpg";
+import Viz1 from "../asset/cardImage/temp.jpg";
+import Viz2 from "../asset/cardImage/evap.jpg";
+import Viz3 from "../asset/cardImage/Rainfall.jpg";
+import Viz4 from "../asset/cardImage/water.jpg";
 
 const whatever = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
+  titleTemp: {
+    color: "#2f89fc",
+    marginTop: theme.spacing(45),
   },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+  title: {
+    color: "#e8ffe8",
   },
-  heroButtons: {
-    marginTop: theme.spacing(4),
+  subtitle: {
+    color: "#10316b",
+    marginBottom: "3rem",
+  },
+  typedContainer: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%,-50%)",
+    width: "100wm",
+    textAlign: "center",
+    zIndex: 1,
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
-  },
-  placeHolder: {
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2),
   },
   card: {
     height: "100%",
@@ -52,26 +59,19 @@ const whatever = makeStyles((theme) => ({
   cardContent: {
     flexGrow: 1,
   },
-  footer: {
+  headerContent: {
+    paddingTop: theme.spacing(8),
+  },
+  heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
+    padding: theme.spacing(8, 0, 6),
+  },
+  placeHolder: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
   root: {
     maxWidth: 345,
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: "rotate(180deg)",
   },
 }));
 
@@ -79,44 +79,65 @@ const cards = [
   {
     title: "Introduction to drought",
     desciption: "Understand drought in one picture",
-    image: card_img_1,
+    image: drought_intro,
     linkText: "check it out",
     linkTo: "/Intro",
   },
   {
     title: "Casue of drought",
     desciption: "Learn the diifferent factor that cause drought",
-    image: card_img_2,
+    image: cause_of_drought,
     linkText: "check it out",
     linkTo: "/Cause",
   },
   {
     title: "Chronology of drought",
     desciption: "A time of drought history in Australia",
-    image: history_img,
+    image: drought_history,
     linkText: "check it out",
     linkTo: "/Chronology",
   },
   {
+    title: "Damage of drought",
+    desciption: "impact of drought in Australia",
+    image: drought_damage,
+    linkText: "check it out",
+    linkTo: "/damage",
+  },
+  {
+    title: "How to prevent drought",
+    desciption: "know waht we can do to prevent drought",
+    image: drought_contermeasure,
+    linkText: "check it out",
+    linkTo: "/contermeasure",
+  },
+  {
     title: "Temperature Visulization",
     desciption: "Learn about temperature in Australia",
-    image: card_img_3,
+    image: Viz1,
     linkText: "check it out",
-    linkTo: "/dataVis_1",
+    linkTo: "/dataVis_Temp",
   },
   {
     title: "Water Evaporation",
     desciption: "Learn about Water Evaporation in Australia",
-    image: card_img_3,
+    image: Viz2,
     linkText: "check it out",
-    linkTo: "/dataVis_2",
+    linkTo: "/dataVis_evap",
   },
   {
     title: "Rainfall Visulization",
     desciption: "Learn about rainfall in Australia",
-    image: card_img_3,
+    image: Viz3,
     linkText: "check it out",
-    linkTo: "/dataVis_3",
+    linkTo: "/dataVis_Rainfall",
+  },
+  {
+    title: "Water consumption",
+    desciption: "Save water to relieve drought",
+    image: Viz4,
+    linkText: "check it out",
+    linkTo: "/dataVis_WaterConsumption",
   },
 ];
 
@@ -160,39 +181,38 @@ const mapCard = (cardGroup) => {
   return cardUI;
 };
 
-function fact() {
+const fact = (props) => {
   const classes = whatever();
 
   return (
     <>
-      <Navbar />
       <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="textPrimary"
-              gutterBottom
-            >
-              Drought in Australia
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
-              A quick walkthrough
-            </Typography>
-          </Container>
-        </div>
+        {/* comment out on 07/09 due to team conflict */}
+        {/* <div ref={myRef} className={classes.heroContent}>
+            <Container maxWidth="sm">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                Drought in Australia
+              </Typography>
+              <Typography
+                variant="h5"
+                align="center"
+                color="textSecondary"
+                paragraph
+              >
+                A quick walkthrough
+              </Typography>
+            </Container>
+          </div> */}
         {/* End hero unit */}
 
         {/* card container */}
-        <Container className={classes.cardGrid} maxWidth="xl">
+        <Container ref={props.myRef} className={classes.cardGrid} maxWidth="xl">
           {/* grid container */}
           <div className={classes.heroContent}>
             <Container maxWidth="md">
@@ -209,7 +229,7 @@ function fact() {
           </div>
           <Container className={classes.placeHolder} />
           <Grid container spacing={4}>
-            {mapCard(cards.slice(0, 3))};
+            {mapCard(cards.slice(0, 5))};
           </Grid>
           <Container className={classes.placeHolder} />
 
@@ -228,13 +248,12 @@ function fact() {
           </div>
           <Container className={classes.placeHolder} />
           <Grid container spacing={4}>
-            {mapCard(cards.slice(3, 6))};
+            {mapCard(cards.slice(5, cards.length))};
           </Grid>
         </Container>
       </main>
-      <Footer />
     </>
   );
-}
+};
 
 export default fact;

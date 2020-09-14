@@ -24,3 +24,11 @@ yarn-error.log*
 
 package-lock.json
 package-lock.json
+*.json
+package.json
+apis/jquery-3.4.0.min.js
+apis/waterTestAPI.html
+package.json
+package.json
+package-lock.json
+package.json

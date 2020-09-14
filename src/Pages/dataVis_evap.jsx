@@ -50,7 +50,7 @@ const whatever = makeStyles((theme) => ({
   },
 }));
 
-function Intro() {
+const Intro = () => {
   const classes = whatever();
   return (
     <>
@@ -105,5 +105,5 @@ function Intro() {
       <Footer></Footer>
     </>
   );
-}
+};
 export default Intro;
