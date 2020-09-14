@@ -77,7 +77,7 @@ const menuItems = [
     linkTo: "/damage",
   },
   {
-    linkText: "contermeasure",
+    linkText: "countermeasure",
     linkTo: "/contermeasure",
   },
 ];

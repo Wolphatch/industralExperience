@@ -126,7 +126,7 @@ const Header = (props) => {
           gutterBottom
         >
           <Box fontWeight="fontWeightBold" m={1}>
-            Do you know:
+            Drought - Australia Natural Hazard:
           </Box>
         </Typography>
         <Typography
