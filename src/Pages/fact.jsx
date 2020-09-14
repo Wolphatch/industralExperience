@@ -16,6 +16,8 @@ import Container from "@material-ui/core/Container";
 import drought_intro from "../asset/cardImage/Drought_Intro.png";
 import cause_of_drought from "../asset/cardImage/Cause_of_Drought.png";
 import drought_history from "../asset/cardImage/drought_history.png";
+import drought_damage from "../asset/cardImage/damage.jpg";
+import drought_contermeasure from "../asset/cardImage/contermeasure.jpg";
 import Viz1 from "../asset/cardImage/temp.jpg";
 import Viz2 from "../asset/cardImage/evap.jpg";
 import Viz3 from "../asset/cardImage/Rainfall.jpg";
@@ -94,6 +96,20 @@ const cards = [
     image: drought_history,
     linkText: "check it out",
     linkTo: "/Chronology",
+  },
+  {
+    title: "Damage of drought",
+    desciption: "impact of drought in Australia",
+    image: drought_damage,
+    linkText: "check it out",
+    linkTo: "/damage",
+  },
+  {
+    title: "How to prevent drought",
+    desciption: "know waht we can do to prevent drought",
+    image: drought_contermeasure,
+    linkText: "check it out",
+    linkTo: "/contermeasure",
   },
   {
     title: "Temperature Visulization",
@@ -213,7 +229,7 @@ const fact = (props) => {
           </div>
           <Container className={classes.placeHolder} />
           <Grid container spacing={4}>
-            {mapCard(cards.slice(0, 3))};
+            {mapCard(cards.slice(0, 5))};
           </Grid>
           <Container className={classes.placeHolder} />
 
@@ -232,7 +248,7 @@ const fact = (props) => {
           </div>
           <Container className={classes.placeHolder} />
           <Grid container spacing={4}>
-            {mapCard(cards.slice(3, cards.length))};
+            {mapCard(cards.slice(5, cards.length))};
           </Grid>
         </Container>
       </main>

@@ -72,6 +72,14 @@ const menuItems = [
     linkText: "Water",
     linkTo: "/dataVis_WaterConsumption",
   },
+  {
+    linkText: "Damage",
+    linkTo: "/damage",
+  },
+  {
+    linkText: "contermeasure",
+    linkTo: "/contermeasure",
+  },
 ];
 
 const mapMenu = (menuGroup) => {

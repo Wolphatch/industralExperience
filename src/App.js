@@ -17,6 +17,8 @@ import dataVis_Rainfall from "./Pages/dataVis_Rainfall";
 import Chronology from "./Pages/Chronology";
 import ScrollToTop from "./components/ScrollToTop";
 import dataVis_waterComsumption from "./Pages/dataVis_WaterConsumption";
+import damage from "./Pages/damage";
+import Countermeasure from "./Pages/contermeasure";
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
             component={dataVis_waterComsumption}
           />
           <Route path="/Chronology" component={Chronology} />
+          <Route path="/damage" component={damage} />
+          <Route path="/contermeasure" component={Countermeasure} />
           <Route exact path="/404" component={NotFoundPage} />
           <Redirect to="/404" />
         </Switch>
