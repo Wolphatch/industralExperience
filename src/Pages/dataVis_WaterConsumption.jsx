@@ -9,6 +9,7 @@ import Container from "@material-ui/core/Container";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import RefreshIcon from "@material-ui/icons/Refresh";
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import Viz from "./viz";
@@ -86,6 +87,10 @@ const whatever = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
     marginLeft: theme.spacing(1),
   },
+  tip: {
+    color: "#2f89fc",
+    paddingTop: theme.spacing(5),
+  },
   iframe: {
     margin: theme.spacing(20, 0, 0, 20),
   },
@@ -102,7 +107,11 @@ const whatever = makeStyles((theme) => ({
   },
   button2: {
     marginTop: theme.spacing(5),
-    marginLeft: theme.spacing(15),
+    marginLeft: theme.spacing(5),
+  },
+  button3: {
+    marginTop: theme.spacing(5),
+    marginRight: theme.spacing(5),
   },
   formControl: {
     marginBottom: theme.spacing(2),
@@ -161,11 +170,42 @@ const Intro = () => {
     setFormSubmitted((formSubmitted) => !formSubmitted);
   };
 
+  const getSuggestion = () => {
+    axios({
+      method: "get",
+      url: "https://h5ikffqj8k.execute-api.ap-southeast-2.amazonaws.com/test",
+    })
+      .then(function (response) {
+        const received = JSON.parse(response.data.body);
+        setSuggestion(() => received);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   const [State, setState] = React.useState("");
 
   const [receivedData, setData] = React.useState("Received");
 
+  const [suggestion, setSuggestion] = React.useState("");
+
+  const [index, setIndex] = React.useState(0);
+
   const [formSubmitted, setFormSubmitted] = React.useState(false);
+
+  const [tipShow, setTipShow] = React.useState(false);
+
+  const toggleTipShow = () => {
+    setTipShow((tipShow) => !tipShow);
+    setIndex(() => randomInt(0, 9));
+    console.log("tip show set to " + tipShow);
+    console.log("current tip " + suggestion[index]);
+  };
+
+  const randomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min);
+  };
 
   const handleChange = (event) => {
     setState(event.target.value);
@@ -192,8 +232,8 @@ const Intro = () => {
         <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <Typography
             className={classes.selectorTitle}
-            component="h4"
-            variant="h4"
+            component="h5"
+            variant="h5"
             align="left"
             gutterBottom
           >
@@ -225,12 +265,12 @@ const Intro = () => {
 
           <Typography
             className={classes.selectorTitle}
-            component="h4"
-            variant="h4"
+            component="h5"
+            variant="h5"
             align="left"
             gutterBottom
           >
-            Water Consumption(L):
+            Water Consumption(L per Month):
           </Typography>
           <FormControl className={classes.formControl}>
             <TextField
@@ -248,8 +288,8 @@ const Intro = () => {
 
           <Typography
             className={classes.selectorTitle}
-            component="h4"
-            variant="h4"
+            component="h5"
+            variant="h5"
             align="left"
             gutterBottom
           >
@@ -285,6 +325,7 @@ const Intro = () => {
             endIcon={<CloudUploadIcon />}
             disabled={isSubmitting}
             type="submit"
+            onClick={getSuggestion()}
           >
             Check Result
           </Button>
@@ -323,20 +364,50 @@ const Intro = () => {
             Your family use {receivedData.waterConsumption} L
           </Box>
           <Box fontWeight="fontWeightBold" m={1}>
-            The suggest water use per month is{" "}
+            The suggested water use per month is{" "}
             {receivedData.recommendedWaterUsage} L
           </Box>
         </Typography>
-        <Button
-          className={classes.button2}
-          variant="contained"
-          color="primary"
-          size="large"
-          onClick={() => setFormSubmitted((formSubmitted) => !formSubmitted)}
-          endIcon={<CloudUploadIcon />}
-        >
-          Try again
-        </Button>
+        <Grid container>
+          <Grid item xs={1}></Grid>
+          <Grid item xs={5}>
+            <Button
+              className={classes.button2}
+              variant="contained"
+              color="primary"
+              size="large"
+              onClick={() =>
+                setFormSubmitted((formSubmitted) => !formSubmitted)
+              }
+              endIcon={<RefreshIcon />}
+            >
+              Try Again
+            </Button>
+          </Grid>
+          <Grid item xs={5}>
+            <Button
+              className={classes.button3}
+              variant="contained"
+              color="primary"
+              size="large"
+              endIcon={<RefreshIcon />}
+              onClick={toggleTipShow}
+            >
+              Show Tips
+            </Button>
+          </Grid>
+          <Typography
+            className={classes.tip}
+            component="h5"
+            variant="h5"
+            align="left"
+            gutterBottom
+          >
+            <Box fontWeight="fontWeightBold" m={1}>
+              {tipShow === true ? suggestion[index] : null}
+            </Box>
+          </Typography>
+        </Grid>
       </>
     );
   };
@@ -394,7 +465,7 @@ const Intro = () => {
             easing="ease"
             autoplay={false}
             indicators={true}
-            defaultIndex={3}
+            // defaultIndex={3}
           >
             <div className="each-slide">
               <Grid container spacing={3} className={classes.grid}>
@@ -420,9 +491,10 @@ const Intro = () => {
                   >
                     <p>A video introducing the value of water.</p>
                     <p>
-                      An interactive visualization shows the water consumption
-                      in Australia.
+                      An interactive visualization which shows the water
+                      consumption in Australia.
                     </p>
+                    <p>A water consumption test.</p>
                   </Typography>
                 </Grid>
                 <Grid item xs={6}>
@@ -527,8 +599,6 @@ const Intro = () => {
                 </Grid>
               </div>
             </div>
-
-            <div></div>
           </Slide>
         </div>
       </main>
