@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import ExploreIcon from "@material-ui/icons/Explore";
 
 //asset
-import background4 from "../asset/homePage/background4.png";
+import main from "../asset/homePage/main.png";
 
 const useStyles = makeStyles((theme) => ({
   avater: {
@@ -41,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "200px",
   },
   heroButtons: {
-    marginTop: theme.spacing(0),
+    marginTop: theme.spacing(70),
+    marginLeft: theme.spacing(52),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -99,7 +100,7 @@ const Header = (props) => {
   return (
     <div
       style={{
-        backgroundImage: `url(${background4})`,
+        backgroundImage: `url(${main})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -107,13 +108,17 @@ const Header = (props) => {
         height: window.innerHeight,
       }}
     >
-      {/*Header content*/}
-      <div className={classes.headerContent}>
-        {/* <Grid container justify="center">
-              <Avatar className={classes.avater} src={temp} alt="..." />
-        </Grid> */}
-
-        {/* page 1*/}
+      <Button
+        className={classes.heroButtons}
+        variant="contained"
+        color="primary"
+        size="large"
+        endIcon={<ExploreIcon />}
+        onClick={() => scrollToRef(props.myRef)}
+      >
+        Get Started
+      </Button>
+      {/* <div className={classes.headerContent}>
         <Typography
           className={classes.titleTemp}
           component="h1"
@@ -151,16 +156,7 @@ const Header = (props) => {
             loop
           />
         </Typography>
-        {/* <div className={classes.IconButton}>
-                <Grid container spacing={2} justify="center">
-                  <Grid item>
-                    <IconButton aria-label="expand">
-                      <ExpandMoreIcon fontSize="large" />
-                    </IconButton>
-                  </Grid>
-                </Grid>
-              </div> */}
-      </div>
+      </div> */}
 
       {/* page 2*/}
       {/* <Typography
@@ -198,26 +194,6 @@ const Header = (props) => {
                   (IPCC2014).
                 </p>
                 </Typography> */}
-      <div
-        className={classes.heroButtons}
-        style={{
-          maxWidth: window.innerWidth / 2,
-        }}
-      >
-        <Grid container spacing={2} justify="center">
-          <Grid item>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              endIcon={<ExploreIcon />}
-              onClick={() => scrollToRef(props.myRef)}
-            >
-              Get Started
-            </Button>
-          </Grid>
-        </Grid>
-      </div>
     </div>
   );
 };

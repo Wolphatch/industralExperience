@@ -7,6 +7,13 @@ import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { green } from "@material-ui/core/colors";
+import Avatar from "@material-ui/core/Avatar";
+import BackToTop from "react-back-to-top-button";
+import Fab from "@material-ui/core/Fab";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+
+//assest
+import logo from "../asset/homePage/Logo.png";
 
 //import DataVis from "../Pages/dataVis_evap";
 
@@ -99,7 +106,7 @@ const mapMenu = (menuGroup) => {
   return menuUI;
 };
 
-const Navbar = ({ sticky }) => {
+const Navbar = (props) => {
   const classes = whatever();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -114,14 +121,17 @@ const Navbar = ({ sticky }) => {
     <>
       <Box component="nav">
         <AppBar className={classes.AppBar} position="fixed">
-          <Toolbar>
-            <Typography
-              variant="h5"
-              style={{ color: "Green" }}
-              className={classes.margin}
-            >
-              WhyIsDrought
-            </Typography>
+          <Toolbar id="back-to-top-anchor">
+            {/* <Avatar variant="square" alt="logo" src={logo} /> */}
+
+            <img
+              src={logo}
+              alt="..."
+              style={{
+                width: "10%",
+                height: "10%",
+              }}
+            />
 
             <Button
               variant="none"
@@ -154,6 +164,11 @@ const Navbar = ({ sticky }) => {
           </Toolbar>
         </AppBar>
       </Box>
+      <BackToTop showAt={100} speed={1500} easing="easeInOutQuint">
+        <Fab color="secondary" size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </BackToTop>
     </>
   );
 };
