@@ -288,9 +288,7 @@ const Navbar = () => {
         </AppBar>
       </Box>
       <BackToTop showAt={100} speed={1500} easing="easeInOutQuint">
-        <Fab color="secondary" size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
+        <KeyboardArrowUpIcon />
       </BackToTop>
     </>
   );
