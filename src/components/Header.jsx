@@ -4,9 +4,12 @@ import Typed from "react-typed";
 import { Typography, Grid, Box } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import ExploreIcon from "@material-ui/icons/Explore";
+import { flash } from "react-animations";
+import Radium, { StyleRoot } from "radium";
 
 //asset
 import main from "../asset/homePage/main.png";
+import DownArrow from "../asset/homePage/downArrow.png";
 
 const useStyles = makeStyles((theme) => ({
   avater: {
@@ -41,8 +44,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "200px",
   },
   heroButtons: {
-    marginTop: theme.spacing(70),
-    marginLeft: theme.spacing(52),
+    marginTop: theme.spacing(110),
+    marginLeft: theme.spacing(110),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -93,6 +96,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const styles = {
+  flash: {
+    animation: "flash 2s infinite",
+    animationName: Radium.keyframes(flash, "flash"),
+  },
+};
+
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 const Header = (props) => {
@@ -108,7 +118,23 @@ const Header = (props) => {
         height: window.innerHeight,
       }}
     >
-      <Button
+      <StyleRoot>
+        <div style={styles.flash}>
+          <img
+            className={classes.heroButtons}
+            src={DownArrow}
+            alt="..."
+            style={{
+              width: "50px",
+              height: "50px",
+              color: "black",
+            }}
+            onClick={() => scrollToRef(props.myRef)}
+          />
+        </div>
+      </StyleRoot>
+
+      {/* <Button
         className={classes.heroButtons}
         variant="contained"
         color="primary"
@@ -117,7 +143,7 @@ const Header = (props) => {
         onClick={() => scrollToRef(props.myRef)}
       >
         Get Started
-      </Button>
+      </Button> */}
       {/* <div className={classes.headerContent}>
         <Typography
           className={classes.titleTemp}

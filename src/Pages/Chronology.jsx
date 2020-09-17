@@ -12,6 +12,7 @@ import Footer from "../components/Footer";
 
 //assest
 import Temp_Vis from "../asset/Chronology of drought.png";
+import test from "../asset/desert2.png";
 
 import TagTool from "../components/TagTool";
 
@@ -20,8 +21,8 @@ const whatever = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+    // backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(24, 0, 24),
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -45,6 +46,14 @@ const whatever = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  titleStyle: {
+    color: "#fdfdfd",
+    fontSize: 80,
+    fontWeight: "bold",
+  },
+  subtitleStyle: {
+    color: "#fdfdfd",
+  },
 }));
 
 function Intro() {
@@ -54,11 +63,20 @@ function Intro() {
       <Navbar />
       <main>
         {/* Hero unit */}
-        <div className={classes.heroContent}>
+        <div
+          className={classes.heroContent}
+          style={{
+            backgroundImage: `url(${test})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
           <Container maxWidth="md">
             <Typography
+              className={classes.titleStyle}
               component="h1"
-              variant="h2"
+              variant="h1"
               align="center"
               color="textPrimary"
               gutterBottom
@@ -66,6 +84,8 @@ function Intro() {
               Drought History in Australia
             </Typography>
             <Typography
+              className={classes.subtitleStyle}
+              component="h4"
               variant="h5"
               align="center"
               color="textSecondary"

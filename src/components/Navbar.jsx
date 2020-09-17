@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Typography, Box } from "@material-ui/core";
 import { Home } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
@@ -11,6 +11,8 @@ import Avatar from "@material-ui/core/Avatar";
 import BackToTop from "react-back-to-top-button";
 import Fab from "@material-ui/core/Fab";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import BubbleChartRoundedIcon from "@material-ui/icons/BubbleChartRounded";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
 
 //assest
 import logo from "../asset/homePage/Logo.png";
@@ -25,7 +27,7 @@ const whatever = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   menuItem1: {
-    color: "Green",
+    color: "#000000",
     textDecorationLine: "initial",
   },
   menuItem2: {
@@ -33,13 +35,15 @@ const whatever = makeStyles((theme) => ({
     textDecorationLine: "initial",
   },
   AppBar: {
-    background: "white",
+    background: "#FFFFFFCC",
   },
   homeIcon: {
     color: green[500],
   },
   mainButton: {
-    color: "Green",
+    marginTop: theme.spacing(0.85),
+    marginLeft: theme.spacing(3),
+    color: "#000000",
     fontSize: "20px",
   },
 }));
@@ -64,6 +68,14 @@ const menuItems = [
     linkTo: "/Chronology",
   },
   {
+    linkText: "Damage",
+    linkTo: "/damage",
+  },
+  {
+    linkText: "Countermeasure",
+    linkTo: "/contermeasure",
+  },
+  {
     linkText: "Evaporation",
     linkTo: "/dataVis_evap",
   },
@@ -79,26 +91,52 @@ const menuItems = [
     linkText: "Water",
     linkTo: "/dataVis_WaterConsumption",
   },
-  {
-    linkText: "Damage",
-    linkTo: "/damage",
-  },
-  {
-    linkText: "countermeasure",
-    linkTo: "/contermeasure",
-  },
 ];
 
-const mapMenu = (menuGroup) => {
+const StyledMenu = withStyles({
+  paper: {
+    border: "1px solid #d3d4d5",
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "center",
+    }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "center",
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    "&:focus": {
+      backgroundColor: theme.palette.primary.main,
+      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
+
+const mapMenuItems = (menuGroup) => {
   const classes = whatever();
   let menuUI = [];
 
   menuGroup.map((item, key) => {
     menuUI.push(
       <MenuItem>
-        <Link className={classes.menuItem1} to={item.linkTo}>
-          {item.linkText}
-        </Link>
+        <ListItemIcon>
+          <BubbleChartRoundedIcon fontSize="small" />
+          <Link className={classes.menuItem1} to={item.linkTo}>
+            {item.linkText}
+          </Link>
+        </ListItemIcon>
       </MenuItem>
     );
     return null;
@@ -106,7 +144,7 @@ const mapMenu = (menuGroup) => {
   return menuUI;
 };
 
-const Navbar = (props) => {
+const Navbar = () => {
   const classes = whatever();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -117,6 +155,77 @@ const Navbar = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const [anchorEll, setAnchorEll] = React.useState(null);
+
+  const handleClick2 = (event) => {
+    setAnchorEll(event.currentTarget);
+  };
+
+  const handleClose2 = () => {
+    setAnchorEll(null);
+  };
+
+  // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+
+  // const background = useRef(null);
+  // const Visulization = useRef(null);
+
+  const menuList = [
+    {
+      startIndex: 0,
+      endIndex: 5,
+      menuName: "Background",
+      menuId: "menu_1",
+      open: handleClick,
+      close: handleClose,
+      anchor: anchorEl,
+    },
+    {
+      startIndex: 5,
+      endIndex: 9,
+      menuName: "Visulization",
+      menuId: "menu_2",
+      open: handleClick2,
+      close: handleClose2,
+      anchor: anchorEll,
+    },
+    {
+      menuName: "Quiz",
+      menuId: "menu_3",
+    },
+  ];
+
+  const mapMenuList = (menuGroup) => {
+    let menuUI = [];
+
+    menuGroup.map((group, key) => {
+      menuUI.push(
+        <>
+          <Button
+            className={classes.mainButton}
+            aria-controls={group.menuId}
+            aria-haspopup="true"
+            onClick={group.open}
+          >
+            {group.menuName}
+          </Button>
+          <StyledMenu
+            id={group.menuId}
+            anchorEl={group.anchor}
+            keepMounted
+            open={Boolean(group.anchor)}
+            onClose={group.close}
+          >
+            {mapMenuItems(menuItems.slice(group.startIndex, group.endIndex))}
+          </StyledMenu>
+        </>
+      );
+      return null;
+    });
+    return menuUI;
+  };
+
   return (
     <>
       <Box component="nav">
@@ -124,16 +233,29 @@ const Navbar = (props) => {
           <Toolbar id="back-to-top-anchor">
             {/* <Avatar variant="square" alt="logo" src={logo} /> */}
 
-            <img
-              src={logo}
-              alt="..."
+            <Link
               style={{
-                width: "10%",
-                height: "10%",
+                width: "225px",
+                height: "50px",
               }}
-            />
+              to={"/"}
+            >
+              {" "}
+              <img
+                src={logo}
+                alt="..."
+                style={{
+                  width: "210px",
+                  height: "50px",
+                }}
+              />
+            </Link>
 
-            <Button
+            {/* <Button style={{ backgroundImage: `url(${logo})` }}>
+              <Link className={classes.menuItem1} to={"/"}></Link>
+            </Button> */}
+
+            {/* <Button
               variant="none"
               size="large"
               style={{ fontSize: "20px" }}
@@ -142,15 +264,14 @@ const Navbar = (props) => {
             >
               <Link className={classes.menuItem1} to={"/"}>
                 Home
-              </Link>
-            </Button>
-            <Button
+              </Link> */}
+            {/* <Button
               className={classes.mainButton}
               aria-controls="simple-menu"
               aria-haspopup="true"
               onClick={handleClick}
             >
-              Do you know?
+              Background Information
             </Button>
             <Menu
               id="simple-menu"
@@ -159,8 +280,10 @@ const Navbar = (props) => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              {mapMenu(menuItems)}
-            </Menu>
+              {mapMenuItems(menuItems)}
+            </Menu> */}
+
+            {mapMenuList(menuList)}
           </Toolbar>
         </AppBar>
       </Box>
