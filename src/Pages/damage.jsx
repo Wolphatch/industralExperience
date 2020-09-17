@@ -21,7 +21,7 @@ import p8 from "../asset/pic_userstory_1/picture8.png";
 import test from "../asset/desert2.png";
 import impact from "../asset/impact.png";
 import congradulations from "../asset/congradulations.png";
-import colorBar from "../asset/colorBar1.png";
+import colorBar from "../asset/colorBar6.png";
 
 const whatever = makeStyles((theme) => ({
     icon: {
@@ -200,27 +200,7 @@ function Cause() {
                                 gutterBottom
                             >
                                 {card.title}
-                            </Typography>                         
-                        </Container>
-                    </div>
-                <div className={classes.headingContent} 
-                    //  style={{
-                    //     backgroundImage: `url(${colorBar})`,
-                    //     backgroundPosition: "center",
-                    //     backgroundSize: "cover",
-                    //     backgroundRepeat: "no-repeat",
-                    // }}
-                    >
-                        <Container maxWidth="xl">
-                            <Typography
-                                component="h1"
-                                variant="h2"
-                                align="center"
-                                color="textPrimary"
-                                gutterBottom
-                            >
-                                {card.title}
-              </Typography> 
+                            </Typography> 
                             <Typography className = {classes.subHeadingContent}
                                 component="h4"
                                 variant="h5"
@@ -232,6 +212,25 @@ function Cause() {
               </Typography>                         
                         </Container>
                     </div> 
+
+                    <div className={classes.headingContent} 
+                     style={{
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                    }}
+                    >
+                        <Container maxWidth="xl">
+                            <Typography
+                                component="h1"
+                                variant="h2"
+                                align="center"
+                                color="textPrimary"
+                                gutterBottom
+                            >
+                             </Typography>                      
+                        </Container>
+                    </div>    
                     
                 <Grid container spacing={3}>
                     
@@ -287,6 +286,25 @@ function Cause() {
                     </Grid>
                     <Container className={classes.placeHolder2} />
                 </Grid>
+
+                <div className={classes.headingContent} 
+                     style={{
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                    }}
+                    >
+                        <Container maxWidth="xl">
+                            <Typography
+                                component="h1"
+                                variant="h2"
+                                align="center"
+                                color="textPrimary"
+                                gutterBottom
+                            >
+                             </Typography>                      
+                        </Container>
+                    </div>
                 </>
             );
             return null;
