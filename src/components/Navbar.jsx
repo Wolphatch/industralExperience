@@ -165,6 +165,15 @@ const Navbar = () => {
   const handleClose2 = () => {
     setAnchorEll(null);
   };
+  const [anchorElll, setAnchorElll] = React.useState(null);
+
+  const handleClick3 = (event) => {
+    setAnchorElll(event.currentTarget);
+  };
+
+  const handleClose3 = () => {
+    setAnchorElll(null);
+  };
 
   // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
@@ -174,7 +183,7 @@ const Navbar = () => {
   const menuList = [
     {
       startIndex: 0,
-      endIndex: 5,
+      endIndex: 3,
       menuName: "Background",
       menuId: "menu_1",
       open: handleClick,
@@ -182,17 +191,22 @@ const Navbar = () => {
       anchor: anchorEl,
     },
     {
+      startIndex: 3,
+      endIndex: 5,
+      menuName: "Drought",
+      menuId: "menu_2",
+      open: handleClick3,
+      close: handleClose3,
+      anchor: anchorElll,
+    },
+    {
       startIndex: 5,
       endIndex: 9,
       menuName: "Visualization",
-      menuId: "menu_2",
+      menuId: "menu_3",
       open: handleClick2,
       close: handleClose2,
       anchor: anchorEll,
-    },
-    {
-      menuName: "Quiz",
-      menuId: "menu_3",
     },
   ];
 
