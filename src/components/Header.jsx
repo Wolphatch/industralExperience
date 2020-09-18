@@ -44,8 +44,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "200px",
   },
   heroButtons: {
-    marginTop: theme.spacing(110),
-    marginLeft: theme.spacing(110),
+    position: "absolute",
+    top: "90%",
+    left: "48%",
+    // marginTop: theme.spacing(110),
+    // marginLeft: theme.spacing(90)
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -128,6 +131,8 @@ const Header = (props) => {
               width: "50px",
               height: "50px",
               color: "black",
+              // marginTop: "700px",
+              // marginLeft: "300"
             }}
             onClick={() => scrollToRef(props.myRef)}
           />

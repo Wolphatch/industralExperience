@@ -184,7 +184,7 @@ const Navbar = () => {
     {
       startIndex: 5,
       endIndex: 9,
-      menuName: "Visulization",
+      menuName: "Visualization",
       menuId: "menu_2",
       open: handleClick2,
       close: handleClose2,
