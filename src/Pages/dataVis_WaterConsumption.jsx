@@ -459,12 +459,11 @@ const Intro = () => {
             easing="ease"
             autoplay={false}
             indicators={true}
-            // defaultIndex={3}
+          // defaultIndex={3}
           >
             <div className="each-slide">
               <Grid container spacing={3} className={classes.grid}>
-                <Grid item xs={6}>
-                  {/* page 1*/}
+                <Grid item xs={12}>
                   <Typography
                     className={classes.titleTemp}
                     component="h1"
@@ -472,48 +471,7 @@ const Intro = () => {
                     align="left"
                     gutterBottom
                   >
-                    <Box fontWeight="fontWeightBold" m={1}>
-                      Here we have:
-                    </Box>
-                  </Typography>
-                  <Typography
-                    className={classes.subtitle}
-                    variant="h4"
-                    align="left"
-                    color="textSecondary"
-                    paragraph
-                  >
-                    <p>A video introducing the value of water.</p>
-                    <p>
-                      An interactive visualization which shows the water
-                      consumption in Australia.
-                    </p>
-                    <p>A water consumption test.</p>
-                  </Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <img
-                    src={waterIntro}
-                    alt="..."
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                  />
-                </Grid>
-              </Grid>
-            </div>
-            <div className="each-slide">
-              <Grid container spacing={3} className={classes.grid}>
-                <Grid item xs={4}>
-                  <Typography
-                    className={classes.titleTemp}
-                    component="h1"
-                    variant="h2"
-                    align="left"
-                    gutterBottom
-                  >
-                    <Box fontWeight="fontWeightBold" m={1}>
+                    <Box fontWeight="fontWeightBold" m={1} textAlign="center">
                       Do you know ?
                     </Box>
                   </Typography>
@@ -535,70 +493,70 @@ const Intro = () => {
                     </p>
                   </Typography>
                 </Grid>
-                <Grid item xs={8}>
+                <Grid item xs={12}
+                  style={{marginLeft:"110px",marginTop:"-150px"}}>
                   <iframe
-                    title="videp"
-                    className={classes.iframe}
-                    width="640"
-                    height="480"
-                    src="https://www.youtube.com/embed/SkAhB-8CtZg"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
+                  className={classes.iframe}
+                  width="1000"
+                  height="600"
+                  src="https://www.youtube.com/embed/SkAhB-8CtZg"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </Grid>
+              </Grid>
+            </div>
+          <div className="each-slide">
+            <Viz Url="https://public.tableau.com/views/Water_15993858642510/Water_01_V1?:language=zh-Hans&:display_count=y&publish=yes&:origin=viz_share_link" />
+          </div>
+
+          <div className="each-slide">
+            <div
+              style={{
+                backgroundImage: `url(${test_Welcome})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                height: "1000px",
+              }}
+            >
+              <Grid container spacing={3} className={classes.grid}>
+                <Grid item xs={6}></Grid>
+                <Grid item xs={6}>
+                  <div className={classes.selectorGrid}>
+                    <Typography
+                      className={classes.titleTemp}
+                      component="h4"
+                      variant="h4"
+                      align="left"
+                      gutterBottom
+                    >
+                      <Box fontWeight="fontWeightBold" m={1}>
+                        Test your water consumption
+                        </Box>
+                    </Typography>
+                    <Typography
+                      className={classes.subtitle3}
+                      variant="h5"
+                      component="h5"
+                      align="left"
+                      color="textSecondary"
+                      paragraph
+                    >
+                      <p>See whether your family consumed too much water.</p>
+                    </Typography>
+                    {renderForm()}
+                  </div>
                 </Grid>
               </Grid>
             </div>
-            <div className="each-slide">
-              <Viz Url="https://public.tableau.com/views/Water_15993858642510/Water_01_V1?:language=zh-Hans&:display_count=y&publish=yes&:origin=viz_share_link" />
-            </div>
-
-            <div className="each-slide">
-              <div
-                style={{
-                  backgroundImage: `url(${test_Welcome})`,
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                  height: "1000px",
-                }}
-              >
-                <Grid container spacing={3} className={classes.grid}>
-                  <Grid item xs={6}></Grid>
-                  <Grid item xs={6}>
-                    <div className={classes.selectorGrid}>
-                      <Typography
-                        className={classes.titleTemp}
-                        component="h4"
-                        variant="h4"
-                        align="left"
-                        gutterBottom
-                      >
-                        <Box fontWeight="fontWeightBold" m={1}>
-                          Test your water consumption
-                        </Box>
-                      </Typography>
-                      <Typography
-                        className={classes.subtitle3}
-                        variant="h5"
-                        component="h5"
-                        align="left"
-                        color="textSecondary"
-                        paragraph
-                      >
-                        <p>See whether your family consumed too much water.</p>
-                      </Typography>
-                      {renderForm()}
-                    </div>
-                  </Grid>
-                </Grid>
-              </div>
-            </div>
+          </div>
           </Slide>
         </div>
-      </main>
+    </main>
 
-      {/* card container */}
+      {/* card container */ }
       <Container className={classes.cardGrid} maxWidth="md">
         {/* grid container */}
         <Grid container spacing={4}></Grid>
