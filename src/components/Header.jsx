@@ -1,9 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Typed from "react-typed";
-import { Typography, Grid, Box } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
-import ExploreIcon from "@material-ui/icons/Explore";
 import { flash } from "react-animations";
 import Radium, { StyleRoot } from "radium";
 
@@ -43,12 +39,10 @@ const useStyles = makeStyles((theme) => ({
   IconButton: {
     marginTop: "200px",
   },
-  heroButtons: {
-    position: "absolute",
-    top: "90%",
+  heroIcon: {
+    position: "relative",
+    marginTop: "950px",
     left: "48%",
-    // marginTop: theme.spacing(110),
-    // marginLeft: theme.spacing(90)
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -117,114 +111,25 @@ const Header = (props) => {
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: "auto",
+        height: "1010px",
       }}
     >
       <StyleRoot>
         <div style={styles.flash}>
           <img
-            className={classes.heroButtons}
+            className={classes.heroIcon}
             src={DownArrow}
             alt="..."
             style={{
               width: "50px",
               height: "50px",
               color: "black",
-              // marginTop: "700px",
-              // marginLeft: "300"
             }}
             onClick={() => scrollToRef(props.myRef)}
           />
         </div>
       </StyleRoot>
-
-      {/* <Button
-        className={classes.heroButtons}
-        variant="contained"
-        color="primary"
-        size="large"
-        endIcon={<ExploreIcon />}
-        onClick={() => scrollToRef(props.myRef)}
-      >
-        Get Started
-      </Button> */}
-      {/* <div className={classes.headerContent}>
-        <Typography
-          className={classes.titleTemp}
-          component="h1"
-          variant="h2"
-          align="center"
-          style={{
-            maxWidth: window.innerWidth / 2,
-            maxHeight: window.innerHeight / 2,
-          }}
-          gutterBottom
-        >
-          <Box fontWeight="fontWeightBold" m={1}>
-            Drought - Australia Natural Hazard:
-          </Box>
-        </Typography>
-        <Typography
-          className={classes.subtitle}
-          variant="h4"
-          align="center"
-          color="textSecondary"
-          style={{
-            maxWidth: window.innerWidth / 2,
-            maxHeight: window.innerHeight / 2,
-          }}
-          paragraph
-        >
-          <Typed
-            strings={[
-              "Why is drought?",
-              "What are the effects?",
-              "What can we do?",
-            ]}
-            typespeed={40}
-            backSpeed={60}
-            loop
-          />
-        </Typography>
-      </div> */}
-
-      {/* page 2*/}
-      {/* <Typography
-                className={classes.title}
-                component="h1"
-                variant="h2"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-                >
-                <Box fontWeight="fontWeightBold" m={1}>
-                  Fact of drought in Australia
-                </Box>
-               </Typography>
-                <Typography
-                className={classes.subtitle}
-                variant="h4"
-                align="center"
-                color="textSecondary"
-                paragraph
-                >
-                <p>Australia has a long history of drought.</p>
-                <p> Drought is considered as a feature of Australia.</p>
-                <p>
-                  Australia continent itself is the driest inhabited continent
-                  on Earth.
-                </p>
-                <p>
-                  Australias has the most variable rainfall and stream-flow on
-                  Earth.
-                </p>
-
-                <p>
-                  Hot extremes are becoming more frequent and intense
-                  (IPCC2014).
-                </p>
-                </Typography> */}
     </div>
   );
 };

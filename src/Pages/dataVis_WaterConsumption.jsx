@@ -14,7 +14,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import Viz from "./viz";
 import { useForm } from "react-hook-form";
-import ErrorMessage from "../components/hookForm/errorMessage";
 import axios from "axios";
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
@@ -23,11 +22,6 @@ import * as yup from "yup";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TagTool from "../components/TagTool";
-import Selector from "../components/selector";
-// import Form from "../components/hookForm/hookForm";
-// import Fetch from "../components/fetch";
-// import Axios from "../components/axios";
-// import Api from "../components/api";
 
 //assest
 import waterIntro from "../asset/waterIntro.png";
@@ -543,6 +537,7 @@ const Intro = () => {
                 </Grid>
                 <Grid item xs={8}>
                   <iframe
+                    title="videp"
                     className={classes.iframe}
                     width="640"
                     height="480"
