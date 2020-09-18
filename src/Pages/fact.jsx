@@ -112,7 +112,7 @@ const cards = [
     linkTo: "/contermeasure",
   },
   {
-    title: "Temperature Visulization",
+    title: "Temperature Visualization",
     desciption: "Learn about temperature in Australia",
     image: Viz1,
     linkText: "check it out",
@@ -126,7 +126,7 @@ const cards = [
     linkTo: "/dataVis_evap",
   },
   {
-    title: "Rainfall Visulization",
+    title: "Rainfall Visualization",
     desciption: "Learn about rainfall in Australia",
     image: Viz3,
     linkText: "check it out",
@@ -242,7 +242,7 @@ const fact = (props) => {
                 color="textPrimary"
                 gutterBottom
               >
-                Visulization
+                Visualization
               </Typography>
             </Container>
           </div>
