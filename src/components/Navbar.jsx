@@ -68,6 +68,10 @@ const menuItems = [
     linkTo: "/contermeasure",
   },
   {
+    linkText: "Water",
+    linkTo: "/dataVis_WaterConsumption",
+  },
+  {
     linkText: "Evaporation",
     linkTo: "/dataVis_evap",
   },
@@ -78,10 +82,6 @@ const menuItems = [
   {
     linkText: "Rainfall",
     linkTo: "/dataVis_Rainfall",
-  },
-  {
-    linkText: "Water",
-    linkTo: "/dataVis_WaterConsumption",
   },
 ];
 
@@ -175,24 +175,24 @@ const Navbar = () => {
   const menuList = [
     {
       startIndex: 0,
-      endIndex: 3,
-      menuName: "Background",
+      endIndex: 4,
+      menuName: "Drought Background",
       menuId: "menu_1",
       open: handleClick,
       close: handleClose,
       anchor: anchorEl,
     },
     {
-      startIndex: 3,
-      endIndex: 5,
-      menuName: "Drought",
+      startIndex: 4,
+      endIndex: 6,
+      menuName: "How To Prevent Drought",
       menuId: "menu_2",
       open: handleClick3,
       close: handleClose3,
       anchor: anchorElll,
     },
     {
-      startIndex: 5,
+      startIndex: 6,
       endIndex: 9,
       menuName: "Visualization",
       menuId: "menu_3",
