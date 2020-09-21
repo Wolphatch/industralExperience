@@ -32,7 +32,9 @@ const whatever = makeStyles((theme) => ({
         padding: theme.spacing(25, 0, 16),
     },
     headingContent: {
+        //backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(8, 0, 6),
+        width: "auto",
     },
     heroButtons: {
         marginTop: theme.spacing(4),
@@ -189,6 +191,7 @@ function Cause() {
                         backgroundPosition: "center",
                         backgroundSize: "cover",
                         backgroundRepeat: "no-repeat",
+                        
                     }}
                     >
                         <Container maxWidth="xl">
@@ -356,7 +359,7 @@ function Cause() {
                     {/* grid container */}
                     <div className={classes.headingContent}>
                         <Container maxWidth="xl">
-                            <Typography
+                            <Typography 
                                 component="h1"
                                 variant="h2"
                                 align="center"

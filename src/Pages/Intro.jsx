@@ -22,7 +22,15 @@ import p5 from "../asset/pic_userstory_1/picture5.png";
 import p6 from "../asset/pic_userstory_1/picture6.png";
 import p7 from "../asset/pic_userstory_1/picture7.png";
 import p8 from "../asset/pic_userstory_1/picture8.png";
+import p9 from "../asset/pic_userstory_1/picture9.png";
+import p10 from "../asset/pic_userstory_1/picture10.png";
+import p11 from "../asset/pic_userstory_1/picture11.png";
+import p12 from "../asset/pic_userstory_1/picture12.png";
+import p13 from "../asset/pic_userstory_1/picture13.png";
+import bg1 from "../asset/pic_userstory_1/bg1.png";
+import story from "../asset/introduction.png";
 import test from "../asset/desert2.png";
+import good from "../asset/good1.png";
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -30,17 +38,21 @@ const whatever = makeStyles((theme) => ({
   },
   heroContent: {
     // backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(25, 0, 25),
+    padding: theme.spacing(15, 0, 15),
   },
   headingContent: {
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(5, 0, 5),
+    width: "auto",
+  },
+  pictureContent: {
+    padding: theme.spacing(0, 0, 15),
   },
   heroButtons: {
     marginTop: theme.spacing(4),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
+    paddingBottom: theme.spacing(15),
   },
   placeHolder: {
     paddingTop: theme.spacing(2),
@@ -248,7 +260,7 @@ function Cause() {
               color="textPrimary"
               gutterBottom
             >
-              Fact of drought in Australia
+              Introduction of drought in Australia
             </Typography>
             <Typography
               className={classes.subtitleStyle}
@@ -258,7 +270,7 @@ function Cause() {
               color="textSecondary"
               paragraph
             >
-              <p>Know what and how drought affect Australia</p>
+              <p>Know what is drought and basic drought information in Australia</p>
             </Typography>
           </Container>
         </div>
@@ -282,23 +294,38 @@ function Cause() {
                 component="h4"
                 variant="h5"
                 align="center"
-                color="textSecondary"
+                color="#071e3d"
                 paragraph
               >
                 Do you think drought only means our soil is dry? No! Actullay ,
-                it has four definitions in general! Let's see all of them!
+                it has four definitions in general! Let's start from a little story!
               </Typography>
+              
             </Container>
           </div>
-          <Container className={classes.placeHolder} />
-          <Grid container spacing={1}>
-            {mapCard(cards.slice(0, 4))};
-          </Grid>
-          <Container className={classes.placeHolder} />
-
-          {/* grid container */}
-          {/* <div className={classes.heroContent}>
-            <Container maxWidth="md">
+          <div className={classes.pictureContent}>
+          <img
+                src={story}
+                alt="..."
+                style={{
+                  marginTop: "100px",
+                  marginLeft: "0",
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+          </div>
+          {/*part 1*/}
+          <div
+            className={classes.headingContent}
+            style={{
+              backgroundImage: `url(${bg1})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <Container maxWidth="xl">
               <Typography
                 component="h1"
                 variant="h2"
@@ -306,22 +333,226 @@ function Cause() {
                 color="textPrimary"
                 gutterBottom
               >
-                Impact of drought
+                1. Agricultural drought
+              </Typography>
+              <Typography
+                component="h4"
+                variant="h5"
+                align="center"
+                color="#071e3d"
+                paragraph
+              >
+                Mary: first definition of drought!
               </Typography>
             </Container>
           </div>
-          <Container className={classes.placeHolder} />
+          <div className={classes.pictureContent}>
+          <img
+            src={p9}
+            alt="..."
+            style={{
+              marginTop: "100px",
+              marginLeft: "0",
+              width: "100%",
+              height: "100%",
+            }}
+          />
+          </div>
+          {/*part 2*/}
+          <div
+            className={classes.headingContent}
+            style={{
+              backgroundImage: `url(${bg1})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <Container maxWidth="xl">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                2. Meteorological drought
+              </Typography>
+              <Typography
+                component="h4"
+                variant="h5"
+                align="center"
+                color="#071e3d"
+                paragraph
+              >
+                Mary: second definition of drought!
+              </Typography>
+            </Container>
+          </div>
+          <div className={classes.pictureContent}>
+          <img
+            src={p10}
+            alt="..."
+            style={{
+              marginTop: "100px",
+              marginLeft: "0",
+              width: "100%",
+              height: "100%",
+            }}
+          />
+          </div>
+          {/*part 3*/}
+          <div
+            className={classes.headingContent}
+            style={{
+              backgroundImage: `url(${bg1})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <Container maxWidth="xl">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                3. hydrological drought
+              </Typography>
+              <Typography
+                component="h4"
+                variant="h5"
+                align="center"
+                color="#071e3d"
+                paragraph
+              >
+                Mary: third definition of drought!
+              </Typography>
+            </Container>
+          </div>
+          <div className={classes.pictureContent}>
+          <img
+            src={p11}
+            alt="..."
+            style={{
+              marginTop: "100px",
+              marginLeft: "0",
+              width: "100%",
+              height: "100%",
+            }}
+          />
+          </div>
+          {/*part 4*/}
+          <div
+            className={classes.headingContent}
+            style={{
+              backgroundImage: `url(${bg1})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <Container maxWidth="xl">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                4. socioeconomic drought
+              </Typography>
+              <Typography
+                component="h4"
+                variant="h5"
+                align="center"
+                color="#071e3d"
+                paragraph
+              >
+                Mary: Last definition of drought!
+              </Typography>
+            </Container>
+          </div>
+          <div className={classes.pictureContent}>
+          <img
+            src={p12}
+            alt="..."
+            style={{
+              marginTop: "100px",
+              marginLeft: "0",
+              width: "100%",
+              height: "100%",
+            }}
+          />
+          </div>
+          {/*part 5*/}
+          <div
+            className={classes.headingContent}
+            style={{
+              backgroundImage: `url(${bg1})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <Container maxWidth="xl">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                5. drought in Australia 
+              </Typography>
+              <Typography
+                component="h4"
+                variant="h5"
+                align="center"
+                color="#071e3d"
+                paragraph
+              >
+                David: it's my turn! the basic information of drought in Australia!
+              </Typography>
+            </Container>
+          </div>
+          <div className={classes.pictureContent}>
+          <img
+            src={p13}
+            alt="..."
+            style={{
+              marginTop: "100px",
+              marginLeft: "0",
+              width: "100%",
+              height: "100%",
+            }}
+          />
+          </div>
+          <div className={classes.headingContent}>
+          <img
+            src={good}
+            alt="..."
+            style={{
+              marginTop: "100px",
+              marginLeft: "0",
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        </div>
+
+          {/* <Container className={classes.placeHolder} />
           <Grid container spacing={1}>
-            {mapCard(cards.slice(4, 8))};
-          </Grid> */}
+            {mapCard(cards.slice(0, 4))};
+          </Grid>
+          <Container className={classes.placeHolder} /> */}
+
+         
         </Container>
       </main>
       <TagTool></TagTool>
-      {/* <button style={buttonStyle}>
-          <Link to={"/fact"}>
-          Go Back   
-          </Link>
-        </button> */}
       <Footer />
     </>
   );

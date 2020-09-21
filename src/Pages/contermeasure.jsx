@@ -66,6 +66,7 @@ const whatever = makeStyles((theme) => ({
   heroContent: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(24, 0, 24),
+    width: "auto",
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -619,7 +620,7 @@ function Countermeasure() {
                 component="h4"
                 variant="h5"
                 align="center"
-                color="textSecondary"
+                color="#071e3d"
                 paragraph
               >
                 We have known some related information about drought, so what

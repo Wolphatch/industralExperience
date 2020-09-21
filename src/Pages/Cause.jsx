@@ -23,6 +23,9 @@ import soilMoisture from "../asset/pic_userstory_2/pictureI2.png";
 import timeDifferent from "../asset/pic_userstory_2/PictureI3.png";
 import saveWater from "../asset/pic_userstory_2/pictureI4.png";
 import test from "../asset/desert2.png";
+import story from "../asset/cause.png";
+import bg1 from "../asset/background3.jpg";
+import good from "../asset/good2.png";
 
 import TagTool from "../components/TagTool";
 
@@ -32,10 +35,18 @@ const whatever = makeStyles((theme) => ({
   },
   heroContent: {
     // backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(25, 0, 25),
+    padding: theme.spacing(15, 0, 15),
   },
   headingContent: {
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(8, 0, 8),
+    color: "#fdfdfd",
+  },
+  headingContent1: {
+    padding: theme.spacing(8, 0, 0),
+  },
+  headingContent2: {
+    padding: theme.spacing(4, 0, 4),
+    color: "#fdfdfd",
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -96,8 +107,16 @@ const whatever = makeStyles((theme) => ({
     fontSize: 80,
     fontWeight: "bold",
   },
+  titleStyle1: {
+    color: "#000000",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
   subtitleStyle: {
     color: "#fdfdfd",
+  },
+  root: {
+    flexGrow: 1,
   },
 }));
 
@@ -174,28 +193,28 @@ function Cause() {
 
     cardGroup.map((card, key) => {
       cardUI.push(
-        <Grid container spacing={3} className={classes.grid}>
-          <Grid item xs={6}>
-            <CardContent className={classes.cardContent}>
-              <Typography gutterBottom variant="h2" component="h2">
-                {card.title}
-              </Typography>
-              <Typography
-                square="false"
-                variant="h5"
-                align="left"
-                color="textSecondary"
-                paragraph
-              >
-                {card.desciption}
-              </Typography>
-            </CardContent>
-          </Grid>
-          <Grid item xs={6}>
-            <CardMedia className={classes.cardMedia} image={card.image} />
-          </Grid>
-          <Container className={classes.placeHolder} />
-        </Grid>
+        <Grid item id={key} xs={12} sm={6} md={6}>
+            <Card className={classes.card}>
+              <CardMedia
+                className={classes.cardMedia}
+                image={card.image}
+                title={card.title}
+              />
+              <CardContent className={classes.cardContent}>
+                <Typography
+                className={classes.titleStyle1}
+                component="h1"
+                variant="h1"
+                align="center"
+                color="textPrimary"
+                gutterBottom>
+                  {card.title}
+                </Typography>
+
+                <Typography>{card.desciption}</Typography>
+              </CardContent>
+            </Card>
+            </Grid>  
       );
       return null;
     });
@@ -214,6 +233,7 @@ function Cause() {
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
+            width: "auto",
           }}
         >
           <Container maxWidth="md">
@@ -225,7 +245,7 @@ function Cause() {
               color="textPrimary"
               gutterBottom
             >
-              Cause of drought
+              Cause of drought in Australia
             </Typography>
             <Typography
               className={classes.subtitleStyle}
@@ -235,51 +255,197 @@ function Cause() {
               color="textSecondary"
               paragraph
             >
-              Understand the cause of drought
+              factors lead to drought
             </Typography>
           </Container>
         </div>
         {/* End hero unit */}
 
-        {/* card container */}
-        <Container className={classes.cardGrid} maxWidth="xl">
+                {/* card container */}
+          <Container className={classes.cardGrid} maxWidth="xl">
           {/* grid container */}
-          <div className={classes.headingContent}>
-            <Container maxWidth="md">
+          <div className={classes.headingContent1}>
+            <Container maxWidth="xl">
               <Typography
                 component="h1"
                 variant="h2"
                 align="center"
                 color="textPrimary"
+                gutterBottom
+              >
+                why is drought
+              </Typography>
+              <Typography
+                component="h4"
+                variant="h5"
+                align="center"
+                color="#071e3d"
+                paragraph
+              >
+                There are so many factors lead to drought including direct factors which affects rainfall and indirect factors which affect drought in anothers ways. Let's start from a little story!
+              </Typography>
+              
+            </Container>
+          </div>
+          <div>
+          <img
+                src={story}
+                alt="..."
+                style={{
+                  marginTop: "100px",
+                  marginLeft: "0",
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+          </div>
+          </Container>
+
+        {/* card container */}
+        <Container className={classes.cardGrid} maxWidth="xl">
+          {/* grid container */}
+          <div className={classes.headingContent}
+          style={{
+            backgroundImage: `url(${bg1})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}>
+            <Container maxWidth="md">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="#fdfdfd"
                 gutterBottom
               >
                 Direct factors influence rainfall
               </Typography>
+              <Typography
+                component="h4"
+                variant="h5"
+                align="center"
+                color="#fdfdfd"
+                paragraph
+              >
+                Bob: first is the direct factors!
+              </Typography>
             </Container>
           </div>
-          <Container className={classes.placeHolder} />
-          <Grid container spacing={1}>
-            {mapCard(cards.slice(0, 3))};
-          </Grid>
-
-          <div className={classes.headingContent}>
-            <Container maxWidth="md">
+          
+          {/* space */}
+          <div
+            className={classes.headingContent2}
+            style={{
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <Container maxWidth="xl">
               <Typography
                 component="h1"
                 variant="h2"
                 align="center"
                 color="textPrimary"
                 gutterBottom
+              ></Typography>
+            </Container>
+          </div>
+
+          <Container className={classes.placeHolder} />
+          <Grid container spacing={5}>
+            {mapCard(cards.slice(0, 3))};
+          </Grid>
+
+          {/* space */}
+          <div
+            className={classes.headingContent2}
+            style={{
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <Container maxWidth="xl">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              ></Typography>
+            </Container>
+          </div>
+          {/* space */}
+
+          <div className={classes.headingContent}
+          style={{
+            backgroundImage: `url(${bg1})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}>
+            <Container maxWidth="md">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="#fdfdfd"
+                gutterBottom
               >
                 Indirect factors lead to drought
               </Typography>
+              <Typography
+                component="h4"
+                variant="h5"
+                align="center"
+                color="#fdfdfd"
+                paragraph
+              >
+                Bob: second is the indirect factors!
+              </Typography>
             </Container>
           </div>
+          {/* space */}
+          <div
+            className={classes.headingContent2}
+            style={{
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <Container maxWidth="xl">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              ></Typography>
+            </Container>
+          </div>
+          {/* space */}
+
           <Container className={classes.placeHolder} />
-          <Grid container spacing={1}>
+          <Grid container spacing={5}>
             {mapCard(cards.slice(3, 7))};
           </Grid>
         </Container>
+
+        <div className={classes.headingContent2}>
+          <img
+            src={good}
+            alt="..."
+            style={{
+              marginTop: "100px",
+              marginLeft: "0",
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        </div>
       </main>
       <TagTool></TagTool>
       <Footer />
