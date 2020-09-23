@@ -52,7 +52,7 @@ const Header = (props) => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             width: "auto",
-            height: window.innerHeight,
+            height: "1010px",
           }}
         />
       </div>
@@ -62,14 +62,14 @@ const Header = (props) => {
 
   return (
     <div
-    // style={{
-    //   backgroundImage: `url(${main_background})`,
-    //   backgroundPosition: "center",
-    //   backgroundSize: "cover",
-    //   backgroundRepeat: "no-repeat",
-    //   width: "auto",
-    //   height: "1010px",
-    // }}
+      style={{
+        // backgroundImage: `url(${main_background})`,
+        // backgroundPosition: "center",
+        // backgroundSize: "cover",
+        // backgroundRepeat: "no-repeat",
+        width: "auto",
+        height: "1010px",
+      }}
     >
       <Slide easing="ease" autoplay={false}>
         <div
@@ -80,7 +80,7 @@ const Header = (props) => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             width: "auto",
-            height: window.innerHeight,
+            height: "1010px",
           }}
         >
           <div className={classes.title}>
@@ -135,7 +135,7 @@ const Header = (props) => {
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               width: "auto",
-              height: window.innerHeight,
+              height: "1010px",
             }}
           >
             <StyleRoot>

@@ -112,6 +112,13 @@ const cards = [
     linkTo: "/contermeasure",
   },
   {
+    title: "Test your water consumption",
+    desciption: "Save water to relieve drought",
+    image: Viz4,
+    linkText: "check it out",
+    linkTo: "/dataVis_WaterConsumption",
+  },
+  {
     title: "Temperature Visualization",
     desciption: "Learn about temperature in Australia",
     image: Viz1,
@@ -131,13 +138,6 @@ const cards = [
     image: Viz3,
     linkText: "check it out",
     linkTo: "/dataVis_Rainfall",
-  },
-  {
-    title: "Water consumption",
-    desciption: "Save water to relieve drought",
-    image: Viz4,
-    linkText: "check it out",
-    linkTo: "/dataVis_WaterConsumption",
   },
 ];
 
@@ -229,7 +229,26 @@ const fact = (props) => {
           </div>
           <Container className={classes.placeHolder} />
           <Grid container spacing={4}>
-            {mapCard(cards.slice(0, 5))};
+            {mapCard(cards.slice(0, 4))};
+          </Grid>
+          <Container className={classes.placeHolder} />
+
+          <div className={classes.heroContent}>
+            <Container maxWidth="md">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                How To Prevent Drought
+              </Typography>
+            </Container>
+          </div>
+          <Container className={classes.placeHolder} />
+          <Grid container spacing={4}>
+            {mapCard(cards.slice(4, 6))};
           </Grid>
           <Container className={classes.placeHolder} />
 
@@ -248,7 +267,7 @@ const fact = (props) => {
           </div>
           <Container className={classes.placeHolder} />
           <Grid container spacing={4}>
-            {mapCard(cards.slice(5, cards.length))};
+            {mapCard(cards.slice(6, cards.length))};
           </Grid>
         </Container>
       </main>
