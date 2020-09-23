@@ -232,7 +232,7 @@ const fact = (props) => {
                 src={Background}
                 alt="..."
                 style={{
-                  marginTop: "100px",
+                  marginTop: "10px",
                   marginLeft: "0",
                   width: "100%",
                   height: "100%",
@@ -261,7 +261,7 @@ const fact = (props) => {
                 src={Prevent}
                 alt="..."
                 style={{
-                  marginTop: "100px",
+                  marginTop: "10px",
                   marginLeft: "0",
                   width: "100%",
                   height: "100%",
@@ -290,7 +290,7 @@ const fact = (props) => {
                 src={Vis}
                 alt="..."
                 style={{
-                  marginTop: "100px",
+                  marginTop: "10px",
                   marginLeft: "0",
                   width: "100%",
                   height: "100%",
