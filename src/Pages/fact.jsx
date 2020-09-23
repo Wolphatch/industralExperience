@@ -22,6 +22,9 @@ import Viz1 from "../asset/cardImage/temp.jpg";
 import Viz2 from "../asset/cardImage/evap.jpg";
 import Viz3 from "../asset/cardImage/Rainfall.jpg";
 import Viz4 from "../asset/cardImage/water.jpg";
+import Background from "../asset/homePage/slideShow/Drought Background.png";
+import Prevent from "../asset/homePage/slideShow/prevent drought.png";
+import Vis from "../asset/homePage/slideShow/Visualization.png";
 
 const whatever = makeStyles((theme) => ({
   titleTemp: {
@@ -215,7 +218,7 @@ const fact = (props) => {
         <Container ref={props.myRef} className={classes.cardGrid} maxWidth="xl">
           {/* grid container */}
           <div className={classes.heroContent}>
-            <Container maxWidth="md">
+            <Container maxWidth="x1">
               <Typography
                 component="h1"
                 variant="h2"
@@ -225,6 +228,16 @@ const fact = (props) => {
               >
                 Background Information
               </Typography>
+              <img
+                src={Background}
+                alt="..."
+                style={{
+                  marginTop: "100px",
+                  marginLeft: "0",
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
             </Container>
           </div>
           <Container className={classes.placeHolder} />
@@ -234,7 +247,7 @@ const fact = (props) => {
           <Container className={classes.placeHolder} />
 
           <div className={classes.heroContent}>
-            <Container maxWidth="md">
+            <Container maxWidth="x1">
               <Typography
                 component="h1"
                 variant="h2"
@@ -244,6 +257,16 @@ const fact = (props) => {
               >
                 How To Prevent Drought
               </Typography>
+              <img
+                src={Prevent}
+                alt="..."
+                style={{
+                  marginTop: "100px",
+                  marginLeft: "0",
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
             </Container>
           </div>
           <Container className={classes.placeHolder} />
@@ -253,7 +276,7 @@ const fact = (props) => {
           <Container className={classes.placeHolder} />
 
           <div className={classes.heroContent}>
-            <Container maxWidth="md">
+            <Container maxWidth="x1">
               <Typography
                 component="h1"
                 variant="h2"
@@ -263,6 +286,16 @@ const fact = (props) => {
               >
                 Visualization
               </Typography>
+              <img
+                src={Vis}
+                alt="..."
+                style={{
+                  marginTop: "100px",
+                  marginLeft: "0",
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
             </Container>
           </div>
           <Container className={classes.placeHolder} />
