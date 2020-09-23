@@ -494,10 +494,10 @@ const Intro = () => {
                   </Typography>
                 </Grid>
                 <Grid item xs={12}
-                  style={{marginLeft:"110px",marginTop:"-150px"}}>
+                  style={{marginLeft:"10px",marginTop:"-150px"}}>
                   <iframe
                   className={classes.iframe}
-                  width="1000"
+                  width="80%"
                   height="600"
                   src="https://www.youtube.com/embed/SkAhB-8CtZg"
                   frameborder="0"
