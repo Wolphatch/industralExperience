@@ -84,7 +84,7 @@ const cards = [
     linkTo: "/Intro",
   },
   {
-    title: "Casue of drought",
+    title: "Causes of drought",
     desciption: "Learn the diifferent factor that cause drought",
     image: cause_of_drought,
     linkText: "check it out",
