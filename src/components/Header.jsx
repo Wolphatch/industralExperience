@@ -33,6 +33,13 @@ const styles = {
   },
 };
 
+const imgSlideStyle = {
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  width: "auto",
+  height: "1010px",
+};
+
 const images = [slideShow1, slideShow2, slideShow3, slideShow4, slideShow5];
 
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
@@ -48,11 +55,8 @@ const Header = (props) => {
         <div
           style={{
             backgroundImage: `url(${image})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            width: "auto",
-            height: "1010px",
+            backgroundSize: "contain",
+            ...imgSlideStyle,
           }}
         />
       </div>
@@ -75,12 +79,9 @@ const Header = (props) => {
         <div
           className="each-slide"
           style={{
-            backgroundImage: `url(${main_background})`,
-            backgroundPosition: "center",
+            ...imgSlideStyle,
             backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            width: "auto",
-            height: "1010px",
+            backgroundImage: `url(${main_background})`,
           }}
         >
           <div className={classes.title}>
@@ -131,11 +132,8 @@ const Header = (props) => {
           <div
             style={{
               backgroundImage: `url(${slideShow5})`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              width: "auto",
-              height: "1010px",
+              backgroundSize: "contain",
+              ...imgSlideStyle,
             }}
           >
             <StyleRoot>
