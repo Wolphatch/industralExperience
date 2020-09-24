@@ -216,7 +216,7 @@ const fact = (props) => {
 
         {/* card container */}
         <Container ref={props.myRef} className={classes.cardGrid} maxWidth="xl">
-          {/* grid container */}
+          {/* Background info section */}
           <div className={classes.heroContent}>
             <Container maxWidth="x1">
               <Typography
@@ -246,6 +246,36 @@ const fact = (props) => {
           </Grid>
           <Container className={classes.placeHolder} />
 
+          {/* Viz section */}
+          <div className={classes.heroContent}>
+            <Container maxWidth="x1">
+              <Typography
+                component="h1"
+                variant="h2"
+                align="center"
+                color="textPrimary"
+                gutterBottom
+              >
+                Visualization
+              </Typography>
+              <img
+                src={Vis}
+                alt="..."
+                style={{
+                  marginTop: "10px",
+                  marginLeft: "0",
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            </Container>
+          </div>
+          <Container className={classes.placeHolder} />
+          <Grid container spacing={4}>
+            {mapCard(cards.slice(6, cards.length))};
+          </Grid>
+
+          {/* Countermeasure section */}
           <div className={classes.heroContent}>
             <Container maxWidth="x1">
               <Typography
@@ -274,34 +304,6 @@ const fact = (props) => {
             {mapCard(cards.slice(4, 6))};
           </Grid>
           <Container className={classes.placeHolder} />
-
-          <div className={classes.heroContent}>
-            <Container maxWidth="x1">
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              >
-                Visualization
-              </Typography>
-              <img
-                src={Vis}
-                alt="..."
-                style={{
-                  marginTop: "10px",
-                  marginLeft: "0",
-                  width: "100%",
-                  height: "100%",
-                }}
-              />
-            </Container>
-          </div>
-          <Container className={classes.placeHolder} />
-          <Grid container spacing={4}>
-            {mapCard(cards.slice(6, cards.length))};
-          </Grid>
         </Container>
       </main>
     </>

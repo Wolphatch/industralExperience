@@ -132,7 +132,7 @@ const Header = (props) => {
           <div
             style={{
               backgroundImage: `url(${slideShow5})`,
-              backgroundSize: "contain",
+              backgroundSize: "cover",
               ...imgSlideStyle,
             }}
           >

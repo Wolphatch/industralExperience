@@ -183,15 +183,6 @@ const Navbar = () => {
       anchor: anchorEl,
     },
     {
-      startIndex: 4,
-      endIndex: 6,
-      menuName: "How To Prevent Drought",
-      menuId: "menu_2",
-      open: handleClick3,
-      close: handleClose3,
-      anchor: anchorElll,
-    },
-    {
       startIndex: 6,
       endIndex: 9,
       menuName: "Visualization",
@@ -199,6 +190,15 @@ const Navbar = () => {
       open: handleClick2,
       close: handleClose2,
       anchor: anchorEll,
+    },
+    {
+      startIndex: 4,
+      endIndex: 6,
+      menuName: "How To Prevent Drought",
+      menuId: "menu_2",
+      open: handleClick3,
+      close: handleClose3,
+      anchor: anchorElll,
     },
   ];
 
