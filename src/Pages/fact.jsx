@@ -88,7 +88,7 @@ const whatever = makeStyles((theme) => ({
     padding: theme.spacing(8, 0, 0),
   },
   placeHolder: {
-    paddingTop: theme.spacing(2),
+    paddingTop: theme.spacing(0),
     paddingBottom: theme.spacing(2),
   },
   root: {
@@ -175,6 +175,7 @@ const cardSwiperProp = {
   effect: "coverflow",
   grabCursor: true,
   centeredSlides: true,
+  autoHeight: true,
   slidesPerView: "auto",
   coverflowEffect: {
     rotate: 50,
@@ -194,6 +195,7 @@ const pageSwiperProp = {
   slidesPerView: 1,
   spaceBetween: 30,
   mousewheel: true,
+  autoHeight: true,
   pagination: {
     // el: ".swiper-pagination",
     clickable: true,
@@ -329,7 +331,7 @@ const fact = (props) => {
           {/* Background info section */}
           <SwiperSlide style={{ ...pageStyle }}>
             <div className={classes.heroContent}>
-              <Container maxWidth="x1">
+              <Container fixed>
                 <Typography
                   component="h1"
                   variant="h2"
@@ -343,7 +345,7 @@ const fact = (props) => {
                   src={Background}
                   alt="..."
                   style={{
-                    marginTop: "10px",
+                    marginTop: "0px",
                     marginLeft: "0",
                     width: "100%",
                     height: "100%",
