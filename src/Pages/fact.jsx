@@ -39,9 +39,9 @@ import Viz1 from "../asset/cardImage/temp.jpg";
 import Viz2 from "../asset/cardImage/evap.jpg";
 import Viz3 from "../asset/cardImage/Rainfall.jpg";
 import Viz4 from "../asset/cardImage/water.jpg";
-import Background from "../asset/homePage/slideShow/Drought Background.png";
-import Prevent from "../asset/homePage/slideShow/prevent drought.png";
-import Vis from "../asset/homePage/slideShow/Visualization.png";
+import Background from "../asset/homePage/slideShow/Drought Background1.png";
+import Prevent from "../asset/homePage/slideShow/prevent drought1.png";
+import Vis from "../asset/homePage/slideShow/Visualization1.png";
 
 const whatever = makeStyles((theme) => ({
   titleTemp: {
@@ -84,7 +84,19 @@ const whatever = makeStyles((theme) => ({
     paddingTop: theme.spacing(8),
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#0b8457",
+    padding: theme.spacing(8, 0, 0),
+  },
+  heroContent1: {
+    backgroundColor: "#b4f1f1",
+    padding: theme.spacing(2, 0, 2),
+  },
+  heroContent2: {
+    backgroundColor: "#10316b",
+    padding: theme.spacing(8, 0, 0),
+  },
+  heroContent3: {
+    backgroundColor: "#e3c4a8",
     padding: theme.spacing(8, 0, 0),
   },
   placeHolder: {
@@ -322,6 +334,7 @@ const fact = (props) => {
 
         {/* card container */}
         {/* <Container ref={props.myRef} className={classes.cardGrid} maxWidth="xl"> */}
+        {/* <Container maxWidth={window.innerWidth}> */}
         <Swiper style={{ ...pageStyle }} {...pageSwiperProp}>
           {/* Header section */}
           <SwiperSlide style={{ ...pageStyle }}>
@@ -337,7 +350,6 @@ const fact = (props) => {
                   variant="h2"
                   align="center"
                   color="textPrimary"
-                  gutterBottom
                 >
                   Background Information
                 </Typography>
@@ -353,8 +365,21 @@ const fact = (props) => {
                 />
               </Container>
             </div>
+            {/* <div className={classes.heroContent1}>
+              <Container fixed>
+                <img
+                  src={Background}
+                  alt="..."
+                  style={{
+                    marginTop: "0px",
+                    marginLeft: "0",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
+              </Container>
+            </div> */}
             <Container className={classes.placeHolder} />
-
             {/* Testing for card swiper 25/09 */}
             <Swiper {...cardSwiperProp}>
               {mapCardTest(cards.slice(0, 4))};
@@ -367,14 +392,13 @@ const fact = (props) => {
 
           {/* Viz section */}
           <SwiperSlide style={{ ...pageStyle }}>
-            <div className={classes.heroContent}>
+            <div className={classes.heroContent2}>
               <Container fixed>
                 <Typography
+                  style = {{color:"#fdfdfd"}}
                   component="h1"
                   variant="h2"
                   align="center"
-                  color="textPrimary"
-                  gutterBottom
                 >
                   Visualization
                 </Typography>
@@ -382,7 +406,7 @@ const fact = (props) => {
                   src={Vis}
                   alt="..."
                   style={{
-                    marginTop: "10px",
+                    marginTop: "0",
                     marginLeft: "0",
                     width: "100%",
                     height: "100%",
@@ -402,14 +426,13 @@ const fact = (props) => {
 
           {/* Countermeasure section */}
           <SwiperSlide style={{ ...pageStyle }}>
-            <div className={classes.heroContent}>
+            <div className={classes.heroContent3}>
               <Container fixed>
                 <Typography
                   component="h1"
                   variant="h2"
                   align="center"
                   color="textPrimary"
-                  gutterBottom
                 >
                   How To Prevent Drought
                 </Typography>
@@ -417,7 +440,7 @@ const fact = (props) => {
                   src={Prevent}
                   alt="..."
                   style={{
-                    marginTop: "10px",
+                    marginTop: "0",
                     marginLeft: "0",
                     width: "100%",
                     height: "100%",
@@ -434,6 +457,7 @@ const fact = (props) => {
             </Swiper>
           </SwiperSlide>
         </Swiper>
+        {/* </Container> */}
         {/* </Container> */}
       </main>
     </>
