@@ -144,7 +144,7 @@ const whatever = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: "#f3558e",
+    color: "#fdfdfd",
     fontSize: 100,
   },
   imageSrc: {
@@ -162,7 +162,7 @@ const whatever = makeStyles((theme) => ({
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: "#e2f3f5",
+    backgroundColor: "#071e3d",
     opacity: 0.4,
     transition: theme.transitions.create("opacity"),
   },
@@ -176,7 +176,7 @@ const whatever = makeStyles((theme) => ({
   imageMarked: {
     height: 3,
     width: 24,
-    backgroundColor: "#f3558e",
+    backgroundColor: "#fdfdfd",
     position: "absolute",
     bottom: -2,
     left: "calc(50% - 9px)",
