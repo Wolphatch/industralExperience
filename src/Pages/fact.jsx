@@ -235,7 +235,7 @@ const mapCard = (cardGroup) => {
               component={Link}
               to={card.linkTo}
             >
-              {card.linkText}
+              {/* {card.linkText} */}
             </Button>
           </CardActions>
         </Card>
@@ -279,7 +279,7 @@ const mapCardTest = (cardGroup) => {
               component={Link}
               to={card.linkTo}
             >
-              {card.linkText}
+              {/* {card.linkText} */}
             </Button>
           </CardActions>
         </Card>
@@ -368,7 +368,7 @@ const fact = (props) => {
           {/* Viz section */}
           <SwiperSlide style={{ ...pageStyle }}>
             <div className={classes.heroContent}>
-              <Container maxWidth="x1">
+              <Container fixed>
                 <Typography
                   component="h1"
                   variant="h2"
@@ -403,7 +403,7 @@ const fact = (props) => {
           {/* Countermeasure section */}
           <SwiperSlide style={{ ...pageStyle }}>
             <div className={classes.heroContent}>
-              <Container maxWidth="x1">
+              <Container fixed>
                 <Typography
                   component="h1"
                   variant="h2"
