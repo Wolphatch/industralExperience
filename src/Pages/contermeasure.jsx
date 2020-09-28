@@ -174,8 +174,8 @@ const whatever = makeStyles((theme) => ({
     }px`,
   },
   imageMarked: {
-    height: 3,
-    width: 24,
+    height: 6,
+    width: 28,
     backgroundColor: "#fdfdfd",
     position: "absolute",
     bottom: -2,
