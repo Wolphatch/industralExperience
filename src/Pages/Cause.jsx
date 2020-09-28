@@ -38,14 +38,14 @@ const whatever = makeStyles((theme) => ({
     padding: theme.spacing(15, 0, 15),
   },
   headingContent: {
-    padding: theme.spacing(8, 0, 8),
+    padding: theme.spacing(4, 0, 4),
     color: "#fdfdfd",
   },
   headingContent1: {
     padding: theme.spacing(8, 0, 0),
   },
   headingContent2: {
-    padding: theme.spacing(4, 0, 4),
+    padding: theme.spacing(0, 0, 0),
     color: "#fdfdfd",
   },
   heroButtons: {
@@ -193,7 +193,7 @@ function Cause() {
 
     cardGroup.map((card, key) => {
       cardUI.push(
-        <Grid item id={key} xs={12} sm={6} md={6}>
+        <Grid item id={key} xs={12} sm={6} md={3} justify="center">
             <Card className={classes.card}>
               <CardMedia
                 className={classes.cardMedia}
@@ -354,7 +354,7 @@ function Cause() {
           </div>
 
           <Container className={classes.placeHolder} />
-          <Grid container spacing={5}>
+          <Grid container spacing={5} justify="center">
             {mapCard(cards.slice(0, 3))};
           </Grid>
 

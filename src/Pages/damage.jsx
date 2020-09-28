@@ -36,6 +36,11 @@ const whatever = makeStyles((theme) => ({
         padding: theme.spacing(8, 0, 6),
         width: "auto",
     },
+    headingSpace: {
+        //backgroundColor: theme.palette.background.paper,
+        padding: theme.spacing(0, 0, 2),
+        width: "auto",
+    },
     heroButtons: {
         marginTop: theme.spacing(4),
     },
@@ -216,7 +221,7 @@ function Cause() {
                         </Container>
                     </div> 
 
-                    <div className={classes.headingContent} 
+                    <div className={classes.headingSpace} 
                      style={{
                         backgroundPosition: "center",
                         backgroundSize: "cover",
