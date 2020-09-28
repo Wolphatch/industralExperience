@@ -1,13 +1,11 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Typography, Box } from "@material-ui/core";
-import { Home } from "@material-ui/icons";
+import { AppBar, Toolbar, Box } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { green } from "@material-ui/core/colors";
-import Avatar from "@material-ui/core/Avatar";
 import BackToTop from "react-back-to-top-button";
 import Fab from "@material-ui/core/Fab";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
@@ -48,12 +46,6 @@ const whatever = makeStyles((theme) => ({
   },
 }));
 
-const testLink = {
-  path: "/dataVis_evap",
-  title: "Water evaporation in Australia",
-  subTitle: "Do you have any idea about water evaporation in Australia?",
-};
-
 const menuItems = [
   {
     linkText: "What is drought?",
@@ -76,6 +68,10 @@ const menuItems = [
     linkTo: "/contermeasure",
   },
   {
+    linkText: "Water",
+    linkTo: "/dataVis_WaterConsumption",
+  },
+  {
     linkText: "Evaporation",
     linkTo: "/dataVis_evap",
   },
@@ -86,10 +82,6 @@ const menuItems = [
   {
     linkText: "Rainfall",
     linkTo: "/dataVis_Rainfall",
-  },
-  {
-    linkText: "Water",
-    linkTo: "/dataVis_WaterConsumption",
   },
 ];
 
@@ -113,16 +105,16 @@ const StyledMenu = withStyles({
   />
 ));
 
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    "&:focus": {
-      backgroundColor: theme.palette.primary.main,
-      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-        color: theme.palette.common.white,
-      },
-    },
-  },
-}))(MenuItem);
+// const StyledMenuItem = withStyles((theme) => ({
+//   root: {
+//     "&:focus": {
+//       backgroundColor: theme.palette.primary.main,
+//       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
+//         color: theme.palette.common.white,
+//       },
+//     },
+//   },
+// }))(MenuItem);
 
 const mapMenuItems = (menuGroup) => {
   const classes = whatever();
@@ -165,6 +157,15 @@ const Navbar = () => {
   const handleClose2 = () => {
     setAnchorEll(null);
   };
+  const [anchorElll, setAnchorElll] = React.useState(null);
+
+  const handleClick3 = (event) => {
+    setAnchorElll(event.currentTarget);
+  };
+
+  const handleClose3 = () => {
+    setAnchorElll(null);
+  };
 
   // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
@@ -174,25 +175,30 @@ const Navbar = () => {
   const menuList = [
     {
       startIndex: 0,
-      endIndex: 5,
-      menuName: "Background",
+      endIndex: 4,
+      menuName: "Drought Background",
       menuId: "menu_1",
       open: handleClick,
       close: handleClose,
       anchor: anchorEl,
     },
     {
-      startIndex: 5,
+      startIndex: 6,
       endIndex: 9,
       menuName: "Visualization",
-      menuId: "menu_2",
+      menuId: "menu_3",
       open: handleClick2,
       close: handleClose2,
       anchor: anchorEll,
     },
     {
-      menuName: "Quiz",
-      menuId: "menu_3",
+      startIndex: 4,
+      endIndex: 6,
+      menuName: "How To Prevent Drought",
+      menuId: "menu_2",
+      open: handleClick3,
+      close: handleClose3,
+      anchor: anchorElll,
     },
   ];
 

@@ -13,14 +13,12 @@ const MainPage = () => {
     <>
       <div>
         <Navbar />
-        <Header myRef={myRef} />
+        {/* <Header myRef={myRef} /> */}
 
-        <div style={{ height: 50 }} />
+        {/* <div style={{ height: 50 }} /> */}
 
-        <main>
-          <Main myRef={myRef} />
-        </main>
-        <Footer />
+        <Main myRef={myRef} />
+        {/* <Footer /> */}
       </div>
     </>
   );

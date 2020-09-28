@@ -12,6 +12,23 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// import Swiper core and required components
+import SwiperCore, {
+  EffectCoverflow,
+  EffectFlip,
+  Mousewheel,
+  Navigation,
+  Pagination,
+} from "swiper";
+
+// Import Swiper styles
+import "swiper/swiper-bundle.css";
+
+// component
+import HomePage from "../components/Homepage";
+
 //asset
 import drought_intro from "../asset/cardImage/Drought_Intro.png";
 import cause_of_drought from "../asset/cardImage/Cause_of_Drought.png";
@@ -22,6 +39,9 @@ import Viz1 from "../asset/cardImage/temp.jpg";
 import Viz2 from "../asset/cardImage/evap.jpg";
 import Viz3 from "../asset/cardImage/Rainfall.jpg";
 import Viz4 from "../asset/cardImage/water.jpg";
+import Background from "../asset/homePage/slideShow/Drought Background.png";
+import Prevent from "../asset/homePage/slideShow/prevent drought.png";
+import Vis from "../asset/homePage/slideShow/Visualization.png";
 
 const whatever = makeStyles((theme) => ({
   titleTemp: {
@@ -50,6 +70,7 @@ const whatever = makeStyles((theme) => ({
   },
   card: {
     height: "100%",
+    width: "400px",
     display: "flex",
     flexDirection: "column",
   },
@@ -64,7 +85,7 @@ const whatever = makeStyles((theme) => ({
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(8, 0, 0),
   },
   placeHolder: {
     paddingTop: theme.spacing(2),
@@ -75,6 +96,15 @@ const whatever = makeStyles((theme) => ({
   },
 }));
 
+// install Swiper components
+SwiperCore.use([
+  Navigation,
+  Pagination,
+  EffectFlip,
+  EffectCoverflow,
+  Mousewheel,
+]);
+
 const cards = [
   {
     title: "Introduction to drought",
@@ -84,7 +114,7 @@ const cards = [
     linkTo: "/Intro",
   },
   {
-    title: "Casue of drought",
+    title: "Causes of drought",
     desciption: "Learn the diifferent factor that cause drought",
     image: cause_of_drought,
     linkText: "check it out",
@@ -112,6 +142,13 @@ const cards = [
     linkTo: "/contermeasure",
   },
   {
+    title: "Test your water consumption",
+    desciption: "Save water to relieve drought",
+    image: Viz4,
+    linkText: "check it out",
+    linkTo: "/dataVis_WaterConsumption",
+  },
+  {
     title: "Temperature Visualization",
     desciption: "Learn about temperature in Australia",
     image: Viz1,
@@ -132,14 +169,40 @@ const cards = [
     linkText: "check it out",
     linkTo: "/dataVis_Rainfall",
   },
-  {
-    title: "Water consumption",
-    desciption: "Save water to relieve drought",
-    image: Viz4,
-    linkText: "check it out",
-    linkTo: "/dataVis_WaterConsumption",
-  },
 ];
+
+const cardSwiperProp = {
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: true,
+  },
+  pagination: {
+    // el: ".swiper-pagination",
+    clickable: true,
+  },
+};
+
+const pageSwiperProp = {
+  direction: "vertical",
+  slidesPerView: 1,
+  spaceBetween: 30,
+  mousewheel: true,
+  pagination: {
+    // el: ".swiper-pagination",
+    clickable: true,
+  },
+};
+
+const pageStyle = {
+  height: "1010px",
+};
 
 const mapCard = (cardGroup) => {
   const classes = whatever();
@@ -181,6 +244,50 @@ const mapCard = (cardGroup) => {
   return cardUI;
 };
 
+const mapCardTest = (cardGroup) => {
+  const classes = whatever();
+
+  let cardUI = [];
+
+  cardGroup.map((card, key) => {
+    cardUI.push(
+      <SwiperSlide
+        style={{
+          width: "400px",
+        }}
+      >
+        <Card className={classes.card}>
+          <CardMedia
+            className={classes.cardMedia}
+            image={card.image}
+            title={card.title}
+            component={Link}
+            to={card.linkTo}
+          />
+          <CardContent className={classes.cardContent}>
+            <Typography gutterBottom variant="h5" component="h2">
+              {card.title}
+            </Typography>
+            <Typography>{card.desciption}</Typography>
+          </CardContent>
+          <CardActions>
+            <Button
+              size="small"
+              color="primary"
+              component={Link}
+              to={card.linkTo}
+            >
+              {card.linkText}
+            </Button>
+          </CardActions>
+        </Card>
+      </SwiperSlide>
+    );
+    return null;
+  });
+  return cardUI;
+};
+
 const fact = (props) => {
   const classes = whatever();
 
@@ -212,45 +319,120 @@ const fact = (props) => {
         {/* End hero unit */}
 
         {/* card container */}
-        <Container ref={props.myRef} className={classes.cardGrid} maxWidth="xl">
-          {/* grid container */}
-          <div className={classes.heroContent}>
-            <Container maxWidth="md">
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              >
-                Background Information
-              </Typography>
-            </Container>
-          </div>
-          <Container className={classes.placeHolder} />
-          <Grid container spacing={4}>
-            {mapCard(cards.slice(0, 5))};
-          </Grid>
-          <Container className={classes.placeHolder} />
+        {/* <Container ref={props.myRef} className={classes.cardGrid} maxWidth="xl"> */}
+        <Swiper style={{ ...pageStyle }} {...pageSwiperProp}>
+          {/* Header section */}
+          <SwiperSlide style={{ ...pageStyle }}>
+            <HomePage />
+          </SwiperSlide>
 
-          <div className={classes.heroContent}>
-            <Container maxWidth="md">
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              >
-                Visualization
-              </Typography>
-            </Container>
-          </div>
-          <Container className={classes.placeHolder} />
-          <Grid container spacing={4}>
-            {mapCard(cards.slice(5, cards.length))};
-          </Grid>
-        </Container>
+          {/* Background info section */}
+          <SwiperSlide style={{ ...pageStyle }}>
+            <div className={classes.heroContent}>
+              <Container maxWidth="x1">
+                <Typography
+                  component="h1"
+                  variant="h2"
+                  align="center"
+                  color="textPrimary"
+                  gutterBottom
+                >
+                  Background Information
+                </Typography>
+                <img
+                  src={Background}
+                  alt="..."
+                  style={{
+                    marginTop: "10px",
+                    marginLeft: "0",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
+              </Container>
+            </div>
+            <Container className={classes.placeHolder} />
+
+            {/* Testing for card swiper 25/09 */}
+            <Swiper {...cardSwiperProp}>
+              {mapCardTest(cards.slice(0, 4))};
+            </Swiper>
+          </SwiperSlide>
+
+          {/* <Grid container spacing={4}>
+            {mapCard(cards.slice(0, 4))};
+          </Grid> */}
+
+          {/* Viz section */}
+          <SwiperSlide style={{ ...pageStyle }}>
+            <div className={classes.heroContent}>
+              <Container maxWidth="x1">
+                <Typography
+                  component="h1"
+                  variant="h2"
+                  align="center"
+                  color="textPrimary"
+                  gutterBottom
+                >
+                  Visualization
+                </Typography>
+                <img
+                  src={Vis}
+                  alt="..."
+                  style={{
+                    marginTop: "10px",
+                    marginLeft: "0",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
+              </Container>
+            </div>
+            <Container className={classes.placeHolder} />
+            {/* Testing for card swiper 25/09 */}
+            <Swiper {...cardSwiperProp}>
+              {mapCardTest(cards.slice(6, cards.length))};
+            </Swiper>
+          </SwiperSlide>
+          {/* <Grid container spacing={4}>
+            {mapCard(cards.slice(6, cards.length))};
+          </Grid> */}
+
+          {/* Countermeasure section */}
+          <SwiperSlide style={{ ...pageStyle }}>
+            <div className={classes.heroContent}>
+              <Container maxWidth="x1">
+                <Typography
+                  component="h1"
+                  variant="h2"
+                  align="center"
+                  color="textPrimary"
+                  gutterBottom
+                >
+                  How To Prevent Drought
+                </Typography>
+                <img
+                  src={Prevent}
+                  alt="..."
+                  style={{
+                    marginTop: "10px",
+                    marginLeft: "0",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
+              </Container>
+            </div>
+            <Container className={classes.placeHolder} />
+            {/* <Grid container spacing={4}>
+            {mapCard(cards.slice(4, 6))};
+          </Grid> */}
+            <Swiper {...cardSwiperProp}>
+              {mapCardTest(cards.slice(4, 6))};
+            </Swiper>
+          </SwiperSlide>
+        </Swiper>
+        {/* </Container> */}
       </main>
     </>
   );
