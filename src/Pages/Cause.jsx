@@ -354,7 +354,7 @@ function Cause() {
           </div>
 
           <Container className={classes.placeHolder} />
-          <Grid container spacing={5} justify="center">
+          <Grid container spacing={2} justify="center">
             {mapCard(cards.slice(0, 3))};
           </Grid>
 
@@ -429,7 +429,7 @@ function Cause() {
           {/* space */}
 
           <Container className={classes.placeHolder} />
-          <Grid container spacing={5}>
+          <Grid container spacing={2}>
             {mapCard(cards.slice(3, 7))};
           </Grid>
         </Container>
