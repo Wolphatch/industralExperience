@@ -61,7 +61,7 @@ const whatever = makeStyles((theme) => ({
     //backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 0),
     width: "auto",
-},
+  },
   pictureContent: {
     padding: theme.spacing(0, 0, 15),
   },
@@ -312,6 +312,8 @@ function Cause() {
         <div
           className={classes.heroContent}
           style={{
+            height:"50%",
+            width:"auto",
             backgroundImage: `url(${test})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
@@ -384,7 +386,6 @@ function Cause() {
       
         {/*part 1*/}
         <SwiperSlide style={{ ...pageStyle }}> 
-          <Navbar /> 
           <div
             className={classes.headingContent}
             style={{

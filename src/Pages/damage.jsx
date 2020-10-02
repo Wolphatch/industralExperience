@@ -390,6 +390,8 @@ function Cause() {
                 <div
                     className={classes.heroContent}
                     style={{
+                        height:"50%",
+                        width:"auto",
                         backgroundImage: `url(${test})`,
                         backgroundPosition: "center",
                         backgroundSize: "cover",
