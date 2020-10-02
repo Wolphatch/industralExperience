@@ -70,7 +70,6 @@ const whatever = makeStyles((theme) => ({
   },
   card: {
     height: "100%",
-    width: "400px",
     display: "flex",
     flexDirection: "column",
   },
@@ -86,7 +85,7 @@ const whatever = makeStyles((theme) => ({
   heroContent: {
     backgroundColor: "white",
     padding: theme.spacing(12, 0, 0),
-    height: "100px"
+    height: "100px",
   },
   heroContent1: {
     backgroundColor: "#b4f1f1",
@@ -95,12 +94,12 @@ const whatever = makeStyles((theme) => ({
   heroContent2: {
     backgroundColor: "white",
     padding: theme.spacing(12, 0, 0),
-    height:"100px",
+    height: "100px",
   },
   heroContent3: {
     backgroundColor: "white",
     padding: theme.spacing(12, 0, 0),
-    height:"100px",
+    height: "100px",
   },
   placeHolder: {
     paddingTop: theme.spacing(2),
@@ -222,14 +221,14 @@ const pageStyle = {
   height: "1010px",
 };
 
-const mapCard = (cardGroup,xs,sm,md) => {
+const mapCard = (cardGroup, xs, sm, md) => {
   const classes = whatever();
 
   let cardUI = [];
 
   cardGroup.map((card, key) => {
     cardUI.push(
-      <Grid item id={key} xs={xs} sm={sm} md={md}>
+      <Grid item id={key} xs={xs} sm={sm} md={md} justify="center">
         <Card className={classes.card}>
           <CardMedia
             className={classes.cardMedia}
@@ -346,7 +345,7 @@ const fact = (props) => {
           </SwiperSlide>
 
           {/* Background info section */}
-          <SwiperSlide style={{ ...pageStyle}}>
+          <SwiperSlide style={{ ...pageStyle }}>
             <div className={classes.heroContent}>
               <Container fixed>
                 <Typography
@@ -373,18 +372,20 @@ const fact = (props) => {
                 />
               </Container>
             </div> */}
-            <Container className={classes.placeHolder}/>
+            <Container className={classes.placeHolder} />
             {/* Testing for card swiper 25/09 */}
             {/* <Swiper {...cardSwiperProp}>
               {mapCardTest(cards.slice(0, 4))};
             </Swiper> */}
-            <Grid container spacing={2} style={{paddingTop:"100px"}}>
-              {mapCard(cards.slice(0, 4),12,4,3)};
+            <Grid
+              container
+              spacing={2}
+              style={{ paddingTop: "100px" }}
+              justify="center"
+            >
+              {mapCard(cards.slice(0, 4), 12, 6, 3)}
             </Grid>
           </SwiperSlide>
-          
-
-
 
           {/* Viz section */}
           <SwiperSlide style={{ ...pageStyle }}>
@@ -416,9 +417,14 @@ const fact = (props) => {
               {mapCardTest(cards.slice(6, cards.length))};
             </Swiper>
           </SwiperSlide> */}
-          <Grid container spacing={2} style={{paddingTop:"100px",paddingLeft: "100px"}}>
-            {mapCard(cards.slice(6, cards.length),12,4,4)};
-          </Grid>
+            <Grid
+              container
+              spacing={2}
+              style={{ paddingTop: "100px" }}
+              justify="center"
+            >
+              {mapCard(cards.slice(6, cards.length), 12, 6, 3)}
+            </Grid>
           </SwiperSlide>
 
           {/* Countermeasure section */}
@@ -446,9 +452,14 @@ const fact = (props) => {
               </Container>
             </div>
             <Container className={classes.placeHolder} />
-            <Grid container spacing={2} style={{paddingTop:"100px",paddingLeft: "300px"}} >
-            {mapCard(cards.slice(4, 6),12,6,6)};
-          </Grid> 
+            <Grid
+              container
+              spacing={2}
+              style={{ paddingTop: "100px" }}
+              justify="center"
+            >
+              {mapCard(cards.slice(4, 6), 12, 6, 3)}
+            </Grid>
             {/* <Swiper {...cardSwiperProp}>
               {mapCardTest(cards.slice(4, 6))};
             </Swiper> */}
