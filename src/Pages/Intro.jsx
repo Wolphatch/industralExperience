@@ -12,11 +12,24 @@ import { red } from "@material-ui/core/colors";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TagTool from "../components/TagTool";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// import Swiper core and required components
+import SwiperCore, {
+  EffectCoverflow,
+  EffectFlip,
+  Mousewheel,
+  Navigation,
+  Pagination,
+} from "swiper";
+
+// Import Swiper styles
+import "swiper/swiper-bundle.css";
 
 //assest
 import p1 from "../asset/pic_userstory_1/picture1.png";
-import p2 from "../asset/pic_userstory_1/picture2.png";
-import p3 from "../asset/pic_userstory_1/picture3.png";
+import p2 from "../asset/pic_userstory_1/picture2.jpg";
+import p3 from "../asset/pic_userstory_1/picture3.jpg";
 import p4 from "../asset/pic_userstory_1/picture4.png";
 import p5 from "../asset/pic_userstory_1/picture5.png";
 import p6 from "../asset/pic_userstory_1/picture6.png";
@@ -38,12 +51,17 @@ const whatever = makeStyles((theme) => ({
   },
   heroContent: {
     // backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(15, 0, 15),
+    padding: theme.spacing(27, 0, 27),
   },
   headingContent: {
-    padding: theme.spacing(5, 0, 5),
+    padding: theme.spacing(10, 0, 2),
     width: "auto",
   },
+  headingContent1: {
+    //backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(8, 0, 0),
+    width: "auto",
+},
   pictureContent: {
     padding: theme.spacing(0, 0, 15),
   },
@@ -110,6 +128,15 @@ const whatever = makeStyles((theme) => ({
     color: "#fdfdfd",
   },
 }));
+
+// install Swiper components
+SwiperCore.use([
+  Navigation,
+  Pagination,
+  EffectFlip,
+  EffectCoverflow,
+  Mousewheel,
+]);
 
 const cards = [
   {
@@ -204,6 +231,41 @@ function Cause() {
   //   return props % 2 == 0 ? 4 : 8;
   // };
 
+  const cardSwiperProp = {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    autoHeight: true,
+    slidesPerView: "auto",
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
+    pagination: {
+      // el: ".swiper-pagination",
+      clickable: true,
+    },
+  };
+  
+  const pageSwiperProp = {
+    direction: "vertical",
+    slidesPerView: 1,
+    spaceBetween: 30,
+    mousewheel: true,
+    autoHeight: true,
+    pagination: {
+      // el: ".swiper-pagination",
+      clickable: true,
+    },
+  };
+  
+  const pageStyle = {
+    height: "1010px",
+  };
+
   const mapCard = (cardGroup) => {
     const classes = whatever();
 
@@ -241,6 +303,11 @@ function Cause() {
     <>
       <Navbar />
       <main>
+      
+      <Swiper style={{ ...pageStyle }} {...pageSwiperProp}>
+
+      <SwiperSlide style={{ ...pageStyle }}>          
+             
         {/* Hero unit */}
         <div
           className={classes.heroContent}
@@ -275,10 +342,9 @@ function Cause() {
           </Container>
         </div>
         {/* End hero unit */}
+        </SwiperSlide>
 
-        {/* card container */}
-        <Container className={classes.cardGrid} maxWidth="xl">
-          {/* grid container */}
+        <SwiperSlide style={{ ...pageStyle }}>
           <div className={classes.headingContent}>
             <Container maxWidth="xl">
               <Typography
@@ -299,8 +365,7 @@ function Cause() {
               >
                 Do you think drought only means our soil is dry? No! Actullay ,
                 it has four definitions in general! Let's start from a little story!
-              </Typography>
-              
+              </Typography>              
             </Container>
           </div>
           <div className={classes.pictureContent}>
@@ -315,7 +380,11 @@ function Cause() {
                 }}
               />
           </div>
-          {/*part 1*/}
+        </SwiperSlide>
+      
+        {/*part 1*/}
+        <SwiperSlide style={{ ...pageStyle }}> 
+          <Navbar /> 
           <div
             className={classes.headingContent}
             style={{
@@ -351,14 +420,17 @@ function Cause() {
             src={p9}
             alt="..."
             style={{
-              marginTop: "100px",
+              marginTop: "80px",
               marginLeft: "0",
               width: "100%",
               height: "100%",
             }}
           />
           </div>
+          </SwiperSlide> 
+
           {/*part 2*/}
+          <SwiperSlide style={{ ...pageStyle }}>
           <div
             className={classes.headingContent}
             style={{
@@ -394,14 +466,17 @@ function Cause() {
             src={p10}
             alt="..."
             style={{
-              marginTop: "100px",
+              marginTop: "80px",
               marginLeft: "0",
               width: "100%",
               height: "100%",
             }}
           />
           </div>
+          </SwiperSlide>
+
           {/*part 3*/}
+          <SwiperSlide style={{ ...pageStyle }}>
           <div
             className={classes.headingContent}
             style={{
@@ -437,14 +512,17 @@ function Cause() {
             src={p11}
             alt="..."
             style={{
-              marginTop: "100px",
+              marginTop: "80px",
               marginLeft: "0",
               width: "100%",
               height: "100%",
             }}
           />
           </div>
+          </SwiperSlide>
+
           {/*part 4*/}
+          <SwiperSlide style={{ ...pageStyle }}>
           <div
             className={classes.headingContent}
             style={{
@@ -480,14 +558,17 @@ function Cause() {
             src={p12}
             alt="..."
             style={{
-              marginTop: "100px",
+              marginTop: "80px",
               marginLeft: "0",
               width: "100%",
               height: "100%",
             }}
           />
           </div>
+          </SwiperSlide>
+
           {/*part 5*/}
+          <SwiperSlide style={{ ...pageStyle }}>
           <div
             className={classes.headingContent}
             style={{
@@ -523,14 +604,17 @@ function Cause() {
             src={p13}
             alt="..."
             style={{
-              marginTop: "100px",
+              marginTop: "80px",
               marginLeft: "0",
               width: "100%",
               height: "100%",
             }}
           />
           </div>
-          <div className={classes.headingContent}>
+          </SwiperSlide>
+          
+          <SwiperSlide style={{ ...pageStyle }}>
+          <div className={classes.headingContent1}>
           <img
             src={good}
             alt="..."
@@ -542,18 +626,13 @@ function Cause() {
             }}
           />
         </div>
-
-          {/* <Container className={classes.placeHolder} />
-          <Grid container spacing={1}>
-            {mapCard(cards.slice(0, 4))};
-          </Grid>
-          <Container className={classes.placeHolder} /> */}
-
-         
-        </Container>
+        <TagTool></TagTool>
+        <Footer />
+        </SwiperSlide>
+        </Swiper>        
+        
       </main>
       <TagTool></TagTool>
-      <Footer />
     </>
   );
 }

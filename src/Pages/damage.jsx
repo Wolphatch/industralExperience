@@ -12,6 +12,19 @@ import { red } from "@material-ui/core/colors";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TagTool from "../components/TagTool";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// import Swiper core and required components
+import SwiperCore, {
+  EffectCoverflow,
+  EffectFlip,
+  Mousewheel,
+  Navigation,
+  Pagination,
+} from "swiper";
+
+// Import Swiper styles
+import "swiper/swiper-bundle.css";
 
 //assest
 import p5 from "../asset/pic_userstory_1/picture5.png";
@@ -29,11 +42,16 @@ const whatever = makeStyles((theme) => ({
     },
     heroContent: {
         // backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(25, 0, 16),
+        padding: theme.spacing(27, 0, 27),
     },
     headingContent: {
         //backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(8, 0, 6),
+        width: "auto",
+    },
+    headingContent1: {
+        //backgroundColor: theme.palette.background.paper,
+        padding: theme.spacing(8, 0, 0),
         width: "auto",
     },
     headingSpace: {
@@ -109,6 +127,13 @@ const whatever = makeStyles((theme) => ({
         color: "#071e3d",
     }
 }));
+SwiperCore.use([
+    Navigation,
+    Pagination,
+    EffectFlip,
+    EffectCoverflow,
+    Mousewheel,
+  ]);
 
 const cards = [   
     {
@@ -181,6 +206,40 @@ function Cause() {
     // const handleStrip = (props) => {
     //   return props % 2 == 0 ? 4 : 8;
     // };
+    const cardSwiperProp = {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        autoHeight: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        },
+        pagination: {
+          // el: ".swiper-pagination",
+          clickable: true,
+        },
+      };
+      
+      const pageSwiperProp = {
+        direction: "vertical",
+        slidesPerView: 1,
+        spaceBetween: 30,
+        mousewheel: true,
+        autoHeight: true,
+        pagination: {
+          // el: ".swiper-pagination",
+          clickable: true,
+        },
+      };
+      
+      const pageStyle = {
+        height: "1010px",
+      };
 
     const mapCard = (cardGroup) => {
         const classes = whatever();
@@ -325,6 +384,9 @@ function Cause() {
             <Navbar />
             <main>
                 {/* Hero unit */}
+                <Swiper style={{ ...pageStyle }} {...pageSwiperProp}>
+
+                <SwiperSlide style={{ ...pageStyle }}>      
                 <div
                     className={classes.heroContent}
                     style={{
@@ -357,10 +419,11 @@ function Cause() {
                         </Typography>
                     </Container>
                 </div>
+                </SwiperSlide>
                 {/* End hero unit */}
-
+                
+                <SwiperSlide style={{ ...pageStyle }}>
                 {/* card container */}
-                <Container className={classes.cardGrid} maxWidth="xl">
                     {/* grid container */}
                     <div className={classes.headingContent}>
                         <Container maxWidth="xl">
@@ -395,11 +458,38 @@ function Cause() {
                             />
                         </Container>
                     </div>
+                    </SwiperSlide>
+                    
+                    <SwiperSlide style={{ ...pageStyle }}>
                     <Container className={classes.placeHolder} />
                     <Grid container spacing={1}>
-                        {mapCard(cards.slice(0, 4))};
-          </Grid>
+                        {mapCard(cards.slice(0, 1))}
+                    </Grid>
+                    </SwiperSlide>
+
+                    <SwiperSlide style={{ ...pageStyle }}>
                     <Container className={classes.placeHolder} />
+                    <Grid container spacing={1}>
+                        {mapCard(cards.slice(1, 2))}
+                    </Grid>
+                    </SwiperSlide>
+
+                    <SwiperSlide style={{ ...pageStyle }}>
+                    <Container className={classes.placeHolder} />
+                    <Grid container spacing={1}>
+                        {mapCard(cards.slice(2, 3))}
+                    </Grid>
+                    </SwiperSlide>
+
+                    <SwiperSlide style={{ ...pageStyle }}>
+                    <Container className={classes.placeHolder} />
+                    <Grid container spacing={1}>
+                        {mapCard(cards.slice(3,4))}
+                    </Grid>
+                    </SwiperSlide>
+
+                    <SwiperSlide style={{ ...pageStyle }}>
+                    <div className={classes.headingContent1}>
                     <img
                                 src={congradulations}
                                 alt="..."
@@ -409,9 +499,13 @@ function Cause() {
                                     width: "100%",
                                     height: "100%",
                                 }}
-                            />
-                  
-                </Container>
+                    />
+                    </div>
+                                <TagTool></TagTool>
+                    <Footer />
+                    </SwiperSlide>
+
+                </Swiper> 
             </main>
             <TagTool></TagTool>
             {/* <button style={buttonStyle}>
@@ -419,7 +513,7 @@ function Cause() {
           Go Back   
           </Link>
         </button> */}
-            <Footer />
+            
         </>
     );
 }

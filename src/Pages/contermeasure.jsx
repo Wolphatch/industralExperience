@@ -100,11 +100,11 @@ const whatever = makeStyles((theme) => ({
     padding: theme.spacing(10, 0, 10),
   },
   headingContent: {
-    padding: theme.spacing(4, 0, 4),
+    padding: theme.spacing(8, 0, 4),
     color: "#333333",
   },
   headingContent1: {
-    padding: theme.spacing(0, 0, 0),
+    padding: theme.spacing(2, 0, 0),
   },
   titleStyle: {
     color: "#fdfdfd",
@@ -705,7 +705,7 @@ function Countermeasure() {
 
           <Container className={classes.placeHolder} />
           <Grid container spacing={2}>
-            {mapCard(cards.slice(0, 13))};
+            {mapCard(cards.slice(0, 13))}
           </Grid>
           <Container className={classes.placeHolder} />
 
@@ -783,7 +783,7 @@ function Countermeasure() {
 
           <Container className={classes.headingSpace} />
           <Grid container spacing={4}>
-            {mapCard(cards.slice(13, 26))};
+            {mapCard(cards.slice(13, 26))}
           </Grid>
           <Container className={classes.placeHolder} />
         </Container>
@@ -822,7 +822,7 @@ function Countermeasure() {
         </div>
 
         <SlideShow2 imagelist={imagelist} />
-        <div className={classes.headingContent}>
+        <div className={classes.headingContent1}>
           <img
             src={good}
             alt="..."
