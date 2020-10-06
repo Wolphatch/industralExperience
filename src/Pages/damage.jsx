@@ -7,6 +7,9 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import CardMedia from "@material-ui/core/CardMedia";
 import { red } from "@material-ui/core/colors";
+import { slideInUp } from "react-animations";
+import { flash } from "react-animations";
+import Radium, { StyleRoot } from "radium";
 
 //components
 import Navbar from "../components/Navbar";
@@ -35,6 +38,7 @@ import test from "../asset/desert2.png";
 import impact from "../asset/impact.png";
 import congradulations from "../asset/congradulations.png";
 import colorBar from "../asset/colorBar6.png";
+import unicorn from "../asset/homePage/unicorn.png";
 
 const whatever = makeStyles((theme) => ({
     icon: {
@@ -135,6 +139,18 @@ SwiperCore.use([
     Mousewheel,
   ]);
 
+const styles = {
+    flash: {
+      animation: "flash 3s infinite",
+      animationName: Radium.keyframes(flash, "flash"),
+      color:"#fdfdfd"
+    },
+    slideInUp: {
+        animation: "flash 2s",
+        animationName: Radium.keyframes(slideInUp, "slideInUp"),
+      },
+};
+  
 const cards = [   
     {
         headerText: "Economic ",
@@ -420,7 +436,46 @@ function Cause() {
                             <p>Know what and how drought affect Australia</p>
                         </Typography>
                     </Container>
-                </div>
+                
+          <StyleRoot>
+          <div style={styles.flash}>
+            <Typography
+              variant="h5"
+              align="center"
+              color="#fdfdfd"
+              paragraph
+              style={{
+                position: "relative",
+                marginTop: "50px",
+              }}
+            >
+              Scroll Down
+            </Typography>
+          </div>
+          <div style={styles.slideInUp}>   
+            <Typography
+              variant="h5"
+              align="center"
+              color="textSecondary"
+              paragraph
+            >
+              <img
+                src={unicorn}
+                alt="..."
+                style={{
+                  position: "relative",
+                  //   marginTop: "350px",
+                  //   left: "48%",
+                  width: "50px",
+                  height: "50px",
+                  color: "black",
+                }}
+                // onClick={() => scrollToRef(props.myRef)}
+              />
+            </Typography>
+          </div>
+        </StyleRoot>
+        </div>
                 </SwiperSlide>
                 {/* End hero unit */}
                 
@@ -509,12 +564,7 @@ function Cause() {
 
                 </Swiper> 
             </main>
-            <TagTool></TagTool>
-            {/* <button style={buttonStyle}>
-          <Link to={"/fact"}>
-          Go Back   
-          </Link>
-        </button> */}
+            {/* <TagTool></TagTool> */}
             
         </>
     );

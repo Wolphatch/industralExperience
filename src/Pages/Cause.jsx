@@ -9,6 +9,9 @@ import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import { red } from "@material-ui/core/colors";
+import { bounceIn } from "react-animations";
+import { flash } from "react-animations";
+import Radium, { StyleRoot } from "radium";
 
 //components
 import Navbar from "../components/Navbar";
@@ -39,6 +42,7 @@ import test from "../asset/desert2.png";
 import story from "../asset/cause.png";
 import bg1 from "../asset/background3.jpg";
 import good from "../asset/good2.png";
+import unicorn from "../asset/homePage/unicorn2.png";
 
 import TagTool from "../components/TagTool";
 
@@ -140,6 +144,18 @@ SwiperCore.use([
   EffectCoverflow,
   Mousewheel,
 ]);
+
+const styles = {
+  flash: {
+    animation: "flash 3s infinite",
+    animationName: Radium.keyframes(flash, "flash"),
+    color:"#fdfdfd"
+  },
+  bounceIn: {
+      animation: "flash 2s",
+      animationName: Radium.keyframes(bounceIn, "bounceIn"),
+    },
+};
 
 const cards = [
   {
@@ -320,6 +336,44 @@ function Cause() {
               factors lead to drought
             </Typography>
           </Container>
+          <StyleRoot>
+          <div style={styles.flash}>
+            <Typography
+              variant="h5"
+              align="center"
+              color="#fdfdfd"
+              paragraph
+              style={{
+                position: "relative",
+                marginTop: "50px",
+              }}
+            >
+              Scroll Down
+            </Typography>
+          </div>
+          <div style={styles.bounceIn}>   
+            <Typography
+              variant="h5"
+              align="center"
+              color="textSecondary"
+              paragraph
+            >
+              <img
+                src={unicorn}
+                alt="..."
+                style={{
+                  position: "relative",
+                  //   marginTop: "350px",
+                  //   left: "48%",
+                  width: "50px",
+                  height: "50px",
+                  color: "black",
+                }}
+                // onClick={() => scrollToRef(props.myRef)}
+              />
+            </Typography>
+          </div>
+        </StyleRoot>
         </div>
         </SwiperSlide>
         {/* End hero unit */}
@@ -495,7 +549,7 @@ function Cause() {
           </SwiperSlide>
         </Swiper>
       </main>
-      <TagTool></TagTool>
+      {/* <TagTool></TagTool> */}
 
     </>
   );
