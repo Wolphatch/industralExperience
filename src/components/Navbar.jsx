@@ -83,6 +83,14 @@ const menuItems = [
     linkText: "Rainfall",
     linkTo: "/dataVis_Rainfall",
   },
+  {
+    linkText: "Quizzes",
+    linkTo: "/quizzes",
+  },
+  {
+    linkText: "",
+    linkTo: "",
+  },
 ];
 
 const StyledMenu = withStyles({
@@ -166,7 +174,15 @@ const Navbar = () => {
   const handleClose3 = () => {
     setAnchorElll(null);
   };
+  const [anchorEllll, setAnchorEllll] = React.useState(null);
 
+  const handleClick4 = (event) => {
+    setAnchorEllll(event.currentTarget);
+  };
+
+  const handleClose4 = () => {
+    setAnchorEllll(null);
+  };
   // const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
   // const background = useRef(null);
@@ -199,6 +215,15 @@ const Navbar = () => {
       open: handleClick3,
       close: handleClose3,
       anchor: anchorElll,
+    },
+    {
+      startIndex: 9,
+      endIndex: 10,
+      menuName: "Quizzes",
+      menuId: "menu_4",
+      open: handleClick4,
+      close: handleClose4,
+      anchor: anchorEllll,
     },
   ];
 
