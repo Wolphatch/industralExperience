@@ -42,6 +42,7 @@ import Viz4 from "../asset/cardImage/water.jpg";
 import Background from "../asset/homePage/slideShow/Drought Background1.png";
 import Prevent from "../asset/homePage/slideShow/prevent drought1.png";
 import Vis from "../asset/homePage/slideShow/Visualization1.png";
+import Footer from "../components/Footer";
 
 const whatever = makeStyles((theme) => ({
   titleTemp: {
@@ -460,6 +461,7 @@ const fact = (props) => {
             >
               {mapCard(cards.slice(4, 6), 12, 6, 3)}
             </Grid>
+            <Footer/>
             {/* <Swiper {...cardSwiperProp}>
               {mapCardTest(cards.slice(4, 6))};
             </Swiper> */}
