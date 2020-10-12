@@ -216,15 +216,15 @@ const Navbar = () => {
       close: handleClose3,
       anchor: anchorElll,
     },
-    {
-      startIndex: 9,
-      endIndex: 10,
-      menuName: "Quizzes",
-      menuId: "menu_4",
-      open: handleClick4,
-      close: handleClose4,
-      anchor: anchorEllll,
-    },
+    // {
+    //   startIndex: 9,
+    //   endIndex: 10,
+    //   menuName: "Quizzes",
+    //   menuId: "menu_4",
+    //   open: handleClick4,
+    //   close: handleClose4,
+    //   anchor: anchorEllll,
+    // },
   ];
 
   const mapMenuList = (menuGroup) => {
