@@ -63,8 +63,7 @@ const Homepage = (props) => {
             color="textSecondary"
             paragraph
           >
-            Learn and test your understanding of the drought in Australia in
-            class
+            Learn and test your understanding of the drought in Australia
           </Typography>
         </div>
         <StyleRoot>
@@ -76,7 +75,7 @@ const Homepage = (props) => {
               paragraph
               style={{
                 position: "relative",
-                marginTop: "350px",
+                marginTop: "50px",
               }}
             >
               Scroll Down

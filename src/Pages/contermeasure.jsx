@@ -65,7 +65,12 @@ const whatever = makeStyles((theme) => ({
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(24, 0, 24),
+    padding: theme.spacing(22, 0, 22),
+    width: "auto",
+  },
+  headingSpace: {
+    //backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(2, 0, 2),
     width: "auto",
   },
   heroButtons: {
@@ -95,8 +100,11 @@ const whatever = makeStyles((theme) => ({
     padding: theme.spacing(10, 0, 10),
   },
   headingContent: {
-    padding: theme.spacing(10, 0, 10),
+    padding: theme.spacing(8, 0, 4),
     color: "#333333",
+  },
+  headingContent1: {
+    padding: theme.spacing(2, 0, 0),
   },
   titleStyle: {
     color: "#fdfdfd",
@@ -136,8 +144,8 @@ const whatever = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: theme.palette.common.white,
-    fontSize: 80,
+    color: "#fdfdfd",
+    fontSize: 100,
   },
   imageSrc: {
     position: "absolute",
@@ -146,7 +154,7 @@ const whatever = makeStyles((theme) => ({
     top: 0,
     bottom: 0,
     backgroundSize: "cover",
-    backgroundPosition: "center 40%",
+    backgroundPosition: "center 75%",
   },
   imageBackdrop: {
     position: "absolute",
@@ -154,20 +162,21 @@ const whatever = makeStyles((theme) => ({
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: "#071e3d",
     opacity: 0.4,
     transition: theme.transitions.create("opacity"),
   },
   imageTitle: {
     position: "relative",
+    fontSize: 50,
     padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${
       theme.spacing(1) + 6
     }px`,
   },
   imageMarked: {
-    height: 3,
-    width: 18,
-    backgroundColor: theme.palette.common.white,
+    height: 6,
+    width: 28,
+    backgroundColor: "#fdfdfd",
     position: "absolute",
     bottom: -2,
     left: "calc(50% - 9px)",
@@ -509,7 +518,7 @@ function Countermeasure() {
     cardGroup.map((card, key) => {
       cardUI.push(
         <>
-          <Grid item id={key} xs={12} sm={6} md={4}>
+          <Grid item id={key} xs={12} sm={6} md={3}>
             <Card className={classes.card}>
               <CardMedia
                 className={classes.cardMedia}
@@ -566,7 +575,7 @@ function Countermeasure() {
             </Typography>
           </Container>
         </div>
-        {/* End hero unit */}
+        {/* End hero unit */}      
 
         <div className={classes.root}>
           {images.map((image) => (
@@ -674,33 +683,34 @@ function Countermeasure() {
             </Container>
           </div>
 
-          <div
-            className={classes.headingContent}
-            style={{
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-            }}
-          >
-            <Container maxWidth="xl">
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              ></Typography>
-            </Container>
-          </div>
+          {/* space */}
+        <div className={classes.headingSpace} 
+                     style={{
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                    }}
+                    >
+                        <Container maxWidth="xl">
+                            <Typography
+                                component="h1"
+                                variant="h2"
+                                align="center"
+                                color="textPrimary"
+                                gutterBottom
+                            >
+                             </Typography>                      
+                        </Container>
+                    </div> 
 
           <Container className={classes.placeHolder} />
-          <Grid container spacing={4}>
-            {mapCard(cards.slice(0, 13))};
+          <Grid container spacing={2}>
+            {mapCard(cards.slice(0, 13))}
           </Grid>
           <Container className={classes.placeHolder} />
 
           <div
-            className={classes.headingContent}
+            className={classes.headingSpace}
             style={{
               backgroundPosition: "center",
               backgroundSize: "cover",
@@ -751,7 +761,7 @@ function Countermeasure() {
           </div>
 
           <div
-            className={classes.headingContent}
+            className={classes.headingSpace}
             style={{
               backgroundPosition: "center",
               backgroundSize: "cover",
@@ -769,9 +779,11 @@ function Countermeasure() {
             </Container>
           </div>
 
-          <Container className={classes.placeHolder} />
+
+
+          <Container className={classes.headingSpace} />
           <Grid container spacing={4}>
-            {mapCard(cards.slice(13, 26))};
+            {mapCard(cards.slice(13, 26))}
           </Grid>
           <Container className={classes.placeHolder} />
         </Container>
@@ -810,7 +822,7 @@ function Countermeasure() {
         </div>
 
         <SlideShow2 imagelist={imagelist} />
-        <div className={classes.headingContent}>
+        <div className={classes.headingContent1}>
           <img
             src={good}
             alt="..."

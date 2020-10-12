@@ -16,7 +16,7 @@ class slideShow extends Component {
                   src={url}
                   alt="..."
                   style={{
-                    marginTop: "100px",
+                    marginTop: "0px",
                     marginLeft: "0",
                     width: "100%",
                     height: "100%",
@@ -33,7 +33,7 @@ class slideShow extends Component {
       <>
         <div
           style={{
-            marginTop: "100px",
+            marginTop: "50px",
             marginLeft: "10%",
             width: "80%",
             height: "100%",

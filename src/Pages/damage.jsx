@@ -7,11 +7,27 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import CardMedia from "@material-ui/core/CardMedia";
 import { red } from "@material-ui/core/colors";
+import { slideInUp } from "react-animations";
+import { flash } from "react-animations";
+import Radium, { StyleRoot } from "radium";
 
 //components
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import TagTool from "../components/TagTool";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// import Swiper core and required components
+import SwiperCore, {
+  EffectCoverflow,
+  EffectFlip,
+  Mousewheel,
+  Navigation,
+  Pagination,
+} from "swiper";
+
+// Import Swiper styles
+import "swiper/swiper-bundle.css";
 
 //assest
 import p5 from "../asset/pic_userstory_1/picture5.png";
@@ -22,6 +38,7 @@ import test from "../asset/desert2.png";
 import impact from "../asset/impact.png";
 import congradulations from "../asset/congradulations.png";
 import colorBar from "../asset/colorBar6.png";
+import unicorn from "../asset/homePage/unicorn.png";
 
 const whatever = makeStyles((theme) => ({
     icon: {
@@ -29,11 +46,21 @@ const whatever = makeStyles((theme) => ({
     },
     heroContent: {
         // backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(25, 0, 16),
+        padding: theme.spacing(27, 0, 27),
     },
     headingContent: {
         //backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(8, 0, 6),
+        width: "auto",
+    },
+    headingContent1: {
+        //backgroundColor: theme.palette.background.paper,
+        padding: theme.spacing(8, 0, 0),
+        width: "auto",
+    },
+    headingSpace: {
+        //backgroundColor: theme.palette.background.paper,
+        padding: theme.spacing(0, 0, 2),
         width: "auto",
     },
     heroButtons: {
@@ -104,7 +131,26 @@ const whatever = makeStyles((theme) => ({
         color: "#071e3d",
     }
 }));
+SwiperCore.use([
+    Navigation,
+    Pagination,
+    EffectFlip,
+    EffectCoverflow,
+    Mousewheel,
+  ]);
 
+const styles = {
+    flash: {
+      animation: "flash 3s infinite",
+      animationName: Radium.keyframes(flash, "flash"),
+      color:"#fdfdfd"
+    },
+    slideInUp: {
+        animation: "flash 2s",
+        animationName: Radium.keyframes(slideInUp, "slideInUp"),
+      },
+};
+  
 const cards = [   
     {
         headerText: "Economic ",
@@ -176,6 +222,40 @@ function Cause() {
     // const handleStrip = (props) => {
     //   return props % 2 == 0 ? 4 : 8;
     // };
+    const cardSwiperProp = {
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        autoHeight: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        },
+        pagination: {
+          // el: ".swiper-pagination",
+          clickable: true,
+        },
+      };
+      
+      const pageSwiperProp = {
+        direction: "vertical",
+        slidesPerView: 1,
+        spaceBetween: 30,
+        mousewheel: true,
+        autoHeight: true,
+        pagination: {
+          // el: ".swiper-pagination",
+          clickable: true,
+        },
+      };
+      
+      const pageStyle = {
+        height: "1010px",
+      };
 
     const mapCard = (cardGroup) => {
         const classes = whatever();
@@ -216,7 +296,7 @@ function Cause() {
                         </Container>
                     </div> 
 
-                    <div className={classes.headingContent} 
+                    <div className={classes.headingSpace} 
                      style={{
                         backgroundPosition: "center",
                         backgroundSize: "cover",
@@ -320,9 +400,14 @@ function Cause() {
             <Navbar />
             <main>
                 {/* Hero unit */}
+                <Swiper style={{ ...pageStyle }} {...pageSwiperProp}>
+
+                <SwiperSlide style={{ ...pageStyle }}>      
                 <div
                     className={classes.heroContent}
                     style={{
+                        height:"50%",
+                        width:"auto",
                         backgroundImage: `url(${test})`,
                         backgroundPosition: "center",
                         backgroundSize: "cover",
@@ -351,11 +436,51 @@ function Cause() {
                             <p>Know what and how drought affect Australia</p>
                         </Typography>
                     </Container>
-                </div>
+                
+          <StyleRoot>
+          <div style={styles.flash}>
+            <Typography
+              variant="h5"
+              align="center"
+              color="#fdfdfd"
+              paragraph
+              style={{
+                position: "relative",
+                marginTop: "50px",
+              }}
+            >
+              Scroll Down
+            </Typography>
+          </div>
+          <div style={styles.slideInUp}>   
+            <Typography
+              variant="h5"
+              align="center"
+              color="textSecondary"
+              paragraph
+            >
+              <img
+                src={unicorn}
+                alt="..."
+                style={{
+                  position: "relative",
+                  //   marginTop: "350px",
+                  //   left: "48%",
+                  width: "50px",
+                  height: "50px",
+                  color: "black",
+                }}
+                // onClick={() => scrollToRef(props.myRef)}
+              />
+            </Typography>
+          </div>
+        </StyleRoot>
+        </div>
+                </SwiperSlide>
                 {/* End hero unit */}
-
+                
+                <SwiperSlide style={{ ...pageStyle }}>
                 {/* card container */}
-                <Container className={classes.cardGrid} maxWidth="xl">
                     {/* grid container */}
                     <div className={classes.headingContent}>
                         <Container maxWidth="xl">
@@ -390,11 +515,38 @@ function Cause() {
                             />
                         </Container>
                     </div>
+                    </SwiperSlide>
+                    
+                    <SwiperSlide style={{ ...pageStyle }}>
                     <Container className={classes.placeHolder} />
                     <Grid container spacing={1}>
-                        {mapCard(cards.slice(0, 4))};
-          </Grid>
+                        {mapCard(cards.slice(0, 1))}
+                    </Grid>
+                    </SwiperSlide>
+
+                    <SwiperSlide style={{ ...pageStyle }}>
                     <Container className={classes.placeHolder} />
+                    <Grid container spacing={1}>
+                        {mapCard(cards.slice(1, 2))}
+                    </Grid>
+                    </SwiperSlide>
+
+                    <SwiperSlide style={{ ...pageStyle }}>
+                    <Container className={classes.placeHolder} />
+                    <Grid container spacing={1}>
+                        {mapCard(cards.slice(2, 3))}
+                    </Grid>
+                    </SwiperSlide>
+
+                    <SwiperSlide style={{ ...pageStyle }}>
+                    <Container className={classes.placeHolder} />
+                    <Grid container spacing={1}>
+                        {mapCard(cards.slice(3,4))}
+                    </Grid>
+                    </SwiperSlide>
+
+                    <SwiperSlide style={{ ...pageStyle }}>
+                    <div className={classes.headingContent1}>
                     <img
                                 src={congradulations}
                                 alt="..."
@@ -404,17 +556,16 @@ function Cause() {
                                     width: "100%",
                                     height: "100%",
                                 }}
-                            />
-                  
-                </Container>
+                    />
+                    </div>
+                                <TagTool></TagTool>
+                    <Footer />
+                    </SwiperSlide>
+
+                </Swiper> 
             </main>
-            <TagTool></TagTool>
-            {/* <button style={buttonStyle}>
-          <Link to={"/fact"}>
-          Go Back   
-          </Link>
-        </button> */}
-            <Footer />
+            {/* <TagTool></TagTool> */}
+            
         </>
     );
 }
