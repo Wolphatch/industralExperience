@@ -9,12 +9,17 @@ import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
+import FormControl from "@material-ui/core/FormControl";
+import { useForm } from "react-hook-form";
 import { red } from "@material-ui/core/colors";
 import { bounceIn } from "react-animations";
 import { flash } from "react-animations";
 import Radium, { StyleRoot } from "radium";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import axios from "axios";
+import { yupResolver } from "@hookform/resolvers";
+import * as yup from "yup";
 
 //components
 import Navbar from "../components/Navbar";
@@ -29,6 +34,11 @@ import unicorn from "../asset/quizzes/unicorn.png";
 const whatever = makeStyles((theme) => ({
     icon: {
       marginRight: theme.spacing(2),
+    },
+    warning: {
+      color: "#bf1650",
+      display: "inline",
+      content: "⚠",
     },
     heroContent: {
       // backgroundColor: theme.palette.background.paper,
@@ -141,6 +151,7 @@ const whatever = makeStyles((theme) => ({
         },
       },
     }
+    
     ));
 
 const styles = {
@@ -154,9 +165,100 @@ const styles = {
         animationName: Radium.keyframes(bounceIn, "bounceIn"),
       },
 };
+const schema = yup.object().shape({
+  State: yup.string().required(),
+  WaterConsum: yup.number().positive().integer().required().lessThan(1000000),
+  familySize: yup.number().required(),
+  username: yup.string().required(),
+});
 
 function Quizzes() {
  const classes = whatever();
+
+ const {
+  register,
+  handleSubmit,
+  errors,
+  setError,
+  clearError,
+  formState: { isSubmitting },
+ } = useForm();
+
+ const onSubmit1 = (request) => { 
+  axios({
+    method: 'post',
+    url: 'https://gcpmvwhkm7.execute-api.ap-southeast-2.amazonaws.com/test',
+    data: {
+      username: request
+    }
+  })
+    .then(function (response) {
+      console.log(response);
+
+      const received = JSON.parse(response.data.body);
+      setData(() => received);
+    })
+    .catch(function (error) {
+      console.log(error);
+      console.log(request);
+    });
+  setFormSubmitted((formSubmitted) => !formSubmitted);
+ };
+
+ const [receivedData, setData] = React.useState("Received");
+ const [formSubmitted, setFormSubmitted] = React.useState(false);
+
+ const renderForm = () => {
+  if (formSubmitted === true) {
+    return null;
+  } else {
+    return inputForm();
+  }
+ };
+
+ const inputForm = () => {
+  return (
+   <div>
+     <form onSubmit={handleSubmit(onSubmit1)}>
+        {/* <div className={classes.quize}>   */}
+            <img
+                src={mask}
+                alt="..."
+                style={{
+                  position: "relative",
+                  //   marginTop: "350px",
+                  //   left: "48%",
+                  width: "60px",
+                  height: "60px",
+                  color: "black",
+                }}
+                // onClick={() => scrollToRef(props.myRef)}
+            />
+           <FormControl className={classes.textIn}>
+             <TextField id="standard-basic" 
+             name="username"
+             type="string"
+             label="Enter your name" 
+             inputRef={register({
+                required: true,
+                minLength: 1,
+                maxLength:8,                
+              })}
+              />
+              <div className={classes.warning}>
+              <p>{errors.username?.message}</p>
+              </div>
+           </FormControl>
+        {/* </div>  */}
+        {/* <div className={classes.start}>  */}
+         <Button variant="contained" color="secondary" disabled={isSubmitting} type="submit">
+           Start test
+         </Button>
+        {/* </div> */}
+     </form>
+   </div>  
+  );
+ };
 
  return (
    <>
@@ -184,7 +286,8 @@ function Quizzes() {
             >
               Quizzes
          </Typography>
-         <div className={classes.quize}>  
+         {renderForm()}
+         {/* <div className={classes.quize}>  
             <img
                 src={mask}
                 alt="..."
@@ -206,7 +309,7 @@ function Quizzes() {
          <Button variant="contained" color="secondary">
            Start test
          </Button>
-         </div>
+         </div> */}
         </Grid>
         <Grid item xs={2}>
         </Grid>
