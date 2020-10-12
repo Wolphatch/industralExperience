@@ -1,2 +1,3 @@
 [1012/102725.214:ERROR:settings.cc(430)] Settings version is not 5
 [1012/103725.217:ERROR:directory_reader_win.cc(43)] FindFirstFile: ??????????? (0x3)
+[1012/213344.378:ERROR:directory_reader_win.cc(43)] FindFirstFile: ??????????? (0x3)

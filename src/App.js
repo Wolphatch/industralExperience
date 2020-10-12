@@ -20,6 +20,7 @@ import dataVis_waterComsumption from "./Pages/dataVis_WaterConsumption";
 import damage from "./Pages/damage";
 import Countermeasure from "./Pages/contermeasure";
 import quizzes from "./Pages/quizzes";
+import quizzes1 from "./Pages/quizzes1";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/Intro" component={intro} />
           <Route path="/Cause" component={cause} />
           <Route path="/Quizzes" component={quizzes} />
+          <Route path="/Quizzes1" component={quizzes1} />
           <Route path="/dataVis_evap" component={dataVis_evap} />
           <Route path="/dataVis_Temp" component={dataVis_Temp} />
           <Route path="/dataVis_Rainfall" component={dataVis_Rainfall} />

@@ -216,7 +216,7 @@ function Quizzes() {
     return inputForm1();
   } else if (formSubmitted === true && receivedData === false)
   {
-    return  <Redirect to='/Cause'/>;
+    return  <Redirect to='/Quizzes1'/>;
   } 
   else {
     return inputForm();
