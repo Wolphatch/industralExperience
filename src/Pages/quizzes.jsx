@@ -1,4 +1,5 @@
 import React,{ Component } from "react";
+import {Redirect} from 'react-router-dom';
 
 //package
 // import { AppRegistry, StyleSheet, Text, View } from "react-native";
@@ -20,6 +21,7 @@ import Button from '@material-ui/core/Button';
 import axios from "axios";
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
+import{ useState } from 'react';
 
 //components
 import Navbar from "../components/Navbar";
@@ -183,35 +185,40 @@ function Quizzes() {
   clearError,
   formState: { isSubmitting },
  } = useForm();
-
+ 
  const onSubmit1 = (request) => { 
   axios({
     method: 'post',
     url: 'https://gcpmvwhkm7.execute-api.ap-southeast-2.amazonaws.com/test',
-    data: {
-      username: request
-    }
+    data: JSON.stringify(request),
+    // headers: {"Access-Control-Allow-Origin": "*"}
   })
     .then(function (response) {
       console.log(response);
-
       const received = JSON.parse(response.data.body);
+      console.log(received);
       setData(() => received);
+      console.log(receivedData);
     })
     .catch(function (error) {
       console.log(error);
       console.log(request);
     });
-  setFormSubmitted((formSubmitted) => !formSubmitted);
+    setFormSubmitted((formSubmitted) => true);
  };
 
  const [receivedData, setData] = React.useState("Received");
  const [formSubmitted, setFormSubmitted] = React.useState(false);
 
  const renderForm = () => {
-  if (formSubmitted === true) {
-    return null;
-  } else {
+  // console.log(check);
+  if (formSubmitted === true && receivedData === true) {
+    return inputForm1();
+  } else if (formSubmitted === true && receivedData === false)
+  {
+    return  <Redirect to='/Cause'/>;
+  } 
+  else {
     return inputForm();
   }
  };
@@ -220,7 +227,7 @@ function Quizzes() {
   return (
    <div>
      <form onSubmit={handleSubmit(onSubmit1)}>
-        {/* <div className={classes.quize}>   */}
+        <div className={classes.quize}>  
             <img
                 src={mask}
                 alt="..."
@@ -246,15 +253,60 @@ function Quizzes() {
               })}
               />
               <div className={classes.warning}>
-              <p>{errors.username?.message}</p>
+              {errors.username && <p>User name is required and less than 10 characters.</p>}  
               </div>
            </FormControl>
-        {/* </div>  */}
-        {/* <div className={classes.start}>  */}
+        </div> 
+        <div className={classes.start}> 
          <Button variant="contained" color="secondary" disabled={isSubmitting} type="submit">
            Start test
          </Button>
-        {/* </div> */}
+        </div>
+     </form>
+   </div>  
+  );
+ };
+
+ const inputForm1 = () => {
+  return (
+   <div>
+     <form onSubmit={handleSubmit(onSubmit1)}>
+        <div className={classes.quize}>  
+            <img
+                src={mask}
+                alt="..."
+                style={{
+                  position: "relative",
+                  //   marginTop: "350px",
+                  //   left: "48%",
+                  width: "60px",
+                  height: "60px",
+                  color: "black",
+                }}
+                // onClick={() => scrollToRef(props.myRef)}
+            />
+           <FormControl className={classes.textIn}>
+             <TextField id="standard-basic" 
+             name="username"
+             type="string"
+             label="Enter your name" 
+             inputRef={register({
+                required: true,
+                minLength: 1,
+                maxLength:8,                
+              })}
+              />
+              <div className={classes.warning}>
+              <p>This user name has been used, please change another one</p>
+              {errors.username && <p>User name is required and less than 10 characters.</p>}  
+              </div>
+           </FormControl>
+        </div> 
+        <div className={classes.start}> 
+         <Button variant="contained" color="secondary" disabled={isSubmitting} type="submit">
+           Start test
+         </Button>
+        </div>
      </form>
    </div>  
   );
@@ -287,29 +339,6 @@ function Quizzes() {
               Quizzes
          </Typography>
          {renderForm()}
-         {/* <div className={classes.quize}>  
-            <img
-                src={mask}
-                alt="..."
-                style={{
-                  position: "relative",
-                  //   marginTop: "350px",
-                  //   left: "48%",
-                  width: "60px",
-                  height: "60px",
-                  color: "black",
-                }}
-                // onClick={() => scrollToRef(props.myRef)}
-            />
-         <form className={classes.textIn}  noValidate autoComplete="off" align="center">
-             <TextField id="standard-basic" label="Enter your name" />
-         </form>
-         </div> 
-         <div className={classes.start}> 
-         <Button variant="contained" color="secondary">
-           Start test
-         </Button>
-         </div> */}
         </Grid>
         <Grid item xs={2}>
         </Grid>
@@ -392,7 +421,7 @@ function Quizzes() {
               color="textPrimary"
               gutterBottom
             >
-              4. Lucy
+              4. Mary
             </Typography>
             <Typography
               className={classes.titleStyle1}
@@ -402,7 +431,7 @@ function Quizzes() {
               color="textPrimary"
               gutterBottom
             >
-              5. Lucy
+              5. David
             </Typography>
             <Typography
               className={classes.titleStyle1}
@@ -412,7 +441,7 @@ function Quizzes() {
               color="textPrimary"
               gutterBottom
             >
-              6. Lucy
+              6. Rose
             </Typography>
             <Typography
               className={classes.titleStyle1}
@@ -422,7 +451,7 @@ function Quizzes() {
               color="textPrimary"
               gutterBottom
             >
-              7. Lucy
+              7. Jack
             </Typography>
             <Typography
               className={classes.titleStyle1}
@@ -432,7 +461,7 @@ function Quizzes() {
               color="textPrimary"
               gutterBottom
             >
-              8. Lucy
+              8. Kelly
             </Typography>
             <Typography
               className={classes.titleStyle1}
@@ -442,7 +471,7 @@ function Quizzes() {
               color="textPrimary"
               gutterBottom
             >
-              9. Lucy
+              9. Mark
             </Typography>
             <Typography
               className={classes.titleStyle1}
@@ -452,7 +481,7 @@ function Quizzes() {
               color="textPrimary"
               gutterBottom
             >
-              10. Lucy
+              10. Gary
             </Typography>
           </div>    
         </Grid>
