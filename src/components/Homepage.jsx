@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import { flash } from "react-animations";
 import Radium, { StyleRoot } from "radium";
+import Button from "@material-ui/core/Button";
 
 //asset
 import main_background from "../asset/homePage/main_background.jpg";
@@ -65,21 +66,39 @@ const Homepage = (props) => {
           >
             Learn and test your understanding of the drought in Australia
           </Typography>
+          <Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            color="textPrimary"
+            gutterBottom
+          >
+            <Button
+              style={{
+                backgroundColor: "#17b978",
+              }}
+              variant="contained"
+              color="secondary"
+              onClick={props.onClick}
+            >
+              Get Started
+            </Button>
+          </Typography>
         </div>
         <StyleRoot>
+          {/* <Typography
+            variant="h5"
+            align="center"
+            color="textSecondary"
+            paragraph
+            style={{
+              position: "relative",
+              marginTop: "50px",
+            }}
+          >
+            Scroll Down
+          </Typography> */}
           <div style={styles.flash}>
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
-              style={{
-                position: "relative",
-                marginTop: "50px",
-              }}
-            >
-              Scroll Down
-            </Typography>
             <Typography
               variant="h5"
               align="center"

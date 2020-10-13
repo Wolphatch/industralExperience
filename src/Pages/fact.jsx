@@ -306,8 +306,17 @@ const mapCardTest = (cardGroup) => {
   return cardUI;
 };
 
-const fact = (props) => {
+const Fact = (props) => {
   const classes = whatever();
+
+  const [swiper, setSwiper] = React.useState(null);
+
+  React.useEffect(() => {
+    var mySwiper = document.querySelector(".swiper-container").swiper;
+    setSwiper(mySwiper);
+  }, []);
+
+  let goNext = () => swiper.slideNext();
 
   return (
     <>
@@ -342,7 +351,10 @@ const fact = (props) => {
         <Swiper style={{ ...pageStyle }} {...pageSwiperProp}>
           {/* Header section */}
           <SwiperSlide style={{ ...pageStyle }}>
-            <HomePage />
+            <HomePage onClick={goNext} />
+            {/* <Button variant="contained" color="secondary" onClick={goNext}>
+              Next
+            </Button> */}
           </SwiperSlide>
 
           {/* Background info section */}
@@ -461,7 +473,7 @@ const fact = (props) => {
             >
               {mapCard(cards.slice(4, 6), 12, 6, 3)}
             </Grid>
-            <Footer/>
+            <Footer />
             {/* <Swiper {...cardSwiperProp}>
               {mapCardTest(cards.slice(4, 6))};
             </Swiper> */}
@@ -474,4 +486,4 @@ const fact = (props) => {
   );
 };
 
-export default fact;
+export default Fact;
