@@ -187,6 +187,8 @@ function Quizzes() {
  } = useForm();
  
  const onSubmit1 = (request) => { 
+  console.log(request);
+  console.log(JSON.stringify(request));
   axios({
     method: 'post',
     url: 'https://gcpmvwhkm7.execute-api.ap-southeast-2.amazonaws.com/test',
