@@ -38,7 +38,7 @@ import test from "../asset/desert2.png";
 import impact from "../asset/impact.png";
 import congradulations from "../asset/congradulations.png";
 import colorBar from "../asset/colorBar6.png";
-import unicorn from "../asset/homePage/unicorn.png";
+import unicorn from "../asset/homePage/downArrow.png";
 
 const whatever = makeStyles((theme) => ({
     icon: {
@@ -452,7 +452,7 @@ function Cause() {
               Scroll Down
             </Typography>
           </div>
-          <div style={styles.slideInUp}>   
+          <div style={styles.flash}>   
             <Typography
               variant="h5"
               align="center"

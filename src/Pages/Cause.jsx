@@ -42,7 +42,7 @@ import test from "../asset/desert2.png";
 import story from "../asset/cause.png";
 import bg1 from "../asset/background3.jpg";
 import good from "../asset/good2.png";
-import unicorn from "../asset/homePage/unicorn2.png";
+import unicorn from "../asset/homePage/downArrow.png";
 
 import TagTool from "../components/TagTool";
 
@@ -351,7 +351,7 @@ function Cause() {
               Scroll Down
             </Typography>
           </div>
-          <div style={styles.bounceIn}>   
+          <div style={styles.flash}>   
             <Typography
               variant="h5"
               align="center"
