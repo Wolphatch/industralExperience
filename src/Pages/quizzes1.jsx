@@ -270,173 +270,146 @@ function Quizzes1(){
     setSuggestion(() => "{" + '"' + "quiz_id" + '"' + ":" +index + "}");
   };
   
-  const singleQ = (quizzes,length) =>{
-     var j = 0;
-     var i = 1
-     var quize1 = [];
-     var quize2 = [];
-     var quize3 = [];
-     var quize4 = [];
-     var quize5 = [];
-     var quize6 = [];
-     var quize7 = [];
-     var quize8 = [];
-     var quize9 = [];
-     var quize10 = [];
-     for (i;i < length; i++)
-     {
-       console.log(quizzes[i-1][1]);
-       console.log(quizzes[i][1]);
-       if (quizzes[i-1][1] == quizzes[i][1])
-       {
-         quize1[j] = quizzes[i-1];
-         j++;
-       }else{
-        quize1[j] = quizzes[i-1];
-        setquiz1(() => quize1);
-        // quize1.splice(0, quize1.length+1); 
-        j = 0;
-        i++;
-        break;
-       }
-     }
-     for (i;i < length; i++)
-     {
-       if (quizzes[i-1][1] == quizzes[i][1])
-       {
-         quize2[j] = quizzes[i-1];
-         j++;
-       }else{
-        quize2[j] = quizzes[i-1]; 
-        setquiz2(() => quize2);
-        // quize2.splice(0, quize2.length+1); 
-        i++;
-        j = 0;
-        break;
-       }
-     }
-     for (i;i < length; i++)
-     {
-       if (quizzes[i-1][1] == quizzes[i][1])
-       {
-         quize3[j] = quizzes[i-1];
-         j++;
-       }else{
-        quize3[j] = quizzes[i-1]; 
-        setquiz3(() => quize3);
-        // quize3.splice(0, quize3.length+1); 
-        i++;
-        j = 0;
-        break;
-       }
-     }
-     for (i;i < length; i++)
-     {
-       if (quizzes[i-1][1] == quizzes[i][1])
-       {
-         quize4[j] = quizzes[i-1];
-         j++;
-       }else{
-        quize4[j] = quizzes[i-1]; 
-        setquiz4(() => quize4);
-        // quize4.splice(0, quize4.length+1); 
-        i++;
-        j = 0;
-        break;
-       }
-     }
-     for (i;i < length; i++)
-     {
-       if (quizzes[i-1][1] == quizzes[i][1])
-       {
-         quize5[j] = quizzes[i-1];
-         j++;
-       }else{
-        quize5[j] = quizzes[i-1]; 
-        setquiz5(() => quize5);
-        // quize5.splice(0, quize5.length+1); 
-        i++;
-        j = 0;
-        break;
-       }
-     }
-     for (i;i < length; i++)
-     {
-       if (quizzes[i-1][1] == quizzes[i][1])
-       {
-         quize6[j] = quizzes[i-1];
-         j++;
-       }else{
-        quize6[j] = quizzes[i-1]; 
-        setquiz6(() => quize6);
-        // quize6.splice(0, quize6.length+1); 
-        i++;
-        j = 0;
-        break;
-       }
-     }
-     for (i;i < length; i++)
-     {
-       if (quizzes[i-1][1] == quizzes[i][1])
-       {
-         quize7[j] = quizzes[i-1];
-         j++;
-       }else{
-        quize7[j] = quizzes[i-1];
-        setquiz7(() => quize7);
-        // quize7.splice(0, quize7.length+1); 
-        i++;
-        j = 0;
-        break;
-       }
-     }
-     for (i;i < length; i++)
-     {
-       if (quizzes[i-1][1] == quizzes[i][1])
-       {
-         quize8[j] = quizzes[i-1];
-         j++;
-       }else{
-        quize8[j] = quizzes[i-1]; 
-        setquiz8(() => quize8);
-        // quize8.splice(0, quize8.length+1); 
-        i++;
-        j = 0;
-        break;
-       }
-     }
-     for (i;i < length; i++)
-     {
-       if (quizzes[i-1][1] == quizzes[i][1])
-       {
-         quize9[j] = quizzes[i-1];
-         j++;
-       }else{
-        quize9[j] = quizzes[i-1]; 
-        setquiz9(() => quize9);
-        // quize9.splice(0, quize9.length+1); 
-        i++;
-        j = 0;
-        break;
-       }
-     }
-     for (i;i < length; i++)
-     {
-       if (quizzes[i-1][1] == quizzes[i][1])
-       {
-         quize10[j] = quizzes[i-1];
-         j++;
-       }else{
-        quize10[j] = quizzes[i-1]; 
-        setquiz10(() => quize10);
-        // quize1.splice(10, quize10.length+1); 
-        i++;
-        j = 0;
-        break;
-       }
-     }
+  const clearquiz = () =>{
+    setquiz1(() => [[]]);
+    setquiz2(() => [[]]);
+    setquiz3(() => [[]]);
+    setquiz4(() => [[]]);
+    setquiz5(() => [[]]);
+    setquiz6(() => [[]]);
+    setquiz7(() => [[]]);
+    setquiz8(() => [[]]);
+    setquiz9(() => [[]]);
+    setquiz10(() => [[]]);
   }
-  
+
+  const singleQ = (quizzes,length)=>{
+    var i = 1;
+    var q1 = 0;
+    var q2 = 0;
+    var q3 = 0;
+    var q4 = 0;
+    var q5 = 0;
+    var q6 = 0;
+    var q7 = 0;
+    var q8 = 0;
+    var q9 = 0;
+    var q10 = 0;
+    for (i;i < length; i++)
+    {
+      if (quizzes[i-1][1] != quizzes[i][1])
+      {
+        q1 = i;
+        console.log(quizzes.slice(0,q1));
+        setquiz1(() => quizzes.slice(0,q1));
+        i++;
+        break;
+      }
+    }
+    for (i;i < length; i++)
+    {
+      if (quizzes[i-1][1] != quizzes[i][1])
+      {
+        q2 = i;
+        setquiz2(() => quizzes.slice(q1,q2));
+        i++;
+        break;
+      }
+    }
+    for (i;i < length; i++)
+    {
+      if (quizzes[i-1][1] != quizzes[i][1])
+      {
+        q3 = i;
+        setquiz3(() => quizzes.slice(q2,q3));
+        i++;
+        break;
+      }
+    }
+    for (i;i < length; i++)
+    {
+      if (quizzes[i-1][1] != quizzes[i][1])
+      {
+        q4 = i;
+        setquiz4(() => quizzes.slice(q3,q4));
+        i++;
+        break;
+      }
+    }
+    for (i;i < length; i++)
+    {
+      if (quizzes[i-1][1] != quizzes[i][1])
+      {
+        q5 = i;
+        setquiz5(() => quizzes.slice(q4,q5));
+        i++;
+        break;
+      }
+    }
+    for (i;i < length; i++)
+    {
+      if (quizzes[i-1][1] != quizzes[i][1])
+      {
+        q6 = i;
+        setquiz6(() => quizzes.slice(q5,q6));
+        i++;
+        break;
+      }
+    }
+    for (i;i < length; i++)
+    {
+      if (quizzes[i-1][1] != quizzes[i][1])
+      {
+        q7 = i;
+        setquiz7(() => quizzes.slice(q6,q7));
+        i++;
+        break;
+      }
+    }
+    for (i;i < length; i++)
+    {
+      if (quizzes[i-1][1] != quizzes[i][1])
+      {
+        q8 = i;
+        setquiz8(() => quizzes.slice(q7,q8));
+        i++;
+        break;
+      }
+    }
+    for (i;i < length; i++)
+    {
+      if (quizzes[i-1][1] != quizzes[i][1])
+      {
+        q9 = i;
+        setquiz9(() => quizzes.slice(q8,q9));
+        i++;
+        break;
+      }
+    }
+    for (i;i < length; i++)
+    {
+      if (quizzes[i-1][1] != quizzes[i][1])
+      {
+        q10 = i;
+        setquiz10(() => quizzes.slice(q9,q10));
+        i++;
+        break;
+      }
+    }
+    if(q5 == 0 && 0 < q4 < i)
+    {
+      setquiz5(() => quizzes.slice(q4,length));
+    }
+    if(q9 == 0 && 0 < q8 < i)
+    {
+      setquiz9(() => quizzes.slice(q8,length));
+    }
+    if(q10 == 0 && 0 < q9 < i)
+    {
+      setquiz10(() => quizzes.slice(q9,length));
+    }
+  }
+ 
   const quizeContent = (quizze) =>{
     var content = "";
     for (var i = 0; i < quizze.length;i++)
