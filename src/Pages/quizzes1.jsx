@@ -9,6 +9,11 @@ import { bounceIn } from "react-animations";
 import { flash } from "react-animations";
 import Radium, { StyleRoot } from "radium";
 import axios from "axios";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
 
 //components
 import Navbar from "../components/Navbar";
@@ -32,6 +37,7 @@ import "swiper/swiper-bundle.css";
 
 // assets
 import bg2 from "../asset/quizzes/bg2.png";
+import { Link } from "react-router-dom";
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -201,7 +207,7 @@ function Quizzes1() {
     getQuizzes();
   }, []);
 
-  const getQuizzes = () => {
+  const getQuizzes = async () => {
     makeSuggestion();
 
     axios({
@@ -221,9 +227,11 @@ function Quizzes1() {
 
   const [start, setStart] = React.useState(true);
 
-  const makeSuggestion = () => {
-    setIndex(() => randomInt(1, 6));
-    setSuggestion(() => "{" + '"' + "quiz_id" + '"' + ":" + index + "}");
+  const makeSuggestion = async () => {
+    // setIndex(() => randomInt(1, 6));
+    await setSuggestion(
+      () => "{" + '"' + "quiz_id" + '"' + ":" + randomInt(1, 6) + "}"
+    );
   };
 
   const randomInt = (min, max) => {
@@ -240,6 +248,31 @@ function Quizzes1() {
     questions: [],
   });
 
+  const [userComplete, setUserComplete] = React.useState({
+    userCompleted: 0,
+    totalQuiz: 9,
+    userScore: 0,
+  });
+
+  const handleChange = (event, other) => {
+    let currentQuestionIndex = other.questionIndex;
+    let tempQuizBody = quizBundle;
+    for (let index = 0; index < tempQuizBody.questions.length; index++) {
+      if (tempQuizBody.questions.questionIndex === currentQuestionIndex) {
+        //b
+        tempQuizBody.questions[index] = other;
+      }
+    }
+    //c
+    setQuizBundle(() => tempQuizBody);
+    console.log(quizBundle);
+    //a
+    //other["userSelect"] = event.target.value;
+    other.userSelect = event.target.value;
+
+    checkComplete();
+  };
+
   const quizBody = {
     //quizSeries: "",
     questions: [],
@@ -252,6 +285,7 @@ function Quizzes1() {
     let tempAnswers = [];
     let questionIndex = 0;
     let tempCorrectAnswer = " ";
+    let tempUserInput = " ";
 
     // quizBody.quizSeries = received[0][0];
 
@@ -289,6 +323,7 @@ function Quizzes1() {
             question: tempQuestion,
             answers: tempAnswers,
             correctAnswer: tempCorrectAnswer,
+            userSelect: tempUserInput,
           });
           tempAnswers = [];
         }
@@ -298,6 +333,7 @@ function Quizzes1() {
           question: tempQuestion,
           answers: tempAnswers,
           correctAnswer: tempCorrectAnswer,
+          userSelect: tempUserInput,
         });
         console.log("I add something");
       }
@@ -330,7 +366,18 @@ function Quizzes1() {
           >
             {question.question}
           </Typography>
-          {mapAnswers(question.answers)}
+
+          <FormControl component="fieldset">
+            <FormLabel component="legend"></FormLabel>
+            <RadioGroup
+              aria-label="Quiz"
+              name={"Quiz" + (key + 1)}
+              //value={value}
+              onChange={(e) => handleChange(e, question)}
+            >
+              {mapAnswers(question.answers)}
+            </RadioGroup>
+          </FormControl>
         </div>
       );
       return null;
@@ -344,11 +391,31 @@ function Quizzes1() {
     for (let index = 0; index < answers.length; index++) {
       answerGroup.push(
         <Typography className={classes.titleStyle3}>
-          {index + 1 + " " + answers[index]}
+          <FormControlLabel
+            value={answers[index]}
+            control={<Radio />}
+            label={answers[index]}
+          />
         </Typography>
       );
     }
     return answerGroup;
+  };
+
+  const checkComplete = () => {
+    let retVal = {};
+    let userCompleted = 0;
+    let userScore = 0;
+    quizBundle.questions.forEach((element) => {
+      userCompleted += element.userSelect !== " " ? 1 : 0;
+      userScore += element.correctAnswer === element.userSelect ? 1 : 0;
+    });
+    retVal["userCompleted"] = userCompleted;
+    retVal["totalQuiz"] = quizBundle.questions.length;
+    retVal["userScore"] = userScore;
+
+    console.log(retVal);
+    setUserComplete(() => retVal);
   };
 
   return (
@@ -374,7 +441,7 @@ function Quizzes1() {
                     variant="contained"
                     color="secondary"
                     onClick={() => {
-                      getQuizzes();
+                      //getQuizzes();
                       //goNext();
                       setStart(false);
                     }}
@@ -386,7 +453,57 @@ function Quizzes1() {
             </div>
           </div>
         ) : (
-          <Swiper {...pageSwiperProp}>{mapSlide(quizBundle)}</Swiper>
+          <div
+            style={{
+              paddingTop: "75px",
+              paddingBottom: "200px",
+            }}
+          >
+            <Swiper {...pageSwiperProp}>
+              {mapSlide(quizBundle)}
+              <div>
+                <Typography
+                  className={classes.titleStyle2}
+                  component="h1"
+                  variant="h1"
+                  align="center"
+                  color="textPrimary"
+                >
+                  Summary
+                </Typography>
+                <Typography
+                  className={classes.titleStyle1}
+                  component="h1"
+                  variant="h1"
+                  align="center"
+                  color="textPrimary"
+                >
+                  {userComplete.userCompleted === userComplete.totalQuiz
+                    ? "You have finish all the quiz"
+                    : "There are still quiz waiting for you to attempt"}
+                </Typography>
+                <Typography
+                  component="h1"
+                  variant="h1"
+                  align="center"
+                  color="textPrimary"
+                >
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    component={Link}
+                    to={{
+                      pathname: "./result",
+                      param1: quizBundle,
+                      param2: userComplete,
+                    }}
+                  >
+                    Submit all and Finish
+                  </Button>
+                </Typography>
+              </div>
+            </Swiper>
+          </div>
         )}
         <TagTool></TagTool>
         <Footer />

@@ -21,6 +21,7 @@ import damage from "./Pages/damage";
 import Countermeasure from "./Pages/contermeasure";
 import quizzes from "./Pages/quizzes";
 import quizzes1 from "./Pages/quizzes1";
+import result from "./Pages/result";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/Cause" component={cause} />
           <Route path="/Quizzes" component={quizzes} />
           <Route path="/Quizzes1" component={quizzes1} />
+          <Route path="/result" component={result} />
           <Route path="/dataVis_evap" component={dataVis_evap} />
           <Route path="/dataVis_Temp" component={dataVis_Temp} />
           <Route path="/dataVis_Rainfall" component={dataVis_Rainfall} />
