@@ -1,10 +1,12 @@
-import React,{ Component } from "react";
+import React, { useEffect }from "react";
 import {Redirect} from 'react-router-dom';
+import { PieChart } from 'react-minimal-pie-chart';
+
 
 //package
 // import { AppRegistry, StyleSheet, Text, View } from "react-native";
 import { makeStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
@@ -44,14 +46,13 @@ const whatever = makeStyles((theme) => ({
     },
     heroContent: {
       // backgroundColor: theme.palette.background.paper,
-      padding: theme.spacing(27, 0, 27),
+      padding: theme.spacing(16, 0, 27),
     },
     headingContent: {
-      padding: theme.spacing(8, 0, 2),
-      color: "#fdfdfd",
+      padding: theme.spacing(27,0, 27),
     },
     headingContent1: {
-      padding: theme.spacing(0, 10, 12),
+      padding: theme.spacing(4, 0, 4),
     },
     headingContent2: {
       padding: theme.spacing(4, 0, 0),
@@ -125,15 +126,22 @@ const whatever = makeStyles((theme) => ({
         color: "#000000",
         fontSize: 80,
         fontWeight: "bold",
+        padding: theme.spacing(20, 0, 0)
       },
     subtitleStyle: {
       color: "#fdfdfd",
+    },
+    subtitleStyle1: {
+      color: "#000000",
     },
     root: {
       flexGrow: 1,
     },
     rank: {
         display: 'flex',
+    },
+    pieChart: {
+      padding: theme.spacing(0, 10, 0),
     },
     quize:{
         display: 'flex',
@@ -209,8 +217,55 @@ function Quizzes() {
     setFormSubmitted((formSubmitted) => true);
  };
 
+ const receiveRank = (request) => { 
+  console.log(JSON.stringify(request));
+  axios({
+    method: 'get',
+    url: 'https://xfmrje8wr0.execute-api.ap-southeast-2.amazonaws.com/test',
+  })
+    .then(function (response) {
+      console.log(response);
+      const received = response.data.body.percentile;
+      // const received1 = JSON.parse(received.);
+      console.log(received);
+      setFirstPer(() => Math.round(received.first*100/(received.first+received.second+received.third)));
+      setPer(() => received);
+    })
+    .catch(function (error) {
+      console.log(error);
+      console.log(request);
+    });
+ };
+
  const [receivedData, setData] = React.useState("Received");
  const [formSubmitted, setFormSubmitted] = React.useState(false);
+ const [receivedPer, setPer] = React.useState( {
+  "first": 4,
+  "second": 1,
+  "third": 5
+  });
+ const [firstPer, setFirstPer] = React.useState(40);
+
+ const [selected, setSelected] = React.useState(0);
+  const [hovered, setHovered] = React.useState(undefined);
+
+  const props = [
+    { title: 'One', value: receivedPer.first, color: '#E38627' },
+    { title: 'Two', value: receivedPer.second, color: '#C13C37' },
+    { title: 'Three', value: receivedPer.third, color: '#6A2135' },
+  ];
+
+  const data = props.map((entry, i) => {
+    if (hovered === i) {
+      return {
+        ...entry,
+        color: 'grey',
+      };
+    }
+    return entry;
+  });
+
+  const lineWidth = 60;
 
  const renderForm = () => {
   // console.log(check);
@@ -313,7 +368,10 @@ function Quizzes() {
    </div>  
   );
  };
-
+ 
+ useEffect(() => {
+  receiveRank();
+ }, []);
  return (
    <>
       <Navbar/>
@@ -344,19 +402,19 @@ function Quizzes() {
         </Grid>
         <Grid item xs={2}>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={5} className={classes.headingContent}>
           <div
           className={classes.headingContent1}
           style={{
             // height:"50%",
             width:"auto",
             backgroundImage: `url(${bord1})`,
-            backgroundPosition: "center",
+            // backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}
           > 
-            <div className={classes.rank}>   
+            <div className={classes.quize}>   
             <StyleRoot>
             <div style={styles.bounceIn}> 
             <img
@@ -385,7 +443,12 @@ function Quizzes() {
               Rank!!!         
             </Typography>
             </div> 
-            <Typography
+            <Typography className={classes.subtitleStyle1}align = "center">
+               find correct color in pie chart! eg.{firstPer}% users get 75-100 points 
+             </Typography>
+          <div className={classes.quize}>
+            {/* <div>
+            {/* <Typography
               className={classes.titleStyle1}
               component="h1"
               variant="h1"
@@ -484,7 +547,60 @@ function Quizzes() {
               gutterBottom
             >
               10. Gary
+            </Typography> */}
+            {/* </div> */} 
+            <div className={classes.pieChart}>
+            <PieChart
+             style={{
+             fontFamily:
+             '"Nunito Sans", -apple-system, Helvetica, Arial, sans-serif',
+             fontSize: '8px',
+             }}
+             data={data}
+             radius={PieChart.defaultProps.radius - 6}
+             lineWidth={60}
+             segmentsStyle={{ transition: 'stroke .3s', cursor: 'pointer' }}
+             segmentsShift={(index) => (index === selected ? 6 : 1)}
+             animate
+             label={({ dataEntry }) => Math.round(dataEntry.percentage) + '%'}
+             labelPosition={100 - lineWidth / 2}
+             labelStyle={{
+             fill: '#fff',
+             opacity: 0.75,
+              pointerEvents: 'none',
+             }}
+             onClick={(_, index) => {
+               setSelected(index === selected ? undefined : index);
+             }}
+             onMouseOver={(_, index) => {
+             setHovered(index);
+             }}
+             onMouseOut={() => {
+             setHovered(undefined);
+             }}
+            /> 
+            <div className={classes.quize}>
+            <Button style={{backgroundColor: "#E38627",}} size="small">
+             <Typography className={classes.subtitleStyle}>
+               75-100
+             </Typography>             
+            </Button>            
+            <Button style={{backgroundColor: "#C13C37",}} size="small">
+             <Typography className={classes.subtitleStyle}>
+               50-75
+             </Typography>             
+            </Button>
+            <Button style={{backgroundColor: "#6A2135",}} size="small">
+               <Typography className={classes.subtitleStyle}>
+                0-50
+               </Typography> 
+            </Button>
+            </div>
+            <Typography className={classes.titleStyle1}align = "center">
+                See you in which range!
             </Typography>
+            </div>  
+          </div>  
           </div>    
         </Grid>
       </Grid>

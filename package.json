@@ -27,6 +27,7 @@
     "react-flip-page": "^1.6.2",
     "react-hook-form": "^6.8.1",
     "react-id-swiper": "^4.0.0",
+    "react-minimal-pie-chart": "^8.0.1",
     "react-native-cli": "^2.0.1",
     "react-particles-js": "^3.3.0",
     "react-reveal": "^1.2.2",
