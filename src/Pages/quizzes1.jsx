@@ -118,12 +118,13 @@ const whatever = makeStyles((theme) => ({
     //maxHeight: theme.spacing(50),
   },
   titleStyle: {
-    color: "#fdfdfd",
-    fontSize: 80,
+    padding: theme.spacing(20, 20, 5),
+    color: "#000000",
+    fontSize: 40,
     fontWeight: "bold",
   },
   titleStyle1: {
-    padding: theme.spacing(10, 50, 0),
+    padding: theme.spacing(5, 10, 5),
     color: "#000000",
     fontSize: 40,
     fontWeight: "bold",
@@ -134,7 +135,7 @@ const whatever = makeStyles((theme) => ({
     fontWeight: "bold",
   },
   titleStyle3: {
-    padding: theme.spacing(0, 50, 0),
+    padding: theme.spacing(3, 65, 0),
     color: "#000000",
     fontSize: 40,
     fontWeight: "bold",
@@ -394,13 +395,13 @@ function Quizzes1(props) {
 
     for (let index = 0; index < answers.length; index++) {
       answerGroup.push(
-        <Typography className={classes.titleStyle3}>
+        <div className={classes.titleStyle3}>
           <FormControlLabel
             value={answers[index]}
             control={<Radio />}
             label={answers[index]}
           />
-        </Typography>
+        </div>
       );
     }
     return answerGroup;
@@ -483,7 +484,7 @@ function Quizzes1(props) {
                   Summary
                 </Typography>
                 <Typography
-                  className={classes.titleStyle1}
+                  className={classes.titleStyle}
                   component="h1"
                   variant="h1"
                   align="center"
@@ -494,6 +495,7 @@ function Quizzes1(props) {
                     : "There are still quiz waiting for you to attempt"}
                 </Typography>
                 <Typography
+                  className={classes.titleStyle}
                   component="h1"
                   variant="h1"
                   align="center"
