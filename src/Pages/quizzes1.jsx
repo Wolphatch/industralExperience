@@ -183,7 +183,10 @@ const styles = {
   },
 };
 
-function Quizzes1() {
+function Quizzes1(props) {
+  const [userName, setUserName] = React.useState(props.location.param1);
+  console.log(userName);
+
   const classes = whatever();
 
   const pageSwiperProp = {
@@ -252,6 +255,7 @@ function Quizzes1() {
     userCompleted: 0,
     totalQuiz: 9,
     userScore: 0,
+    userMark: 0,
   });
 
   const handleChange = (event, other) => {
@@ -406,13 +410,20 @@ function Quizzes1() {
     let retVal = {};
     let userCompleted = 0;
     let userScore = 0;
+    let userMark = 0;
     quizBundle.questions.forEach((element) => {
       userCompleted += element.userSelect !== " " ? 1 : 0;
       userScore += element.correctAnswer === element.userSelect ? 1 : 0;
     });
+
+    userMark = Math.round(
+      (userScore / quizBundle.questions.length + Number.EPSILON) * 100
+    );
+
     retVal["userCompleted"] = userCompleted;
     retVal["totalQuiz"] = quizBundle.questions.length;
     retVal["userScore"] = userScore;
+    retVal["userMark"] = userMark;
 
     console.log(retVal);
     setUserComplete(() => retVal);
@@ -496,6 +507,7 @@ function Quizzes1() {
                       pathname: "./result",
                       param1: quizBundle,
                       param2: userComplete,
+                      param3: userName,
                     }}
                   >
                     Submit all and Finish
