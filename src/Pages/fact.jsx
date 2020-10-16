@@ -444,7 +444,7 @@ const Fact = (props) => {
               style={{ paddingTop: "100px" }}
               justify="center"
             >
-              {mapCard(cards.slice(6, cards.length), 12, 6, 3)}
+              {mapCard(cards.slice(6, cards.length-1), 12, 6, 3)}
             </Grid>
           </SwiperSlide>
 
