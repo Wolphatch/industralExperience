@@ -186,7 +186,7 @@ const styles = {
 
 function Quizzes1(props) {
   const [userName, setUserName] = React.useState(props.location.param1);
-  console.log(userName);
+  console.log("current Username = " + userName);
 
   const classes = whatever();
 
@@ -249,6 +249,7 @@ function Quizzes1(props) {
   );
 
   const [quizBundle, setQuizBundle] = React.useState({
+    quizSeries: 0,
     questions: [],
   });
 
@@ -279,7 +280,7 @@ function Quizzes1(props) {
   };
 
   const quizBody = {
-    //quizSeries: "",
+    quizSeries: 0,
     questions: [],
   };
 
@@ -292,7 +293,7 @@ function Quizzes1(props) {
     let tempCorrectAnswer = " ";
     let tempUserInput = " ";
 
-    // quizBody.quizSeries = received[0][0];
+    quizBody.quizSeries = received[0][0];
 
     for (let i = 0; i < received.length; i++) {
       for (let j = 0; j < received[i].length; j++) {

@@ -34,6 +34,12 @@ const Result = (props) => {
 
   const [userName, setUserName] = React.useState(props.location.param3);
 
+  const [backEnable, setBackEnable] = React.useState(false);
+
+  const changeBackEnable = () => {
+    setBackEnable(() => !backEnable);
+  };
+
   const color = () => {
     var result = "";
     if (userComplete.userMark >= 90) {
@@ -71,26 +77,50 @@ const Result = (props) => {
   const putUsername = () => {
     let request = { username: userName };
     axios({
-      method: "put",
+      method: "post",
       url: "https://nd8gowv4o5.execute-api.ap-southeast-2.amazonaws.com/test",
       data: JSON.stringify(request),
     })
       .then(function (response) {
         console.log(response);
+        let id = response.data.id;
+        console.log(quizBundle.quizSeries);
+        getAttempid(id, quizBundle.quizSeries);
       })
       .catch(function (error) {
         console.log(error);
       });
   };
 
-  const postScore = () => {
-    let request = {};
+  const getAttempid = (userId, quizId) => {
+    let request = { user_id: userId, quiz_id: quizId };
+    axios({
+      method: "post",
+      url: "https://fnb4o8qb9j.execute-api.ap-southeast-2.amazonaws.com/test",
+      data: JSON.stringify(request),
+    })
+      .then(function (response) {
+        console.log(response);
+        let attemptId = response.data.body.attempt_id;
+        let userMark = userComplete.userMark;
+        postScore(attemptId, userMark);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const postScore = (attemptId, userMark) => {
+    let request = { attempt_id: attemptId, attempt_mark: userMark };
     axios({
       method: "post",
       url: "https://ujf4cexl2l.execute-api.ap-southeast-2.amazonaws.com/test",
       data: JSON.stringify(request),
     })
-      .then(function (response) {})
+      .then(function (response) {
+        console.log(response);
+        changeBackEnable();
+      })
       .catch(function (error) {
         console.log(error);
       });
@@ -212,21 +242,28 @@ const Result = (props) => {
             component={Link}
             to={{
               pathname: "./quizzes1",
+              param1: userName,
             }}
           >
             Try again
           </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={putUsername}
-            component={Link}
-            to={{
-              pathname: "./quizzes",
-            }}
-          >
-            upload my score
-          </Button>
+
+          {backEnable ? (
+            <Button
+              variant="contained"
+              color="secondary"
+              component={Link}
+              to={{
+                pathname: "./quizzes",
+              }}
+            >
+              Go Back
+            </Button>
+          ) : (
+            <Button variant="contained" color="secondary" onClick={putUsername}>
+              upload my score
+            </Button>
+          )}
         </Typography>
         <StyleRoot>
           <div style={styles.bounceIn} className={classes.headingContent1}>
