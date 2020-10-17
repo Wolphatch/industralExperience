@@ -199,6 +199,8 @@ function Quizzes() {
     })
       .then(function (response) {
         const received = JSON.parse(response.data.body);
+        var stateCode = JSON.parse(response.data.statusCode);
+        setStatusCode(() => stateCode);
         setUserName(() => request.username);
         setData(() => received);
       })
@@ -234,6 +236,7 @@ function Quizzes() {
   };
 
   const [receivedData, setData] = React.useState("Received");
+  const [statusCode, setStatusCode] = React.useState(0);
   const [userName, setUserName] = React.useState("Alice");
   const [formSubmitted, setFormSubmitted] = React.useState(false);
   const [receivedPer, setPer] = React.useState({
@@ -245,6 +248,23 @@ function Quizzes() {
 
   const [selected, setSelected] = React.useState(0);
   const [hovered, setHovered] = React.useState(undefined);
+  
+  const errorMessage = () =>{
+      var message = "";
+      if (statusCode == 251)
+      {
+         message = "Please use a name without symbols";
+      }
+      if (statusCode == 250)
+      {
+         message = "Please use a name without dirty words";
+      }
+      if (receivedData === true && statusCode== 200)
+      {
+         message = "This user name has been used, please change another one";
+      }
+      return message;
+  }
 
   const props = [
     { title: "One", value: receivedPer.first, color: "#E38627" },
@@ -365,7 +385,7 @@ function Quizzes() {
                 })}
               />
               <div className={classes.warning}>
-                <p>This user name has been used, please change another one</p>
+              <p>{errorMessage()}</p>
                 {errors.username && (
                   <p>User name is required and less than 10 characters.</p>
                 )}

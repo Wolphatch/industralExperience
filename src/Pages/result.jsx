@@ -60,16 +60,16 @@ const Result = (props) => {
   const judge = () => {
     var result = "";
     if (userComplete.userMark >= 90) {
-      result = "unbelievable!!!";
+      result = "unbelievable!!!!";
     }
     if (userComplete.userMark >= 75 && userComplete.userMark < 90) {
-      result = "G r e a t";
+      result = "G r e a t !!!";
     }
     if (userComplete.userMark >= 50 && userComplete.userMark < 75) {
-      result = "G o o d";
+      result = "G o o d !!";
     }
     if (userComplete.userMark >= 0 && userComplete.userMark < 50) {
-      result = "Oh my god!";
+      result = "c o o l !";
     }
     return result;
   };
