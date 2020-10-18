@@ -5,12 +5,8 @@ import { PieChart } from "react-minimal-pie-chart";
 //package
 // import { AppRegistry, StyleSheet, Text, View } from "react-native";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
 import FormControl from "@material-ui/core/FormControl";
 import { useForm } from "react-hook-form";
 import { red } from "@material-ui/core/colors";
@@ -20,9 +16,7 @@ import Radium, { StyleRoot } from "radium";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
-import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
-import { useState } from "react";
 
 //components
 import Navbar from "../components/Navbar";
@@ -86,9 +80,6 @@ const whatever = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
-  },
-  root: {
-    maxWidth: 345,
   },
   media: {
     height: 0,
@@ -171,12 +162,12 @@ const styles = {
     animationName: Radium.keyframes(bounceIn, "bounceIn"),
   },
 };
-const schema = yup.object().shape({
-  State: yup.string().required(),
-  WaterConsum: yup.number().positive().integer().required().lessThan(1000000),
-  familySize: yup.number().required(),
-  username: yup.string().required(),
-});
+// const schema = yup.object().shape({
+//   State: yup.string().required(),
+//   WaterConsum: yup.number().positive().integer().required().lessThan(1000000),
+//   familySize: yup.number().required(),
+//   username: yup.string().required(),
+// });
 
 function Quizzes() {
   const classes = whatever();
@@ -248,23 +239,20 @@ function Quizzes() {
 
   const [selected, setSelected] = React.useState(0);
   const [hovered, setHovered] = React.useState(undefined);
-  
-  const errorMessage = () =>{
-      var message = "";
-      if (statusCode == 251)
-      {
-         message = "Please use a name without symbols";
-      }
-      if (statusCode == 250)
-      {
-         message = "Please use a name without dirty words";
-      }
-      if (receivedData === true && statusCode== 200)
-      {
-         message = "This user name has been used, please change another one";
-      }
-      return message;
-  }
+
+  const errorMessage = () => {
+    var message = "";
+    if (statusCode === 251) {
+      message = "Please use a name without symbols";
+    }
+    if (statusCode === 250) {
+      message = "Please use a name without dirty words";
+    }
+    if (receivedData === true && statusCode === 200) {
+      message = "This user name has been used, please change another one";
+    }
+    return message;
+  };
 
   const props = [
     { title: "One", value: receivedPer.first, color: "#E38627" },
@@ -385,7 +373,7 @@ function Quizzes() {
                 })}
               />
               <div className={classes.warning}>
-              <p>{errorMessage()}</p>
+                <p>{errorMessage()}</p>
                 {errors.username && (
                   <p>User name is required and less than 10 characters.</p>
                 )}

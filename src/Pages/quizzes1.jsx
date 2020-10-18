@@ -212,16 +212,21 @@ function Quizzes1(props) {
     getQuizzes();
   }, []);
 
+  // "{" + '"' + "quiz_id" + '"' + ":" + randomInt(1, 6) + "}"
+
   const getQuizzes = async () => {
-    var suggestion1 = "";
-    if (index1 == null){
-      suggestion1 = "{" + '"' + "quiz_id" + '"' + ":" + randomInt(1, 6) + "}";
-    }else{suggestion1 = "{" + '"' + "quiz_id" + '"' + ":" + index1 + "}";
-    }
-    axios({
+    var quizSeriesPair = { quiz_id: 1 };
+    quizSeriesPair.quiz_id = index1 == null ? randomInt(1, 6) : index1;
+
+    // if (index1 == null) {
+    //   quizSeriesPair.quiz_id = randomInt(1, 6);
+    // } else {
+    //   quizSeriesPair.quiz_id = index1;
+    // }
+    await axios({
       method: "post",
       url: "https://kv2t6suexk.execute-api.ap-southeast-2.amazonaws.com/test",
-      data: suggestion1,
+      data: JSON.stringify(quizSeriesPair),
     })
       .then(function (response) {
         console.log(response);
@@ -234,7 +239,6 @@ function Quizzes1(props) {
   };
 
   const [start, setStart] = React.useState(true);
-
 
   const randomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min);
@@ -333,7 +337,7 @@ function Quizzes1(props) {
           correctAnswer: tempCorrectAnswer,
           userSelect: tempUserInput,
         });
-        console.log("I add something");
+        // console.log("I add something");
       }
     }
     setQuizBundle(() => quizBody);
@@ -366,14 +370,14 @@ function Quizzes1(props) {
           </Typography>
 
           <FormControl component="fieldset">
-            <FormLabel component="legend" ></FormLabel>
+            <FormLabel component="legend"></FormLabel>
             <RadioGroup
               aria-label="Quiz"
               name={"Quiz" + (key + 1)}
               //value={value}
-              onChange={(e) => handleChange(e, question)} 
+              onChange={(e) => handleChange(e, question)}
             >
-            {mapAnswers(question.answers)}              
+              {mapAnswers(question.answers)}
             </RadioGroup>
           </FormControl>
         </div>

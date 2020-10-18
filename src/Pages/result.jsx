@@ -36,8 +36,14 @@ const Result = (props) => {
 
   const [backEnable, setBackEnable] = React.useState(false);
 
+  const [disabled, setDisabled] = React.useState(false);
+
   const changeBackEnable = () => {
     setBackEnable(() => !backEnable);
+  };
+
+  const changeDisabled = () => {
+    setDisabled(() => !disabled);
   };
 
   const color = () => {
@@ -59,67 +65,112 @@ const Result = (props) => {
 
   const suggestion = () => {
     var suggestion = "";
-    if (quizBundle.quizSeries == 1 && userComplete.userMark <100){
-      suggestion = "Please learn more in What is drought page";
+    let fullMark = userComplete.userMark < 100 ? true : false;
+    switch (quizBundle.quizSeries) {
+      case 1:
+        suggestion = fullMark
+          ? "Please learn more in What is drought page"
+          : "Good understanding about what is drought";
+        break;
+      case 2:
+        suggestion = fullMark
+          ? "Please learn more in Why drought happens page"
+          : "Good understanding about why drought happens";
+        break;
+      case 3:
+        suggestion = fullMark
+          ? "Please learn more in Damage page"
+          : "Good understanding about damage of drought";
+        break;
+      case 4:
+        suggestion = fullMark
+          ? "Please learn more in countermeasure page"
+          : "Good understanding about how to prevent drought";
+        break;
+      case 5:
+        suggestion = fullMark
+          ? "Please learn more in virtualisation pages"
+          : "Good understanding about virtualisation pages";
+        break;
+      case 6:
+        suggestion = fullMark
+          ? "Please learn more in History of drought page"
+          : "Good understanding about history of drought";
+        break;
+      default:
+        break;
     }
-    if (quizBundle.quizSeries == 1 && userComplete.userMark == 100){
-      suggestion = "Good understanding about what is drought";
-    }
-    if (quizBundle.quizSeries == 2 && userComplete.userMark <100){
-      suggestion = "Please learn more in Why drought happens page";
-    }
-    if (quizBundle.quizSeries == 2 && userComplete.userMark == 100){
-      suggestion = "Good understanding about why drought happens";
-    }
-    if (quizBundle.quizSeries == 3 && userComplete.userMark <100){
-      suggestion = "Please learn more in Damage page";
-    }
-    if (quizBundle.quizSeries == 3 && userComplete.userMark == 100){
-      suggestion = "Good understanding about damage of drought";
-    }
-    if (quizBundle.quizSeries == 4 && userComplete.userMark <100){
-      suggestion = "Please learn more in countermeasure page";
-    }
-    if (quizBundle.quizSeries == 4 && userComplete.userMark == 100){
-      suggestion = "Good understanding about how to prevent drought";
-    }
-    if (quizBundle.quizSeries == 5 && userComplete.userMark <100){
-      suggestion = "Please learn more in virtualisation pages";
-    }
-    if (quizBundle.quizSeries == 5 && userComplete.userMark == 100){
-      suggestion = "Good understanding about virtualisation pages";
-    }
-    if (quizBundle.quizSeries == 6 && userComplete.userMark <100){
-      suggestion = "Please learn more in History of drought page";
-    }
-    if (quizBundle.quizSeries == 6 && userComplete.userMark == 100){
-      suggestion = "Good understanding about history of drought";
-    }
-    return suggestion;
-  }
 
-  const WrongAnswer = () =>{
+    // if (quizBundle.quizSeries == 1 && userComplete.userMark < 100) {
+    //   suggestion = "Please learn more in What is drought page";
+    // }
+    // if (quizBundle.quizSeries == 1 && userComplete.userMark == 100) {
+    //   suggestion = "Good understanding about what is drought";
+    // }
+    // if (quizBundle.quizSeries == 2 && userComplete.userMark < 100) {
+    //   suggestion = "Please learn more in Why drought happens page";
+    // }
+    // if (quizBundle.quizSeries == 2 && userComplete.userMark == 100) {
+    //   suggestion = "Good understanding about why drought happens";
+    // }
+    // if (quizBundle.quizSeries == 3 && userComplete.userMark < 100) {
+    //   suggestion = "Please learn more in Damage page";
+    // }
+    // if (quizBundle.quizSeries == 3 && userComplete.userMark == 100) {
+    //   suggestion = "Good understanding about damage of drought";
+    // }
+    // if (quizBundle.quizSeries == 4 && userComplete.userMark < 100) {
+    //   suggestion = "Please learn more in countermeasure page";
+    // }
+    // if (quizBundle.quizSeries == 4 && userComplete.userMark == 100) {
+    //   suggestion = "Good understanding about how to prevent drought";
+    // }
+    // if (quizBundle.quizSeries == 5 && userComplete.userMark < 100) {
+    //   suggestion = "Please learn more in virtualisation pages";
+    // }
+    // if (quizBundle.quizSeries == 5 && userComplete.userMark == 100) {
+    //   suggestion = "Good understanding about virtualisation pages";
+    // }
+    // if (quizBundle.quizSeries == 6 && userComplete.userMark < 100) {
+    //   suggestion = "Please learn more in History of drought page";
+    // }
+    // if (quizBundle.quizSeries == 6 && userComplete.userMark == 100) {
+    //   suggestion = "Good understanding about history of drought";
+    // }
+    return suggestion;
+  };
+
+  const WrongAnswer = () => {
     var correctAuswers = "";
     console.log(quizBundle);
-    if (userComplete.userMark <100){
-    for(var i =0; i <quizBundle.questions.length;i++)
-    {
-      if(quizBundle.questions[i].correctAnswer != quizBundle.questions[i].userSelect)
-      {
-        var b = i + 1;
-        var userAnswer = "";
-        if (quizBundle.questions[i].userSelect == " ")
-        {
-          userAnswer = "nothing";
-        }else{
-          userAnswer = quizBundle.questions[i].userSelect;
+    if (userComplete.userMark < 100) {
+      for (var i = 0; i < quizBundle.questions.length; i++) {
+        if (
+          quizBundle.questions[i].correctAnswer !==
+          quizBundle.questions[i].userSelect
+        ) {
+          var b = i + 1;
+          var userAnswer = "";
+          if (quizBundle.questions[i].userSelect === " ") {
+            userAnswer = "nothing";
+          } else {
+            userAnswer = quizBundle.questions[i].userSelect;
+          }
+          correctAuswers +=
+            "In the question " +
+            b +
+            ", you choose " +
+            userAnswer +
+            " but correct answer is " +
+            quizBundle.questions[i].correctAnswer +
+            "\n";
         }
-        correctAuswers += "In the question "+ b +", you choose " + userAnswer + " but correct answer is " + quizBundle.questions[i].correctAnswer + "\n"
       }
+    } else {
+      correctAuswers = "Congratulations! You answer all questions correct!!!";
     }
-    }else{correctAuswers ="Congratulations! You answer all questions correct!!!"}
     return correctAuswers;
-  }
+  };
 
   const judge = () => {
     var result = "";
@@ -139,6 +190,7 @@ const Result = (props) => {
   };
 
   const putUsername = () => {
+    changeDisabled();
     let request = { username: userName };
     axios({
       method: "post",
@@ -318,9 +370,9 @@ const Result = (props) => {
           className={classes.titleStyle2}
           align="center"
           style={{
-            'white-space': 'pre-wrap'
+            "white-space": "pre-wrap",
           }}
-        > 
+        >
           {WrongAnswer()}
         </div>
         <Typography {...resultProp} className={classes.textIn}>
@@ -349,8 +401,13 @@ const Result = (props) => {
               Go Back
             </Button>
           ) : (
-            <Button variant="contained" color="secondary" onClick={putUsername}>
-              upload my score
+            <Button
+              variant="contained"
+              disabled={disabled}
+              color="secondary"
+              onClick={putUsername}
+            >
+              {disabled ? "Uploading..." : "Upload my score"}
             </Button>
           )}
         </Typography>
