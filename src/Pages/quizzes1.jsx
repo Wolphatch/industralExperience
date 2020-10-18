@@ -186,6 +186,7 @@ const styles = {
 
 function Quizzes1(props) {
   const [userName, setUserName] = React.useState(props.location.param1);
+  const [index1, setIndex1] = React.useState(props.location.param2);
   console.log("current Username = " + userName);
 
   const classes = whatever();
@@ -212,12 +213,15 @@ function Quizzes1(props) {
   }, []);
 
   const getQuizzes = async () => {
-    makeSuggestion();
-
+    var suggestion1 = "";
+    if (index1 == null){
+      suggestion1 = "{" + '"' + "quiz_id" + '"' + ":" + randomInt(1, 6) + "}";
+    }else{suggestion1 = "{" + '"' + "quiz_id" + '"' + ":" + index1 + "}";
+    }
     axios({
       method: "post",
       url: "https://kv2t6suexk.execute-api.ap-southeast-2.amazonaws.com/test",
-      data: suggestion,
+      data: suggestion1,
     })
       .then(function (response) {
         console.log(response);
@@ -231,22 +235,10 @@ function Quizzes1(props) {
 
   const [start, setStart] = React.useState(true);
 
-  const makeSuggestion = async () => {
-    // setIndex(() => randomInt(1, 6));
-    await setSuggestion(
-      () => "{" + '"' + "quiz_id" + '"' + ":" + randomInt(1, 6) + "}"
-    );
-  };
 
   const randomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min);
   };
-
-  const [index, setIndex] = React.useState(randomInt(1, 6));
-
-  const [suggestion, setSuggestion] = React.useState(
-    "{" + '"' + "quiz_id" + '"' + ":" + index + "}"
-  );
 
   const [quizBundle, setQuizBundle] = React.useState({
     quizSeries: 0,
@@ -374,14 +366,14 @@ function Quizzes1(props) {
           </Typography>
 
           <FormControl component="fieldset">
-            <FormLabel component="legend"></FormLabel>
+            <FormLabel component="legend" ></FormLabel>
             <RadioGroup
               aria-label="Quiz"
               name={"Quiz" + (key + 1)}
               //value={value}
-              onChange={(e) => handleChange(e, question)}
+              onChange={(e) => handleChange(e, question)} 
             >
-              {mapAnswers(question.answers)}
+            {mapAnswers(question.answers)}              
             </RadioGroup>
           </FormControl>
         </div>

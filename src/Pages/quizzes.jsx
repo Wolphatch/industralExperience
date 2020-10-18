@@ -481,7 +481,7 @@ function Quizzes() {
                   </Typography>
                 </div>
                 <Typography className={classes.subtitleStyle1} align="center">
-                  find correct color in pie chart! eg.{firstPer}% users get
+                  Find your position in pie chart! eg.{firstPer}% users get
                   75-100 points
                 </Typography>
                 <div className={classes.quize}>

@@ -13,7 +13,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 
 //assest
-import bg1 from "../asset/quizzes/bg3.png";
+import bg1 from "../asset/quizzes/bg4.png";
 
 const styles = {
   flash: {
@@ -43,19 +43,83 @@ const Result = (props) => {
   const color = () => {
     var result = "";
     if (userComplete.userMark >= 90) {
-      result = "#88bef5";
+      result = "#581b98";
     }
     if (userComplete.userMark >= 75 && userComplete.userMark < 90) {
-      result = "#fccde2";
+      result = "#fc5185";
     }
     if (userComplete.userMark >= 50 && userComplete.userMark < 75) {
       result = "#2cb978";
     }
     if (userComplete.userMark >= 0 && userComplete.userMark < 50) {
-      result = "#ff1f5a";
+      result = "#482ff7";
     }
     return result;
   };
+
+  const suggestion = () => {
+    var suggestion = "";
+    if (quizBundle.quizSeries == 1 && userComplete.userMark <100){
+      suggestion = "Please learn more in What is drought page";
+    }
+    if (quizBundle.quizSeries == 1 && userComplete.userMark == 100){
+      suggestion = "Good understanding about what is drought";
+    }
+    if (quizBundle.quizSeries == 2 && userComplete.userMark <100){
+      suggestion = "Please learn more in Why drought happens page";
+    }
+    if (quizBundle.quizSeries == 2 && userComplete.userMark == 100){
+      suggestion = "Good understanding about why drought happens";
+    }
+    if (quizBundle.quizSeries == 3 && userComplete.userMark <100){
+      suggestion = "Please learn more in Damage page";
+    }
+    if (quizBundle.quizSeries == 3 && userComplete.userMark == 100){
+      suggestion = "Good understanding about damage of drought";
+    }
+    if (quizBundle.quizSeries == 4 && userComplete.userMark <100){
+      suggestion = "Please learn more in countermeasure page";
+    }
+    if (quizBundle.quizSeries == 4 && userComplete.userMark == 100){
+      suggestion = "Good understanding about how to prevent drought";
+    }
+    if (quizBundle.quizSeries == 5 && userComplete.userMark <100){
+      suggestion = "Please learn more in virtualisation pages";
+    }
+    if (quizBundle.quizSeries == 5 && userComplete.userMark == 100){
+      suggestion = "Good understanding about virtualisation pages";
+    }
+    if (quizBundle.quizSeries == 6 && userComplete.userMark <100){
+      suggestion = "Please learn more in History of drought page";
+    }
+    if (quizBundle.quizSeries == 6 && userComplete.userMark == 100){
+      suggestion = "Good understanding about history of drought";
+    }
+    return suggestion;
+  }
+
+  const WrongAnswer = () =>{
+    var correctAuswers = "";
+    console.log(quizBundle);
+    if (userComplete.userMark <100){
+    for(var i =0; i <quizBundle.questions.length;i++)
+    {
+      if(quizBundle.questions[i].correctAnswer != quizBundle.questions[i].userSelect)
+      {
+        var b = i + 1;
+        var userAnswer = "";
+        if (quizBundle.questions[i].userSelect == " ")
+        {
+          userAnswer = "nothing";
+        }else{
+          userAnswer = quizBundle.questions[i].userSelect;
+        }
+        correctAuswers += "In the question "+ b +", you choose " + userAnswer + " but correct answer is " + quizBundle.questions[i].correctAnswer + "\n"
+      }
+    }
+    }else{correctAuswers ="Congratulations! You answer all questions correct!!!"}
+    return correctAuswers;
+  }
 
   const judge = () => {
     var result = "";
@@ -143,12 +207,12 @@ const Result = (props) => {
       padding: theme.spacing(27, 0, 27),
     },
     headingContent1: {
-      padding: theme.spacing(7, 90, 0),
+      padding: theme.spacing(7, 100, 0),
     },
     titleStyle: {
       padding: theme.spacing(15, 0, 0),
       color: "#000000",
-      fontSize: 20,
+      fontSize: 40,
       fontWeight: "bold",
     },
     titleStyle1: {
@@ -162,6 +226,12 @@ const Result = (props) => {
       fontSize: 20,
       fontWeight: "bold",
       padding: theme.spacing(5, 0, 0),
+    },
+    titleStyle3: {
+      color: "#000000",
+      fontSize: 20,
+      fontWeight: "bold",
+      padding: theme.spacing(0, 0, 0),
     },
     subtitleStyle: {
       color: "#fdfdfd",
@@ -210,6 +280,13 @@ const Result = (props) => {
           className={classes.titleStyle}
           align="center"
         >
+          Hi! {userName}
+        </Typography>
+        <Typography
+          {...resultProp}
+          className={classes.titleStyle2}
+          align="center"
+        >
           {"You have try " +
             userComplete.userCompleted +
             " question out of total " +
@@ -221,20 +298,31 @@ const Result = (props) => {
           className={classes.titleStyle2}
           align="center"
         >
-          {"Your got " + userComplete.userScore + " correct answer"}
-        </Typography>
-        <Typography
-          {...resultProp}
-          className={classes.titleStyle2}
-          align="center"
-        >
-          {"Your final mark is " +
+          {"Your got " + userComplete.userScore + " correct answer, "}
+          {"your final mark is " +
             Math.round(
               (userComplete.userScore / userComplete.totalQuiz +
                 Number.EPSILON) *
                 100
             )}
         </Typography>
+        <Typography
+          {...resultProp}
+          className={classes.titleStyle2}
+          align="center"
+        >
+          {suggestion()}
+        </Typography>
+        <div
+          {...resultProp}
+          className={classes.titleStyle2}
+          align="center"
+          style={{
+            'white-space': 'pre-wrap'
+          }}
+        > 
+          {WrongAnswer()}
+        </div>
         <Typography {...resultProp} className={classes.textIn}>
           <Button
             variant="contained"
@@ -243,6 +331,7 @@ const Result = (props) => {
             to={{
               pathname: "./quizzes1",
               param1: userName,
+              param2: quizBundle.quizSeries,
             }}
           >
             Try again
@@ -266,11 +355,11 @@ const Result = (props) => {
           )}
         </Typography>
         <StyleRoot>
-          <div style={styles.bounceIn} className={classes.headingContent1}>
+          <div style={styles.bounceIn}>
             <Typography
               className={classes.titleStyle1}
-              style={{ position: "absolute" }}
-              align="right"
+              // style={{ position: "absolute" }}
+              align="center"
             >
               {judge()}
             </Typography>
