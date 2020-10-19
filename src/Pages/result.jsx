@@ -65,78 +65,42 @@ const Result = (props) => {
 
   const suggestion = () => {
     var suggestion = "";
-    let fullMark = userComplete.userMark < 100 ? true : false;
-    switch (quizBundle.quizSeries) {
-      case 1:
-        suggestion = fullMark
-          ? "Please learn more in What is drought page"
-          : "Good understanding about what is drought";
-        break;
-      case 2:
-        suggestion = fullMark
-          ? "Please learn more in Why drought happens page"
-          : "Good understanding about why drought happens";
-        break;
-      case 3:
-        suggestion = fullMark
-          ? "Please learn more in Damage page"
-          : "Good understanding about damage of drought";
-        break;
-      case 4:
-        suggestion = fullMark
-          ? "Please learn more in countermeasure page"
-          : "Good understanding about how to prevent drought";
-        break;
-      case 5:
-        suggestion = fullMark
-          ? "Please learn more in virtualisation pages"
-          : "Good understanding about virtualisation pages";
-        break;
-      case 6:
-        suggestion = fullMark
-          ? "Please learn more in History of drought page"
-          : "Good understanding about history of drought";
-        break;
-      default:
-        break;
+    if (quizBundle.quizSeries == 1 && userComplete.userMark <100){
+      suggestion = "Please learn more in What is drought page in the drought backgound";
     }
-
-    // if (quizBundle.quizSeries == 1 && userComplete.userMark < 100) {
-    //   suggestion = "Please learn more in What is drought page";
-    // }
-    // if (quizBundle.quizSeries == 1 && userComplete.userMark == 100) {
-    //   suggestion = "Good understanding about what is drought";
-    // }
-    // if (quizBundle.quizSeries == 2 && userComplete.userMark < 100) {
-    //   suggestion = "Please learn more in Why drought happens page";
-    // }
-    // if (quizBundle.quizSeries == 2 && userComplete.userMark == 100) {
-    //   suggestion = "Good understanding about why drought happens";
-    // }
-    // if (quizBundle.quizSeries == 3 && userComplete.userMark < 100) {
-    //   suggestion = "Please learn more in Damage page";
-    // }
-    // if (quizBundle.quizSeries == 3 && userComplete.userMark == 100) {
-    //   suggestion = "Good understanding about damage of drought";
-    // }
-    // if (quizBundle.quizSeries == 4 && userComplete.userMark < 100) {
-    //   suggestion = "Please learn more in countermeasure page";
-    // }
-    // if (quizBundle.quizSeries == 4 && userComplete.userMark == 100) {
-    //   suggestion = "Good understanding about how to prevent drought";
-    // }
-    // if (quizBundle.quizSeries == 5 && userComplete.userMark < 100) {
-    //   suggestion = "Please learn more in virtualisation pages";
-    // }
-    // if (quizBundle.quizSeries == 5 && userComplete.userMark == 100) {
-    //   suggestion = "Good understanding about virtualisation pages";
-    // }
-    // if (quizBundle.quizSeries == 6 && userComplete.userMark < 100) {
-    //   suggestion = "Please learn more in History of drought page";
-    // }
-    // if (quizBundle.quizSeries == 6 && userComplete.userMark == 100) {
-    //   suggestion = "Good understanding about history of drought";
-    // }
+    if (quizBundle.quizSeries == 1 && userComplete.userMark == 100){
+      suggestion = "Good understanding about what is drought";
+    }
+    if (quizBundle.quizSeries == 2 && userComplete.userMark <100){
+      suggestion = "Please learn more in Why drought happens page in the drought backgound";
+    }
+    if (quizBundle.quizSeries == 2 && userComplete.userMark == 100){
+      suggestion = "Good understanding about why drought happens";
+    }
+    if (quizBundle.quizSeries == 3 && userComplete.userMark <100){
+      suggestion = "Please learn more in Damage page in the drought backgound";
+    }
+    if (quizBundle.quizSeries == 3 && userComplete.userMark == 100){
+      suggestion = "Good understanding about damage of drought";
+    }
+    if (quizBundle.quizSeries == 4 && userComplete.userMark <100){
+      suggestion = "Please learn more in countermeasure page in the how to prevent drought";
+    }
+    if (quizBundle.quizSeries == 4 && userComplete.userMark == 100){
+      suggestion = "Good understanding about how to prevent drought";
+    }
+    if (quizBundle.quizSeries == 5 && userComplete.userMark <100){
+      suggestion = "Please learn more in virtualisation pages";
+    }
+    if (quizBundle.quizSeries == 5 && userComplete.userMark == 100){
+      suggestion = "Good understanding about virtualisation pages";
+    }
+    if (quizBundle.quizSeries == 6 && userComplete.userMark <100){
+      suggestion = "Please learn more in History of drought page in the drought backgound";
+    }
+    if (quizBundle.quizSeries == 6 && userComplete.userMark == 100){
+      suggestion = "Good understanding about history of drought";
+    }
     return suggestion;
   };
 
@@ -165,6 +129,7 @@ const Result = (props) => {
             quizBundle.questions[i].correctAnswer +
             "\n";
         }
+        correctAuswers += "In the question "+ b +": "+quizBundle.questions[i].question +"\nyou choose " + userAnswer + " but correct answer is " + quizBundle.questions[i].correctAnswer + "\n\n"
       }
     } else {
       correctAuswers = "Congratulations! You answer all questions correct!!!";
