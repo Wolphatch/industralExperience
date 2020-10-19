@@ -8,12 +8,19 @@ import { bounceIn } from "react-animations";
 import { flash } from "react-animations";
 import Radium, { StyleRoot } from "radium";
 import axios from "axios";
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 //components
 import Navbar from "../components/Navbar";
 
 //assest
-import bg1 from "../asset/quizzes/bg4.png";
+import bg1 from "../asset/quizzes/bg3.png";
 
 const styles = {
   flash: {
@@ -104,38 +111,62 @@ const Result = (props) => {
     return suggestion;
   };
 
-  const WrongAnswer = () => {
-    var correctAuswers = "";
+  // const WrongAnswer = () => {
+  //   var correctAuswers = "";
+  //   console.log(quizBundle);
+  //   if (userComplete.userMark < 100) {
+  //     for (var i = 0; i < quizBundle.questions.length; i++) {
+  //       if (
+  //         quizBundle.questions[i].correctAnswer !==
+  //         quizBundle.questions[i].userSelect
+  //       ) {
+  //         var b = i + 1;
+  //         var userAnswer = "";
+          // if (quizBundle.questions[i].userSelect === " ") {
+          //   userAnswer = "nothing";
+          // } else {
+          //   userAnswer = quizBundle.questions[i].userSelect;
+          // }
+  //         correctAuswers +=
+  //           "In the question " +
+  //           b +
+  //           ", you choose " +
+  //           userAnswer +
+  //           " but correct answer is " +
+  //           quizBundle.questions[i].correctAnswer +
+  //           "\n";
+  //       }
+  //       correctAuswers += "In the question "+ b +": "+quizBundle.questions[i].question +"\nyou choose " + userAnswer + " but correct answer is " + quizBundle.questions[i].correctAnswer + "\n\n"
+  //     }
+  //   } else {
+  //     correctAuswers = "Congratulations! You answer all questions correct!!!";
+  //   }
+  //   return correctAuswers;
+  // };
+
+  function createData(name, correctAnswer, yourAnswer, isRight) {
+    return { name, correctAnswer, yourAnswer, isRight};
+  }
+
+  const allResults = () => {
     console.log(quizBundle);
-    if (userComplete.userMark < 100) {
-      for (var i = 0; i < quizBundle.questions.length; i++) {
-        if (
-          quizBundle.questions[i].correctAnswer !==
-          quizBundle.questions[i].userSelect
-        ) {
-          var b = i + 1;
-          var userAnswer = "";
-          if (quizBundle.questions[i].userSelect === " ") {
-            userAnswer = "nothing";
-          } else {
-            userAnswer = quizBundle.questions[i].userSelect;
-          }
-          correctAuswers +=
-            "In the question " +
-            b +
-            ", you choose " +
-            userAnswer +
-            " but correct answer is " +
-            quizBundle.questions[i].correctAnswer +
-            "\n";
-        }
-        correctAuswers += "In the question "+ b +": "+quizBundle.questions[i].question +"\nyou choose " + userAnswer + " but correct answer is " + quizBundle.questions[i].correctAnswer + "\n\n"
+    var rows = [];
+    var isCorrect = "";
+    var userAnswer = "";
+    for (var i = 0; i < quizBundle.questions.length; i++) {
+      if (quizBundle.questions[i].userSelect === " ") {
+        userAnswer = "nothing";
+      } else {
+        userAnswer = quizBundle.questions[i].userSelect;
       }
-    } else {
-      correctAuswers = "Congratulations! You answer all questions correct!!!";
+      if (quizBundle.questions[i].correctAnswer == userAnswer)
+       { isCorrect = "correct"}else {isCorrect = "incorrect"}
+      rows[i] = createData(quizBundle.questions[i].question,quizBundle.questions[i].correctAnswer, userAnswer,isCorrect);
     }
-    return correctAuswers;
-  };
+    return rows;
+  }
+
+
 
   const judge = () => {
     var result = "";
@@ -227,7 +258,7 @@ const Result = (props) => {
       padding: theme.spacing(7, 100, 0),
     },
     titleStyle: {
-      padding: theme.spacing(15, 0, 0),
+      padding: theme.spacing(17, 0, 0),
       color: "#000000",
       fontSize: 40,
       fontWeight: "bold",
@@ -262,6 +293,9 @@ const Result = (props) => {
       alignItems: "center",
       paddingTop: theme.spacing(8),
     },
+    table: {
+      paddingTop: theme.spacing(10),
+    },
     textIn: {
       "& > *": {
         margin: theme.spacing(3),
@@ -288,7 +322,7 @@ const Result = (props) => {
           width: "auto",
           backgroundImage: `url(${bg1})`,
           backgroundPosition: "center",
-          backgroundSize: "cover",
+          backgroundSize: "100% 100%",
           backgroundRepeat: "no-repeat",
         }}
       >
@@ -330,7 +364,7 @@ const Result = (props) => {
         >
           {suggestion()}
         </Typography>
-        <div
+        {/* <div
           {...resultProp}
           className={classes.titleStyle2}
           align="center"
@@ -339,7 +373,34 @@ const Result = (props) => {
           }}
         >
           {WrongAnswer()}
-        </div>
+        </div> */}
+        <div className={classes.table}></div>
+        <div align="center">
+         <TableContainer component={Paper} style={{ maxWidth: "800px"}}  >
+      <Table size="small" aria-label="a dense table" style={{ maxWidth: "800px"}}>
+        <TableHead>
+          <TableRow>
+            <TableCell style={{ maxWidth: "80px",fontSize: 20,fontWeight: "bold"}}>Questions</TableCell>
+            <TableCell align="center" style={{ width: "10%", padding: "20px",fontSize: 20,fontWeight: "bold"}}>Correct Answer</TableCell>
+            <TableCell align="center"style={{ width: "10%", padding: "20px",fontSize: 20,fontWeight: "bold"}}>Your Answer</TableCell>
+            <TableCell align="center" style={{ width: "10%", padding: "20px",fontSize: 20,fontWeight: "bold"}}>Is Right?</TableCell> 
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {allResults().map((row) => (
+            <TableRow key={row.name}>
+              <TableCell component="th" scope="row" style={{ maxWidth: "80px"}}>
+                {row.name}
+              </TableCell>
+              <TableCell style={{ width: "10%", padding: "20px"}}align="center">{row.correctAnswer}</TableCell>
+              <TableCell style={{ width: "10%", padding: "20px"}}align="center">{row.yourAnswer}</TableCell>
+              <TableCell style={{ width: "10%", padding: "20px"}}align="center">{row.isRight}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      </TableContainer>
+      </div>
         <Typography {...resultProp} className={classes.textIn}>
           <Button
             variant="contained"
