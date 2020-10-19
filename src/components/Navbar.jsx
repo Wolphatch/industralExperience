@@ -40,7 +40,7 @@ const whatever = makeStyles((theme) => ({
   },
   mainButton: {
     marginTop: theme.spacing(0.85),
-    marginLeft: theme.spacing(3), 
+    marginLeft: theme.spacing(3),
     color: "#000000",
     fontSize: "20px",
   },
@@ -238,7 +238,6 @@ const Navbar = () => {
             aria-controls={group.menuId}
             aria-haspopup="true"
             onClick={group.open}
-            style={{textAlign: "right"}}
           >
             {group.menuName}
           </Button>
@@ -315,9 +314,7 @@ const Navbar = () => {
               {mapMenuItems(menuItems)}
             </Menu> */}
 
-            <div style={{paddingLeft:"250px"}}>
             {mapMenuList(menuList)}
-            </div>
           </Toolbar>
         </AppBar>
       </Box>
