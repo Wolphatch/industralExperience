@@ -209,12 +209,21 @@ function Quizzes1(props) {
   };
 
   useEffect(() => {
+    let tempUsername =
+      userName == null
+        ? localStorage.getItem("username")
+        : props.location.param1;
+    setUserName(() => tempUsername);
     getQuizzes();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("username", userName);
+  }, [userName]);
+
   // "{" + '"' + "quiz_id" + '"' + ":" + randomInt(1, 6) + "}"
 
-  const getQuizzes = async () => {
+  const getQuizzes = () => {
     var quizSeriesPair = { quiz_id: 1 };
     quizSeriesPair.quiz_id = index1 == null ? randomInt(1, 6) : index1;
 
@@ -223,7 +232,7 @@ function Quizzes1(props) {
     // } else {
     //   quizSeriesPair.quiz_id = index1;
     // }
-    await axios({
+    axios({
       method: "post",
       url: "https://kv2t6suexk.execute-api.ap-southeast-2.amazonaws.com/test",
       data: JSON.stringify(quizSeriesPair),
@@ -231,6 +240,7 @@ function Quizzes1(props) {
       .then(function (response) {
         console.log(response);
         const received = response.data.body;
+        setStartEnable(() => true);
         mapQuiz(received);
       })
       .catch(function (error) {
@@ -239,6 +249,7 @@ function Quizzes1(props) {
   };
 
   const [start, setStart] = React.useState(true);
+  const [startEnable, setStartEnable] = React.useState(false);
 
   const randomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min);
@@ -444,21 +455,25 @@ function Quizzes1(props) {
             }}
           >
             <div className={classes.start}>
-              <StyleRoot>
-                <div style={styles.flash}>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={() => {
-                      //getQuizzes();
-                      //goNext();
-                      setStart(false);
-                    }}
-                  >
-                    start test
-                  </Button>
-                </div>
-              </StyleRoot>
+              {startEnable ? (
+                <StyleRoot>
+                  <div style={styles.flash}>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => {
+                        setStart(false);
+                      }}
+                    >
+                      Start test
+                    </Button>
+                  </div>
+                </StyleRoot>
+              ) : (
+                <Button variant="contained" color="secondary" disabled>
+                  Loading quiz...
+                </Button>
+              )}
             </div>
           </div>
         ) : (
