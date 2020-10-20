@@ -36,6 +36,12 @@ import SwiperCore, {
 import "swiper/swiper-bundle.css";
 
 // assets
+import bg1 from "../asset/quizzes/bg8.jpg";
+import bg1x1 from "../asset/quizzes/bg5.jpg";
+import bg1x2 from "../asset/quizzes/bg6.jpg";
+import bg1x3 from "../asset/quizzes/bg6.png";
+import bg1x4 from "../asset/quizzes/bg5.png";
+import bg1x5 from "../asset/quizzes/bg7.jpg";
 import bg2 from "../asset/quizzes/bg2.png";
 import { Link } from "react-router-dom";
 
@@ -226,7 +232,6 @@ function Quizzes1(props) {
   const getQuizzes = () => {
     var quizSeriesPair = { quiz_id: 1 };
     quizSeriesPair.quiz_id = index1 == null ? randomInt(1, 6) : index1;
-
     // if (index1 == null) {
     //   quizSeriesPair.quiz_id = randomInt(1, 6);
     // } else {
@@ -382,7 +387,7 @@ function Quizzes1(props) {
 
           <FormControl component="fieldset">
             <FormLabel component="legend"></FormLabel>
-            <RadioGroup
+            <RadioGroup 
               aria-label="Quiz"
               name={"Quiz" + (key + 1)}
               //value={value}
@@ -437,6 +442,18 @@ function Quizzes1(props) {
     console.log(retVal);
     setUserComplete(() => retVal);
   };
+  
+  const variousBg = (number) => {
+    var bg = "";
+    if (number == 1) {bg = bg1;}
+    if (number == 2) {bg = bg1x1;}  
+    if (number == 3) {bg = bg1x2;}   
+    if (number == 4) {bg = bg1x3;}
+    if (number == 5) {bg = bg1x4;} 
+    if (number == 6) {bg = bg1x5;} 
+    console.log(bg); 
+    return bg;
+  }
 
   return (
     <>
@@ -481,6 +498,12 @@ function Quizzes1(props) {
             style={{
               paddingTop: "75px",
               paddingBottom: "200px",
+              // width: "1020px",
+              height: "100%",
+              backgroundImage: `url(${variousBg(randomInt(1, 6))})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
             }}
           >
             <Swiper {...pageSwiperProp}>
