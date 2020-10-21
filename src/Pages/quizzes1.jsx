@@ -455,6 +455,8 @@ function Quizzes1(props) {
     return bg;
   }
 
+  const [bgPicture, setBg] = React.useState(variousBg(randomInt(1, 6)));
+
   return (
     <>
       <Navbar />
@@ -500,7 +502,7 @@ function Quizzes1(props) {
               paddingBottom: "200px",
               // width: "1020px",
               height: "100%",
-              backgroundImage: `url(${variousBg(randomInt(1, 6))})`,
+              backgroundImage: `url(${bgPicture})`,
               backgroundPosition: "center",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
