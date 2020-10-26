@@ -169,6 +169,27 @@ const whatever = makeStyles((theme) => ({
       width: "30ch",
     },
   },
+  test: {
+    background:
+      "linear-gradient(to right, rgb(0, 195, 255), rgb(255, 255, 28))",
+    borderRadius: 3,
+    border: 0,
+    color: "white",
+    height: 48,
+    paddingRight: "20px",
+    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+  },
+  label: {
+    textTransform: "capitalize",
+    fontSize: "20px",
+    color: "#0e153a",
+  },
+  explain: {
+    padding: theme.spacing(5, 10, 5),
+    color: "#000000",
+    fontSize: 40,
+    fontWeight: "bold",
+  },
 }));
 
 SwiperCore.use([
@@ -275,18 +296,17 @@ function Quizzes1(props) {
   const handleChange = (event, other) => {
     let currentQuestionIndex = other.questionIndex;
     let tempQuizBody = quizBundle;
+
+    other.userSelect = event.target.value;
+
     for (let index = 0; index < tempQuizBody.questions.length; index++) {
       if (tempQuizBody.questions.questionIndex === currentQuestionIndex) {
-        //b
         tempQuizBody.questions[index] = other;
       }
     }
-    //c
+
     setQuizBundle(() => tempQuizBody);
     console.log(quizBundle);
-    //a
-    //other["userSelect"] = event.target.value;
-    other.userSelect = event.target.value;
 
     checkComplete();
   };
@@ -303,6 +323,7 @@ function Quizzes1(props) {
     let tempAnswers = [];
     let questionIndex = 0;
     let tempCorrectAnswer = " ";
+    let tempExplain = " ";
     let tempUserInput = " ";
 
     quizBody.quizSeries = received[0][0];
@@ -328,7 +349,9 @@ function Quizzes1(props) {
             }
             //tempCorrectAnswer = received[i][j] === 1 ? currentAnswer : " ";
             break;
-
+          case 6:
+            tempExplain = received[i][j];
+            break;
           default:
             break;
         }
@@ -342,6 +365,7 @@ function Quizzes1(props) {
             answers: tempAnswers,
             correctAnswer: tempCorrectAnswer,
             userSelect: tempUserInput,
+            explain: tempExplain,
           });
           tempAnswers = [];
         }
@@ -352,6 +376,7 @@ function Quizzes1(props) {
           answers: tempAnswers,
           correctAnswer: tempCorrectAnswer,
           userSelect: tempUserInput,
+          explain: tempExplain,
         });
         // console.log("I add something");
       }
@@ -387,15 +412,42 @@ function Quizzes1(props) {
 
           <FormControl component="fieldset">
             <FormLabel component="legend"></FormLabel>
-            <RadioGroup 
+            <RadioGroup
               aria-label="Quiz"
               name={"Quiz" + (key + 1)}
               //value={value}
               onChange={(e) => handleChange(e, question)}
             >
-              {mapAnswers(question.answers)}
+              {mapAnswers(question)}
             </RadioGroup>
           </FormControl>
+
+          {question.userSelect === " " ? null : (
+            <div>
+              <Typography
+                className={classes.explain}
+                component="h1"
+                variant="h1"
+                align="center"
+                color="textPrimary"
+              >
+                {question.userSelect === question.correctAnswer
+                  ? "You got it! "
+                  : "You are wrong."}
+              </Typography>
+              <Typography
+                className={classes.explain}
+                component="h1"
+                variant="h1"
+                align="center"
+                color="textPrimary"
+              >
+                {question.userSelect === question.correctAnswer
+                  ? question.explain
+                  : question.explain}
+              </Typography>
+            </div>
+          )}
         </div>
       );
       return null;
@@ -403,21 +455,46 @@ function Quizzes1(props) {
     return slideGroup;
   };
 
-  const mapAnswers = (answers) => {
+  const mapAnswers = (question) => {
     let answerGroup = [];
+    let answers = question.answers;
 
     for (let index = 0; index < answers.length; index++) {
       answerGroup.push(
         <div className={classes.titleStyle3}>
           <FormControlLabel
+            classes={{
+              root: classes.test,
+              label: classes.label,
+            }}
             value={answers[index]}
+            disabled={question.userSelect !== " "}
             control={<Radio />}
-            label={answers[index]}
+            label={
+              question.userSelect !== " "
+                ? updateOption(question, index)
+                : answers[index]
+            }
           />
         </div>
       );
     }
     return answerGroup;
+  };
+
+  const updateOption = (question, answerIndex) => {
+    let answer = " ";
+    if (question.answers[answerIndex] === question.correctAnswer) {
+      answer = question.answers[answerIndex] + " √";
+    } else if (
+      question.userSelect !== question.correctAnswer &&
+      question.userSelect === question.answers[answerIndex]
+    ) {
+      answer = question.answers[answerIndex] + " ×";
+    } else {
+      answer = question.answers[answerIndex];
+    }
+    return answer;
   };
 
   const checkComplete = () => {
@@ -442,18 +519,30 @@ function Quizzes1(props) {
     console.log(retVal);
     setUserComplete(() => retVal);
   };
-  
+
   const variousBg = (number) => {
     var bg = "";
-    if (number == 1) {bg = bg1;}
-    if (number == 2) {bg = bg1x1;}  
-    if (number == 3) {bg = bg1x2;}   
-    if (number == 4) {bg = bg1x3;}
-    if (number == 5) {bg = bg1x4;} 
-    if (number == 6) {bg = bg1x5;} 
-    console.log(bg); 
+    if (number == 1) {
+      bg = bg1;
+    }
+    if (number == 2) {
+      bg = bg1x1;
+    }
+    if (number == 3) {
+      bg = bg1x2;
+    }
+    if (number == 4) {
+      bg = bg1x3;
+    }
+    if (number == 5) {
+      bg = bg1x4;
+    }
+    if (number == 6) {
+      bg = bg1x5;
+    }
+    console.log(bg);
     return bg;
-  }
+  };
 
   const [bgPicture, setBg] = React.useState(variousBg(randomInt(1, 6)));
 
