@@ -42,7 +42,7 @@ import test from "../asset/desert2.png";
 import story from "../asset/cause.png";
 import bg1 from "../asset/background3.jpg";
 import good from "../asset/good2.png";
-import unicorn from "../asset/homePage/unicorn2.png";
+import unicorn from "../asset/homePage/downArrow.png";
 
 import TagTool from "../components/TagTool";
 
@@ -132,9 +132,6 @@ const whatever = makeStyles((theme) => ({
   subtitleStyle: {
     color: "#fdfdfd",
   },
-  root: {
-    flexGrow: 1,
-  },
 }));
 // install Swiper components
 SwiperCore.use([
@@ -149,12 +146,12 @@ const styles = {
   flash: {
     animation: "flash 3s infinite",
     animationName: Radium.keyframes(flash, "flash"),
-    color:"#fdfdfd"
+    color: "#fdfdfd",
   },
   bounceIn: {
-      animation: "flash 2s",
-      animationName: Radium.keyframes(bounceIn, "bounceIn"),
-    },
+    animation: "flash 2s",
+    animationName: Radium.keyframes(bounceIn, "bounceIn"),
+  },
 };
 
 const cards = [
@@ -219,25 +216,25 @@ const cards = [
 function Cause() {
   const classes = whatever();
 
-  const cardSwiperProp = {
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    autoHeight: true,
-    slidesPerView: "auto",
-    coverflowEffect: {
-      rotate: 50,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: true,
-    },
-    pagination: {
-      // el: ".swiper-pagination",
-      clickable: true,
-    },
-  };
-  
+  // const cardSwiperProp = {
+  //   effect: "coverflow",
+  //   grabCursor: true,
+  //   centeredSlides: true,
+  //   autoHeight: true,
+  //   slidesPerView: "auto",
+  //   coverflowEffect: {
+  //     rotate: 50,
+  //     stretch: 0,
+  //     depth: 100,
+  //     modifier: 1,
+  //     slideShadows: true,
+  //   },
+  //   pagination: {
+  //     // el: ".swiper-pagination",
+  //     clickable: true,
+  //   },
+  // };
+
   const pageSwiperProp = {
     direction: "vertical",
     slidesPerView: 1,
@@ -249,11 +246,10 @@ function Cause() {
       clickable: true,
     },
   };
-  
+
   const pageStyle = {
     height: "1010px",
   };
-
 
   // const handleStrip = (props) => {
   //   return props % 2 === 0 ? 4 : 8;
@@ -267,27 +263,28 @@ function Cause() {
     cardGroup.map((card, key) => {
       cardUI.push(
         <Grid item id={key} xs={12} sm={6} md={3} justify="center">
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.cardMedia}
-                image={card.image}
-                title={card.title}
-              />
-              <CardContent className={classes.cardContent}>
-                <Typography
+          <Card className={classes.card}>
+            <CardMedia
+              className={classes.cardMedia}
+              image={card.image}
+              title={card.title}
+            />
+            <CardContent className={classes.cardContent}>
+              <Typography
                 className={classes.titleStyle1}
                 component="h1"
                 variant="h1"
                 align="center"
                 color="textPrimary"
-                gutterBottom>
-                  {card.title}
-                </Typography>
+                gutterBottom
+              >
+                {card.title}
+              </Typography>
 
-                <Typography>{card.desciption}</Typography>
-              </CardContent>
-            </Card>
-            </Grid>  
+              <Typography>{card.desciption}</Typography>
+            </CardContent>
+          </Card>
+        </Grid>
       );
       return null;
     });
@@ -296,116 +293,116 @@ function Cause() {
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <main>
         {/* Hero unit */}
         <Swiper style={{ ...pageStyle }} {...pageSwiperProp}>
-
-        <SwiperSlide style={{ ...pageStyle }}>
-        <div
-          className={classes.heroContent}
-          style={{
-            height:"50%",
-            width:"auto",
-            backgroundImage: `url(${test})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            width: "auto",
-          }}
-        >
-          <Container maxWidth="md">
-            <Typography
-              className={classes.titleStyle}
-              component="h1"
-              variant="h1"
-              align="center"
-              color="textPrimary"
-              gutterBottom
-            >
-              Cause of drought in Australia
-            </Typography>
-            <Typography
-              className={classes.subtitleStyle}
-              component="h4"
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
-              factors lead to drought
-            </Typography>
-          </Container>
-          <StyleRoot>
-          <div style={styles.flash}>
-            <Typography
-              variant="h5"
-              align="center"
-              color="#fdfdfd"
-              paragraph
+          <SwiperSlide style={{ ...pageStyle }}>
+            <div
+              className={classes.heroContent}
               style={{
-                position: "relative",
-                marginTop: "50px",
+                height: "50%",
+                width: "auto",
+                backgroundImage: `url(${test})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
               }}
             >
-              Scroll Down
-            </Typography>
-          </div>
-          <div style={styles.bounceIn}>   
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
-              <img
-                src={unicorn}
-                alt="..."
-                style={{
-                  position: "relative",
-                  //   marginTop: "350px",
-                  //   left: "48%",
-                  width: "50px",
-                  height: "50px",
-                  color: "black",
-                }}
-                // onClick={() => scrollToRef(props.myRef)}
-              />
-            </Typography>
-          </div>
-        </StyleRoot>
-        </div>
-        </SwiperSlide>
-        {/* End hero unit */}
+              <Container maxWidth="md">
+                <Typography
+                  className={classes.titleStyle}
+                  component="h1"
+                  variant="h1"
+                  align="center"
+                  color="textPrimary"
+                  gutterBottom
+                >
+                  Cause of drought in Australia
+                </Typography>
+                <Typography
+                  className={classes.subtitleStyle}
+                  component="h4"
+                  variant="h5"
+                  align="center"
+                  color="textSecondary"
+                  paragraph
+                >
+                  factors lead to drought
+                </Typography>
+              </Container>
+              <StyleRoot>
+                <div style={styles.flash}>
+                  <Typography
+                    variant="h5"
+                    align="center"
+                    color="#fdfdfd"
+                    paragraph
+                    style={{
+                      position: "relative",
+                      marginTop: "50px",
+                    }}
+                  >
+                    Scroll Down
+                  </Typography>
+                </div>
+                <div style={styles.flash}>
+                  <Typography
+                    variant="h5"
+                    align="center"
+                    color="textSecondary"
+                    paragraph
+                  >
+                    <img
+                      src={unicorn}
+                      alt="..."
+                      style={{
+                        position: "relative",
+                        //   marginTop: "350px",
+                        //   left: "48%",
+                        width: "50px",
+                        height: "50px",
+                        color: "black",
+                      }}
+                      // onClick={() => scrollToRef(props.myRef)}
+                    />
+                  </Typography>
+                </div>
+              </StyleRoot>
+            </div>
+          </SwiperSlide>
+          {/* End hero unit */}
 
-        <SwiperSlide style={{ ...pageStyle }}>
-                {/* card container */}
-          {/* grid container */}
-          <div className={classes.headingContent1}>
-            <Container maxWidth="xl">
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              >
-                why is drought
-              </Typography>
-              <Typography
-                component="h4"
-                variant="h5"
-                align="center"
-                color="#071e3d"
-                paragraph
-              >
-                There are so many factors lead to drought including direct factors which affects rainfall and indirect factors which affect drought in anothers ways. Let's start from a little story!
-              </Typography>
-              
-            </Container>
-          </div>
-          <div>
-          <img
+          <SwiperSlide style={{ ...pageStyle }}>
+            {/* card container */}
+            {/* grid container */}
+            <div className={classes.headingContent1}>
+              <Container maxWidth="xl">
+                <Typography
+                  component="h1"
+                  variant="h2"
+                  align="center"
+                  color="textPrimary"
+                  gutterBottom
+                >
+                  why is drought
+                </Typography>
+                <Typography
+                  component="h4"
+                  variant="h5"
+                  align="center"
+                  color="#071e3d"
+                  paragraph
+                >
+                  There are so many factors lead to drought including direct
+                  factors which affects rainfall and indirect factors which
+                  affect drought in anothers ways. Let's start from a little
+                  story!
+                </Typography>
+              </Container>
+            </div>
+            <div>
+              <img
                 src={story}
                 alt="..."
                 style={{
@@ -415,142 +412,144 @@ function Cause() {
                   height: "100%",
                 }}
               />
-          </div>
-        </SwiperSlide>
-        
-        {/* card container */}
-        <SwiperSlide style={{ ...pageStyle }}>
-          {/* grid container */}
-          <div className={classes.headingContent}
-          style={{
-            backgroundImage: `url(${bg1})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}>
-            <Container maxWidth="md">
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="#fdfdfd"
-                gutterBottom
-              >
-                Direct factors influence rainfall
-              </Typography>
-              <Typography
-                component="h4"
-                variant="h5"
-                align="center"
-                color="#fdfdfd"
-                paragraph
-              >
-                Bob: first is the direct factors!
-              </Typography>
-            </Container>
-          </div>
-          
-          {/* space */}
-          <div
-            className={classes.headingContent2}
-            style={{
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-            }}
-          >
-            <Container maxWidth="xl">
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              ></Typography>
-            </Container>
-          </div>
-          <Grid container spacing={2} justify="center">
-            {mapCard(cards.slice(0, 3))}
-          </Grid>
+            </div>
           </SwiperSlide>
 
-
+          {/* card container */}
           <SwiperSlide style={{ ...pageStyle }}>
-          <div className={classes.headingContent}
-          style={{
-            backgroundImage: `url(${bg1})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}>
-            <Container maxWidth="md">
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="#fdfdfd"
-                gutterBottom
-              >
-                Indirect factors lead to drought
-              </Typography>
-              <Typography
-                component="h4"
-                variant="h5"
-                align="center"
-                color="#fdfdfd"
-                paragraph
-              >
-                Bob: second is the indirect factors!
-              </Typography>
-            </Container>
-          </div>
-          {/* space */}
-          <div
-            className={classes.headingContent2}
-            style={{
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-            }}
-          >
-            <Container maxWidth="xl">
-              <Typography
-                component="h1"
-                variant="h2"
-                align="center"
-                color="textPrimary"
-                gutterBottom
-              ></Typography>
-            </Container>
-          </div>
-          {/* space */}
+            {/* grid container */}
+            <div
+              className={classes.headingContent}
+              style={{
+                backgroundImage: `url(${bg1})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <Container maxWidth="md">
+                <Typography
+                  component="h1"
+                  variant="h2"
+                  align="center"
+                  color="#fdfdfd"
+                  gutterBottom
+                >
+                  Direct factors influence rainfall
+                </Typography>
+                <Typography
+                  component="h4"
+                  variant="h5"
+                  align="center"
+                  color="#fdfdfd"
+                  paragraph
+                >
+                  Bob: first is the direct factors!
+                </Typography>
+              </Container>
+            </div>
 
-          <Container className={classes.placeHolder} />
-          <Grid container spacing={2}>
-            {mapCard(cards.slice(3, 7))}
-          </Grid>
+            {/* space */}
+            <div
+              className={classes.headingContent2}
+              style={{
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <Container maxWidth="xl">
+                <Typography
+                  component="h1"
+                  variant="h2"
+                  align="center"
+                  color="textPrimary"
+                  gutterBottom
+                ></Typography>
+              </Container>
+            </div>
+            <Grid container spacing={2} justify="center">
+              {mapCard(cards.slice(0, 3))}
+            </Grid>
           </SwiperSlide>
 
           <SwiperSlide style={{ ...pageStyle }}>
-          <div className={classes.headingContent2}>
-           <img
-             src={good}
-            alt="..."
-            style={{
-              marginTop: "100px",
-              marginLeft: "0",
-              width: "100%",
-              height: "100%",
-            }}
-           />
-          </div>
-          <TagTool></TagTool>
-          <Footer />
+            <div
+              className={classes.headingContent}
+              style={{
+                backgroundImage: `url(${bg1})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <Container maxWidth="md">
+                <Typography
+                  component="h1"
+                  variant="h2"
+                  align="center"
+                  color="#fdfdfd"
+                  gutterBottom
+                >
+                  Indirect factors lead to drought
+                </Typography>
+                <Typography
+                  component="h4"
+                  variant="h5"
+                  align="center"
+                  color="#fdfdfd"
+                  paragraph
+                >
+                  Bob: second is the indirect factors!
+                </Typography>
+              </Container>
+            </div>
+            {/* space */}
+            <div
+              className={classes.headingContent2}
+              style={{
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <Container maxWidth="xl">
+                <Typography
+                  component="h1"
+                  variant="h2"
+                  align="center"
+                  color="textPrimary"
+                  gutterBottom
+                ></Typography>
+              </Container>
+            </div>
+            {/* space */}
+
+            <Container className={classes.placeHolder} />
+            <Grid container spacing={2}>
+              {mapCard(cards.slice(3, 7))}
+            </Grid>
+          </SwiperSlide>
+
+          <SwiperSlide style={{ ...pageStyle }}>
+            <div className={classes.headingContent2}>
+              <img
+                src={good}
+                alt="..."
+                style={{
+                  marginTop: "100px",
+                  marginLeft: "0",
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            </div>
+            <TagTool></TagTool>
+            <Footer />
           </SwiperSlide>
         </Swiper>
       </main>
       {/* <TagTool></TagTool> */}
-
     </>
   );
 }

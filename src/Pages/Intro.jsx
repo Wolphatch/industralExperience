@@ -47,7 +47,7 @@ import bg1 from "../asset/pic_userstory_1/bg1.png";
 import story from "../asset/introduction.png";
 import test from "../asset/desert2.png";
 import good from "../asset/good1.png";
-import unicorn from "../asset/homePage/unicorn1.png";
+import unicorn from "../asset/homePage/downArrow.png";
 
 const whatever = makeStyles((theme) => ({
   icon: {
@@ -373,7 +373,7 @@ function Cause() {
               Scroll Down
             </Typography>
           </div>
-          <div style={styles.slideInRight}>   
+          <div style={styles.flash}>   
             <Typography
               variant="h5"
               align="center"

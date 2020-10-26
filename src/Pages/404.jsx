@@ -44,6 +44,25 @@ const whatever = makeStyles((theme) => ({
 const NotFoundPage = () => {
   const classes = whatever();
 
+  const [backEnable, setBackEnable] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(false);
+
+  const changeBackEnable = () => {
+    setBackEnable(() => !backEnable);
+  };
+
+  const changeDisabled = () => {
+    setDisabled(() => !disabled);
+    setTimeout(function () {
+      changeItBack();
+    }, 3000);
+  };
+
+  const changeItBack = () => {
+    setBackEnable(() => !backEnable);
+    console.log("You can leave");
+  };
+
   return (
     <>
       <Navbar />
@@ -73,14 +92,25 @@ const NotFoundPage = () => {
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
               <Grid item>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  component={Link}
-                  to="/"
-                >
-                  Bring me back
-                </Button>
+                {backEnable ? (
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    component={Link}
+                    to="/"
+                  >
+                    Here we go
+                  </Button>
+                ) : (
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    disabled={disabled}
+                    onClick={(changeBackEnable, changeDisabled)}
+                  >
+                    {disabled ? "Finding the way back..." : "Bring me back"}
+                  </Button>
+                )}
               </Grid>
             </Grid>
           </div>

@@ -746,7 +746,7 @@ function Countermeasure() {
                 color="textPrimary"
                 gutterBottom
               >
-                What children need help with their parents can do!!!!
+                what children can do with the help of their parents!!!!!!!!
               </Typography>
               <Typography
                 component="h4"

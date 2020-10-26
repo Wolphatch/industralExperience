@@ -39,6 +39,7 @@ import Viz1 from "../asset/cardImage/temp.jpg";
 import Viz2 from "../asset/cardImage/evap.jpg";
 import Viz3 from "../asset/cardImage/Rainfall.jpg";
 import Viz4 from "../asset/cardImage/water.jpg";
+import quizPic from "../asset/homePage/quiz-2192590_1920.jpg";
 import Background from "../asset/homePage/slideShow/Drought Background1.png";
 import Prevent from "../asset/homePage/slideShow/prevent drought1.png";
 import Vis from "../asset/homePage/slideShow/Visualization1.png";
@@ -184,6 +185,13 @@ const cards = [
     linkText: "check it out",
     linkTo: "/dataVis_Rainfall",
   },
+  {
+    title: "Quiz",
+    desciption: "Test your knowledge",
+    image: quizPic,
+    linkText: "check it out",
+    linkTo: "/quizzes",
+  },
 ];
 
 const cardSwiperProp = {
@@ -306,8 +314,17 @@ const mapCardTest = (cardGroup) => {
   return cardUI;
 };
 
-const fact = (props) => {
+const Fact = (props) => {
   const classes = whatever();
+
+  const [swiper, setSwiper] = React.useState(null);
+
+  React.useEffect(() => {
+    var mySwiper = document.querySelector(".swiper-container").swiper;
+    setSwiper(mySwiper);
+  }, []);
+
+  let goNext = () => swiper.slideNext();
 
   return (
     <>
@@ -342,7 +359,10 @@ const fact = (props) => {
         <Swiper style={{ ...pageStyle }} {...pageSwiperProp}>
           {/* Header section */}
           <SwiperSlide style={{ ...pageStyle }}>
-            <HomePage />
+            <HomePage onClick={goNext} />
+            {/* <Button variant="contained" color="secondary" onClick={goNext}>
+              Next
+            </Button> */}
           </SwiperSlide>
 
           {/* Background info section */}
@@ -424,7 +444,7 @@ const fact = (props) => {
               style={{ paddingTop: "100px" }}
               justify="center"
             >
-              {mapCard(cards.slice(6, cards.length), 12, 6, 3)}
+              {mapCard(cards.slice(6, cards.length-1), 12, 6, 3)}
             </Grid>
           </SwiperSlide>
 
@@ -461,17 +481,55 @@ const fact = (props) => {
             >
               {mapCard(cards.slice(4, 6), 12, 6, 3)}
             </Grid>
-            <Footer/>
+            {/* <Swiper {...cardSwiperProp}>
+              {mapCardTest(cards.slice(4, 6))};
+            </Swiper> */}
+          </SwiperSlide>
+
+          {/* Quiz section */}
+          <SwiperSlide style={{ ...pageStyle }}>
+            <div className={classes.heroContent3}>
+              <Container fixed>
+                <Typography
+                  component="h1"
+                  variant="h2"
+                  align="center"
+                  color="textPrimary"
+                >
+                  Test your knowledge
+                </Typography>
+                {/* <img
+                  src={Prevent}
+                  alt="..."
+                  style={{
+                    marginTop: "0",
+                    marginLeft: "0",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                /> */}
+              </Container>
+            </div>
+            <Container className={classes.placeHolder} />
+            <Grid
+              container
+              spacing={2}
+              style={{ paddingTop: "100px" }}
+              justify="center"
+            >
+              {mapCard(cards.slice(9, 10), 12, 6, 3)}
+            </Grid>
+            <Container className={classes.placeHolder} />
+            <Container className={classes.placeHolder} />
+            <Footer />
             {/* <Swiper {...cardSwiperProp}>
               {mapCardTest(cards.slice(4, 6))};
             </Swiper> */}
           </SwiperSlide>
         </Swiper>
-        {/* </Container> */}
-        {/* </Container> */}
       </main>
     </>
   );
 };
 
-export default fact;
+export default Fact;

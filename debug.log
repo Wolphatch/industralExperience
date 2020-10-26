@@ -1,2 +1,9 @@
 [1012/102725.214:ERROR:settings.cc(430)] Settings version is not 5
 [1012/103725.217:ERROR:directory_reader_win.cc(43)] FindFirstFile: ??????????? (0x3)
+[1012/213344.378:ERROR:directory_reader_win.cc(43)] FindFirstFile: ??????????? (0x3)
+[1013/081723.821:ERROR:directory_reader_win.cc(43)] FindFirstFile: ??????????? (0x3)
+[1015/153558.520:ERROR:directory_reader_win.cc(43)] FindFirstFile: ??????????? (0x3)
+[1017/130039.890:ERROR:directory_reader_win.cc(43)] FindFirstFile: ??????????? (0x3)
+[1018/105957.213:ERROR:directory_reader_win.cc(43)] FindFirstFile: ??????????? (0x3)
+[1019/234051.181:ERROR:directory_reader_win.cc(43)] FindFirstFile: 系统找不到指定的路径。 (0x3)
+[1020/210801.731:ERROR:directory_reader_win.cc(43)] FindFirstFile: ??????????? (0x3)
